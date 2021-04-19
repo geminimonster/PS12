@@ -236,7 +236,7 @@
     <string name="lbl_available_coupon">کوپن قابل استفاده</string>
     <string name="lbl_coupon_code">کد کوپن</string>
     <string name="lbl_please_wait">لطفا صبر کنید</string>
-    <string name="lbl_Available">در دسترس تا:</string>
+    <string name="lbl_Available">موجود در:</string>
     <string name="lbl_Billing">فاکتور</string>
     <string name="lbl_Shipping">ارسال</string>
     <string name="lbl_same">مانند فاکتور</string>

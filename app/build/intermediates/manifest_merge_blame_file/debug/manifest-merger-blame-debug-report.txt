@@ -110,8 +110,8 @@
 52-->[com.onesignal:OneSignal:3.13.2] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\7f5f6f8907cfdda1accf031141378928\jetified-OneSignal-3.13.2\AndroidManifest.xml:46:5-89
 52-->[com.onesignal:OneSignal:3.13.2] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\7f5f6f8907cfdda1accf031141378928\jetified-OneSignal-3.13.2\AndroidManifest.xml:46:22-86
 53    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" /> <!-- Android package visibility setting -->
-53-->[com.google.android.gms:play-services-measurement:18.0.0] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\98cdaefeca5e514a7511bb6368ac3ab6\jetified-play-services-measurement-18.0.0\AndroidManifest.xml:26:5-110
-53-->[com.google.android.gms:play-services-measurement:18.0.0] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\98cdaefeca5e514a7511bb6368ac3ab6\jetified-play-services-measurement-18.0.0\AndroidManifest.xml:26:22-107
+53-->[com.google.android.gms:play-services-measurement:18.0.3] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\56120229984520d14cff58a4a113fb64\jetified-play-services-measurement-18.0.3\AndroidManifest.xml:26:5-110
+53-->[com.google.android.gms:play-services-measurement:18.0.3] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\56120229984520d14cff58a4a113fb64\jetified-play-services-measurement-18.0.3\AndroidManifest.xml:26:22-107
 54    <queries>
 54-->[com.google.android.gms:play-services-ads-lite:20.0.0] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\ab5e0f5cef14ae7d787bb99a6e467b39\jetified-play-services-ads-lite-20.0.0\AndroidManifest.xml:27:5-43:15
 55
@@ -582,11 +582,11 @@
 299                android:value="com.google.firebase.components.ComponentRegistrar" />
 299-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\deeb66bcc570c6e1e8cd8390363830ab\jetified-firebase-iid-17.0.3\AndroidManifest.xml:34:17-82
 300            <meta-data
-300-->[com.google.android.gms:play-services-measurement-api:18.0.0] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\506b1fb0db59b1f7fc56a85964877466\jetified-play-services-measurement-api-18.0.0\AndroidManifest.xml:30:13-32:85
+300-->[com.google.android.gms:play-services-measurement-api:18.0.3] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\d7cad3f9349622c947d116a57faf3b39\jetified-play-services-measurement-api-18.0.3\AndroidManifest.xml:30:13-32:85
 301                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
-301-->[com.google.android.gms:play-services-measurement-api:18.0.0] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\506b1fb0db59b1f7fc56a85964877466\jetified-play-services-measurement-api-18.0.0\AndroidManifest.xml:31:17-139
+301-->[com.google.android.gms:play-services-measurement-api:18.0.3] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\d7cad3f9349622c947d116a57faf3b39\jetified-play-services-measurement-api-18.0.3\AndroidManifest.xml:31:17-139
 302                android:value="com.google.firebase.components.ComponentRegistrar" />
-302-->[com.google.android.gms:play-services-measurement-api:18.0.0] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\506b1fb0db59b1f7fc56a85964877466\jetified-play-services-measurement-api-18.0.0\AndroidManifest.xml:32:17-82
+302-->[com.google.android.gms:play-services-measurement-api:18.0.3] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\d7cad3f9349622c947d116a57faf3b39\jetified-play-services-measurement-api-18.0.3\AndroidManifest.xml:32:17-82
 303            <meta-data
 303-->[com.google.firebase:firebase-installations:16.3.2] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\3673262b0b87d71855c5741c4f5ccbb4\jetified-firebase-installations-16.3.2\AndroidManifest.xml:17:13-19:85
 304                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
@@ -832,33 +832,33 @@
 436-->[com.google.firebase:firebase-common:19.4.0] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\79cb2480263bdcdceaf37e604b07cc16\jetified-firebase-common-19.4.0\AndroidManifest.xml:31:13-36
 437
 438        <receiver
-438-->[com.google.android.gms:play-services-measurement:18.0.0] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\98cdaefeca5e514a7511bb6368ac3ab6\jetified-play-services-measurement-18.0.0\AndroidManifest.xml:29:9-33:20
+438-->[com.google.android.gms:play-services-measurement:18.0.3] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\56120229984520d14cff58a4a113fb64\jetified-play-services-measurement-18.0.3\AndroidManifest.xml:29:9-33:20
 439            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-439-->[com.google.android.gms:play-services-measurement:18.0.0] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\98cdaefeca5e514a7511bb6368ac3ab6\jetified-play-services-measurement-18.0.0\AndroidManifest.xml:30:13-85
+439-->[com.google.android.gms:play-services-measurement:18.0.3] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\56120229984520d14cff58a4a113fb64\jetified-play-services-measurement-18.0.3\AndroidManifest.xml:30:13-85
 440            android:enabled="true"
-440-->[com.google.android.gms:play-services-measurement:18.0.0] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\98cdaefeca5e514a7511bb6368ac3ab6\jetified-play-services-measurement-18.0.0\AndroidManifest.xml:31:13-35
+440-->[com.google.android.gms:play-services-measurement:18.0.3] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\56120229984520d14cff58a4a113fb64\jetified-play-services-measurement-18.0.3\AndroidManifest.xml:31:13-35
 441            android:exported="false" >
-441-->[com.google.android.gms:play-services-measurement:18.0.0] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\98cdaefeca5e514a7511bb6368ac3ab6\jetified-play-services-measurement-18.0.0\AndroidManifest.xml:32:13-37
+441-->[com.google.android.gms:play-services-measurement:18.0.3] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\56120229984520d14cff58a4a113fb64\jetified-play-services-measurement-18.0.3\AndroidManifest.xml:32:13-37
 442        </receiver>
 443
 444        <service
-444-->[com.google.android.gms:play-services-measurement:18.0.0] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\98cdaefeca5e514a7511bb6368ac3ab6\jetified-play-services-measurement-18.0.0\AndroidManifest.xml:35:9-38:40
+444-->[com.google.android.gms:play-services-measurement:18.0.3] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\56120229984520d14cff58a4a113fb64\jetified-play-services-measurement-18.0.3\AndroidManifest.xml:35:9-38:40
 445            android:name="com.google.android.gms.measurement.AppMeasurementService"
-445-->[com.google.android.gms:play-services-measurement:18.0.0] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\98cdaefeca5e514a7511bb6368ac3ab6\jetified-play-services-measurement-18.0.0\AndroidManifest.xml:36:13-84
+445-->[com.google.android.gms:play-services-measurement:18.0.3] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\56120229984520d14cff58a4a113fb64\jetified-play-services-measurement-18.0.3\AndroidManifest.xml:36:13-84
 446            android:enabled="true"
-446-->[com.google.android.gms:play-services-measurement:18.0.0] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\98cdaefeca5e514a7511bb6368ac3ab6\jetified-play-services-measurement-18.0.0\AndroidManifest.xml:37:13-35
+446-->[com.google.android.gms:play-services-measurement:18.0.3] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\56120229984520d14cff58a4a113fb64\jetified-play-services-measurement-18.0.3\AndroidManifest.xml:37:13-35
 447            android:exported="false" />
-447-->[com.google.android.gms:play-services-measurement:18.0.0] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\98cdaefeca5e514a7511bb6368ac3ab6\jetified-play-services-measurement-18.0.0\AndroidManifest.xml:38:13-37
+447-->[com.google.android.gms:play-services-measurement:18.0.3] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\56120229984520d14cff58a4a113fb64\jetified-play-services-measurement-18.0.3\AndroidManifest.xml:38:13-37
 448        <service
-448-->[com.google.android.gms:play-services-measurement:18.0.0] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\98cdaefeca5e514a7511bb6368ac3ab6\jetified-play-services-measurement-18.0.0\AndroidManifest.xml:39:9-43:72
+448-->[com.google.android.gms:play-services-measurement:18.0.3] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\56120229984520d14cff58a4a113fb64\jetified-play-services-measurement-18.0.3\AndroidManifest.xml:39:9-43:72
 449            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-449-->[com.google.android.gms:play-services-measurement:18.0.0] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\98cdaefeca5e514a7511bb6368ac3ab6\jetified-play-services-measurement-18.0.0\AndroidManifest.xml:40:13-87
+449-->[com.google.android.gms:play-services-measurement:18.0.3] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\56120229984520d14cff58a4a113fb64\jetified-play-services-measurement-18.0.3\AndroidManifest.xml:40:13-87
 450            android:enabled="true"
-450-->[com.google.android.gms:play-services-measurement:18.0.0] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\98cdaefeca5e514a7511bb6368ac3ab6\jetified-play-services-measurement-18.0.0\AndroidManifest.xml:41:13-35
+450-->[com.google.android.gms:play-services-measurement:18.0.3] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\56120229984520d14cff58a4a113fb64\jetified-play-services-measurement-18.0.3\AndroidManifest.xml:41:13-35
 451            android:exported="false"
-451-->[com.google.android.gms:play-services-measurement:18.0.0] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\98cdaefeca5e514a7511bb6368ac3ab6\jetified-play-services-measurement-18.0.0\AndroidManifest.xml:42:13-37
+451-->[com.google.android.gms:play-services-measurement:18.0.3] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\56120229984520d14cff58a4a113fb64\jetified-play-services-measurement-18.0.3\AndroidManifest.xml:42:13-37
 452            android:permission="android.permission.BIND_JOB_SERVICE" /> <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
-452-->[com.google.android.gms:play-services-measurement:18.0.0] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\98cdaefeca5e514a7511bb6368ac3ab6\jetified-play-services-measurement-18.0.0\AndroidManifest.xml:43:13-69
+452-->[com.google.android.gms:play-services-measurement:18.0.3] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\56120229984520d14cff58a4a113fb64\jetified-play-services-measurement-18.0.3\AndroidManifest.xml:43:13-69
 453        <activity
 453-->[com.google.android.gms:play-services-ads-lite:20.0.0] C:\Users\HOME\.gradle\caches\transforms-2\files-2.1\ab5e0f5cef14ae7d787bb99a6e467b39\jetified-play-services-ads-lite-20.0.0\AndroidManifest.xml:48:9-52:64
 454            android:name="com.google.android.gms.ads.AdActivity"
