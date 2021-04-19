@@ -4,17 +4,7 @@
             "outputFile": "D:\\PS12\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hdpi-v4\\values-hdpi-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\HOME\\.gradle\\caches\\transforms-2\\files-2.1\\450bbe4fd080137f929d8e963cbdbbda\\jetified-stripe-android-14.5.0\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "56",
-                        "endOffsets": "107"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\HOME\\.gradle\\caches\\transforms-2\\files-2.1\\ca4d28f3aeb7d09ea3aba6531c0a5bf9\\appcompat-1.2.0\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+                    "source": "C:\\Users\\HOME\\.gradle\\caches\\transforms-2\\files-2.1\\c8e415f562ba0a9a85c605aa960cc3d5\\appcompat-1.2.0\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -30,6 +20,16 @@
                         "endLines": "7",
                         "endColumns": "13",
                         "endOffsets": "384"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\HOME\\.gradle\\caches\\transforms-2\\files-2.1\\ee03a9402e19ec3b193ed1c51c1e44bb\\jetified-stripe-android-14.5.0\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "56",
+                        "endOffsets": "107"
                     }
                 }
             ]

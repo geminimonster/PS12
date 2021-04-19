@@ -3755,6 +3755,7 @@ int string lbl_done 0x7f110146
 int string lbl_dont_have_account 0x7f110147
 int string lbl_download_invoice 0x7f110148
 int string lbl_dummy_bank 0x7f110149
+int string lbl_dummy_text 0x7f11014a
 int string lbl_dummy_text1 0x7f11014b
 int string lbl_dummy_text2 0x7f11014c
 int string lbl_dummy_text3 0x7f11014d
@@ -3800,6 +3801,7 @@ int string lbl_my_order 0x7f110174
 int string lbl_my_orders 0x7f110175
 int string lbl_net_banking 0x7f110176
 int string lbl_new_pwd 0x7f110177
+int string lbl_newest_Vendors 0x7f110178
 int string lbl_newest_product 0x7f110179
 int string lbl_night_mode 0x7f11017a
 int string lbl_no 0x7f11017b
@@ -3907,6 +3909,7 @@ int string lbl_valid 0x7f1101e0
 int string lbl_valid_only_for_first 0x7f1101e1
 int string lbl_valid_only_orders_of 0x7f1101e2
 int string lbl_valid_till 0x7f1101e3
+int string lbl_vendors 0x7f1101e4
 int string lbl_verify 0x7f1101e5
 int string lbl_version 0x7f1101e6
 int string lbl_view_all 0x7f1101e7
