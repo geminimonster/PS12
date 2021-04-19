@@ -334,4 +334,8 @@
     <string name="lbl_discount_on_mrp">خصم على MRP</string>
     <string name="lbl_coupon_discount">قسيمة الخصم</string>
     <string name="lbl_cancel_msg">سبب إلغاء النظام</string>
+    <string name="base_url">https://www.khoorshid.com</string>
+    <string name="lbl_dummy_text">dummy</string>
+    <string name="lbl_newest_Vendors">Newes Vendor</string>
+    <string name="lbl_vendors">Vendors</string>
 </resources>
