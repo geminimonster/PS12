@@ -20,7 +20,7 @@ class LocaleManager(context: Context) {
 
 
     val language: String?
-        get() = getSharedPrefInstance().getStringValue(LANGUAGE_KEY, LANGUAGE_PERSIAN)
+        get() = getSharedPrefInstance().getStringValue(LANGUAGE_KEY, LANGUAGE_ENGLISH)
 
     fun setLocale(c: Context): Context {
         return updateResources(c, language)
@@ -73,7 +73,7 @@ class LocaleManager(context: Context) {
 
     companion object {
 
-        val LANGUAGE_PERSIAN = "fa"
+        val LANGUAGE_ENGLISH = "en"
         val LANGUAGE_UKRAINIAN = "uk"
         val LANGUAGE_RUSSIAN = "ru"
         private val LANGUAGE_KEY = "language_key"

@@ -334,8 +334,4 @@
     <string name="lbl_discount_on_mrp">एमआरपी पर डिस्काउंट</string>
     <string name="lbl_coupon_discount">कूपन डिस्काउंट</string>
     <string name="lbl_cancel_msg">आदेश को रद्द करने के लिए कारण</string>
-    <string name="base_url">https://www.khoorshid.com</string>
-    <string name="lbl_newest_Vendors">Newes Vendor</string>
-    <string name="lbl_dummy_text">Dummy</string>
-    <string name="lbl_vendors">Vendors</string>
 </resources>

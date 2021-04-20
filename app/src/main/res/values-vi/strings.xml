@@ -334,8 +334,4 @@
     <string name="lbl_discount_on_mrp">Giảm giá MRP</string>
     <string name="lbl_coupon_discount">phiếu giảm giá giảm giá</string>
     <string name="lbl_cancel_msg">Lý do hủy trật tự</string>
-    <string name="base_url">https://www.khoorshid.com</string>
-    <string name="lbl_newest_Vendors">vendors</string>
-    <string name="lbl_dummy_text">Dummy</string>
-    <string name="lbl_vendors">Vendors</string>
 </resources>

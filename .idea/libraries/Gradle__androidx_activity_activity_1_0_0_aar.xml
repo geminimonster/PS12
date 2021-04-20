@@ -4,8 +4,8 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4b1222abd768cfa6efe588bad492af7a/jetified-activity-1.0.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d029ffed8caadaee683b6cfbab3b6505/jetified-activity-1.0.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/23355dc65427e01be0e3fd16f518632d/jetified-activity-1.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/23355dc65427e01be0e3fd16f518632d/jetified-activity-1.0.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/23355dc65427e01be0e3fd16f518632d/jetified-activity-1.0.0/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4b1222abd768cfa6efe588bad492af7a/jetified-activity-1.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4b1222abd768cfa6efe588bad492af7a/jetified-activity-1.0.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

@@ -37,11 +37,11 @@ class StoreProductModel : Serializable {
     /* @SerializedName("date_created")
      @Expose
      var dateCreated: String? = null
-
+ 
      @SerializedName("date_created_gmt")
      @Expose
      var dateCreatedGmt: String? = null
-
+ 
      @SerializedName("date_modified")
      @Expose
      var dateModified: String? = null

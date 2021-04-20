@@ -252,7 +252,7 @@
 
         <meta-data
             android:name="onesignal_app_id"
-            android:value="69638a56-f66b-46f6-809a-91f113edce2f" /> <!-- Deprecated - Pulled from OneSignal dashboard. -->
+            android:value="1ba69f0e-ba59-4593-9b4b-7f2d55b17d6d" /> <!-- Deprecated - Pulled from OneSignal dashboard. -->
         <meta-data
             android:name="onesignal_google_project_number"
             android:value="str:REMOTE" />

@@ -3,9 +3,9 @@
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/19cc07dcb4432437a2cc6151fd4cf7b8/jetified-firebase-iid-interop-16.0.1/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/19bb984503bfb8ab56edb9a47758700d/jetified-firebase-iid-interop-16.0.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8144a793ee808046e835500bf93f1c16/jetified-firebase-iid-interop-16.0.1/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8144a793ee808046e835500bf93f1c16/jetified-firebase-iid-interop-16.0.1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8144a793ee808046e835500bf93f1c16/jetified-firebase-iid-interop-16.0.1/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/19cc07dcb4432437a2cc6151fd4cf7b8/jetified-firebase-iid-interop-16.0.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/19cc07dcb4432437a2cc6151fd4cf7b8/jetified-firebase-iid-interop-16.0.1/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
