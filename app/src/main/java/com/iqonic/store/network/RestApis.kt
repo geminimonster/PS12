@@ -22,13 +22,13 @@ interface RestApis {
     ): Call<ArrayList<StoreProductModel>>
 
     @GET("wc/v3/products/categories")
-    fun listAllCategory(@QueryMap options:Map<String, Int>): Call<ArrayList<Category>>
+    fun listAllCategory(@QueryMap options: Map<String, Int>): Call<ArrayList<Category>>
 
     @GET("wc/v3/products")
     fun listSingleCategory(@Query("category") categories: Int): Call<ArrayList<StoreProductModel>>
 
     @GET("wc/v3/products")
-    fun listAllCategoryProduct(@QueryMap options:Map<String, Int>): Call<ArrayList<StoreProductModel>>
+    fun listAllCategoryProduct(@QueryMap options: Map<String, Int>): Call<ArrayList<StoreProductModel>>
 
     @GET("wc/v1/products/{id}/reviews")
     fun listReview(@Path("id") id: Int): Call<ArrayList<ProductReviewData>>
@@ -52,10 +52,10 @@ interface RestApis {
     fun FindCoupon(@Query("code") code: String): Call<ArrayList<Coupons>>
 
     @POST("iqonic-api/api/v1/woocommerce/get-product")
-    fun Search(@Body options:SearchRequest): Call<StoreProductModelNew>
+    fun Search(@Body options: SearchRequest): Call<StoreProductModelNew>
 
     @POST("iqonic-api/api/v1/woocommerce/get-product")
-    fun getSaleProducts(@Body options:SearchRequest): Call<StoreProductModelNew>
+    fun getSaleProducts(@Body options: SearchRequest): Call<StoreProductModelNew>
 
     @GET("iqonic-api/api/v1/woocommerce/get-product-attributes")
     fun getProductAttribute(): Call<StoreProductAttribute>

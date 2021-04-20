@@ -7,7 +7,12 @@ import java.io.IOException
 import java.io.UnsupportedEncodingException
 import java.net.URLEncoder
 
-class OAuthInterceptor constructor(consumerKey: String, consumerSecret: String, tokenSecret: String, token: String) : Interceptor {
+class OAuthInterceptor constructor(
+    consumerKey: String,
+    consumerSecret: String,
+    tokenSecret: String,
+    token: String
+) : Interceptor {
     private val consumerKey: String
     private val consumerSecret: String
     private val tokenSecret: String
@@ -26,7 +31,8 @@ class OAuthInterceptor constructor(consumerKey: String, consumerSecret: String, 
         val originalHttpUrl = original.url
         val nonce = TimestampServiceImpl().nonce
         val timestamp = TimestampServiceImpl().timestampInSeconds
-        val dynamicStructureUrl = original.url.scheme + "://" + original.url.host + original.url.encodedPath
+        val dynamicStructureUrl =
+            original.url.scheme + "://" + original.url.host + original.url.encodedPath
         val firstBaseString = original.method + "&" + urlEncoded(dynamicStructureUrl)
         var generatedBaseString: String
         generatedBaseString = if (original.url.encodedQuery != null) {
@@ -42,21 +48,22 @@ class OAuthInterceptor constructor(consumerKey: String, consumerSecret: String, 
             secoundBaseString = "%26" + urlEncoded(generatedBaseString)
         }
         val baseString = firstBaseString + secoundBaseString
-        val signature = HMACSha1SignatureService().getSignature(baseString, consumerSecret, tokenSecret)
+        val signature =
+            HMACSha1SignatureService().getSignature(baseString, consumerSecret, tokenSecret)
 
         Log.d("Signature", signature)
         val url = originalHttpUrl.newBuilder()
-                .addQueryParameter(OAUTH_SIGNATURE_METHOD, OAUTH_SIGNATURE_METHOD_VALUE)
-                .addQueryParameter(OAUTH_CONSUMER_KEY, consumerKey)
-                .addQueryParameter(OAUTH_TOKEN, token)
-                .addQueryParameter(OAUTH_VERSION, OAUTH_VERSION_VALUE)
-                .addQueryParameter(OAUTH_TIMESTAMP, timestamp)
-                .addQueryParameter(OAUTH_NONCE, nonce)
-                .addQueryParameter(OAUTH_SIGNATURE, signature)
-                .build()
+            .addQueryParameter(OAUTH_SIGNATURE_METHOD, OAUTH_SIGNATURE_METHOD_VALUE)
+            .addQueryParameter(OAUTH_CONSUMER_KEY, consumerKey)
+            .addQueryParameter(OAUTH_TOKEN, token)
+            .addQueryParameter(OAUTH_VERSION, OAUTH_VERSION_VALUE)
+            .addQueryParameter(OAUTH_TIMESTAMP, timestamp)
+            .addQueryParameter(OAUTH_NONCE, nonce)
+            .addQueryParameter(OAUTH_SIGNATURE, signature)
+            .build()
         // Request customization: add request headers
         val requestBuilder = original.newBuilder()
-                .url(url)
+            .url(url)
         val request = requestBuilder.build()
         return chain.proceed(request)
     }

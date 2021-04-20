@@ -34,18 +34,18 @@ class StoreProductModel : Serializable {
     @Expose
     var permalink: String? = null
 
-   /* @SerializedName("date_created")
-    @Expose
-    var dateCreated: String? = null
+    /* @SerializedName("date_created")
+     @Expose
+     var dateCreated: String? = null
 
-    @SerializedName("date_created_gmt")
-    @Expose
-    var dateCreatedGmt: String? = null
+     @SerializedName("date_created_gmt")
+     @Expose
+     var dateCreatedGmt: String? = null
 
-    @SerializedName("date_modified")
-    @Expose
-    var dateModified: String? = null
-*/
+     @SerializedName("date_modified")
+     @Expose
+     var dateModified: String? = null
+ */
     @SerializedName("date_modified_gmt")
     @Expose
     var dateModifiedGmt: String? = null

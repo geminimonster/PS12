@@ -70,8 +70,8 @@ class OrderSummaryActivity : AppBaseActivity(), PaymentResultListener {
          * Check payment method type
          */
         isNativePayment = getSharedPrefInstance().getStringValue(
-                Constants.SharedPref.PAYMENT_METHOD,
-                PAYMENT_METHOD_WEB
+            Constants.SharedPref.PAYMENT_METHOD,
+            PAYMENT_METHOD_WEB
         ) != PAYMENT_METHOD_WEB
         shippingItems = intent.getSerializableExtra(SHIPPINGDATA) as Method?
         if (intent.getSerializableExtra(Constants.KeyIntent.COUPON_CODE) != null) {
@@ -110,7 +110,7 @@ class OrderSummaryActivity : AppBaseActivity(), PaymentResultListener {
         val price = intent.getStringExtra(Constants.KeyIntent.PRICE)
         val precision = DecimalFormat("0.00")
         tvTotalCartAmount.text =
-                precision.format(price.toDouble()).toString().currencyFormat()
+            precision.format(price.toDouble()).toString().currencyFormat()
 
         updateAddress()
         tvContinue.onClick {
@@ -119,16 +119,16 @@ class OrderSummaryActivity : AppBaseActivity(), PaymentResultListener {
                     rbCard.isChecked -> {
                         launchActivity<StripePaymentActivity>(Constants.RequestCode.STRIPE_PAYMENT) {
                             putExtra(
-                                    Constants.KeyIntent.COUPON_CODE,
-                                    intent.getStringExtra(Constants.KeyIntent.COUPON_CODE)
+                                Constants.KeyIntent.COUPON_CODE,
+                                intent.getStringExtra(Constants.KeyIntent.COUPON_CODE)
                             )
                             putExtra(
-                                    Constants.KeyIntent.PRICE,
-                                    intent.getStringExtra(Constants.KeyIntent.PRICE)
+                                Constants.KeyIntent.PRICE,
+                                intent.getStringExtra(Constants.KeyIntent.PRICE)
                             )
                             putExtra(
-                                    Constants.KeyIntent.PRODUCTDATA,
-                                    intent.getSerializableExtra(Constants.KeyIntent.PRODUCTDATA)
+                                Constants.KeyIntent.PRODUCTDATA,
+                                intent.getSerializableExtra(Constants.KeyIntent.PRODUCTDATA)
                             )
                         }
                     }
@@ -172,17 +172,17 @@ class OrderSummaryActivity : AppBaseActivity(), PaymentResultListener {
     private fun updateAddress() {
         val shipping = getShippingList()
         tvUserAddress.text =
-                shipping.first_name + " " + shipping.last_name + "\n" + shipping.getFullAddress(sap = "\n")
+            shipping.first_name + " " + shipping.last_name + "\n" + shipping.getFullAddress(sap = "\n")
         val billing = getbillingList()
         tvBillingAddress.text =
-                billing.first_name + " " + billing.last_name + "\n" + billing.getFullAddress(sap = "\n")
+            billing.first_name + " " + billing.last_name + "\n" + billing.getFullAddress(sap = "\n")
         if (shippingItems != null) {
             tvMethod.show()
             if (shippingItems!!.id == "free_shipping" || shippingItems!!.cost == "0" || shippingItems!!.cost.isEmpty()) {
                 tvMethodName.text = shippingItems!!.methodTitle
             } else {
                 tvMethodName.text =
-                        shippingItems!!.methodTitle + ": " + shippingItems!!.cost.currencyFormat()
+                    shippingItems!!.methodTitle + ": " + shippingItems!!.cost.currencyFormat()
             }
         }
 
@@ -233,8 +233,8 @@ class OrderSummaryActivity : AppBaseActivity(), PaymentResultListener {
             options.put("name", getString(R.string.app_name))
             options.put("description", getString(R.string.app_description))
             options.put(
-                    "image",
-                    "http://iqonic.design/wp-themes/proshop/wp-content/uploads/2020/06/logo1.png"
+                "image",
+                "http://iqonic.design/wp-themes/proshop/wp-content/uploads/2020/06/logo1.png"
             )
             options.put("currency", getDefaultCurrencyFormate())
             val orignalPrice = intent.getStringExtra(Constants.KeyIntent.PRICE)
@@ -250,9 +250,9 @@ class OrderSummaryActivity : AppBaseActivity(), PaymentResultListener {
         } catch (e: Exception) {
             showProgress(false)
             Toast.makeText(
-                    activity,
-                    getString(R.string.lbl_error_in_payment) + e.message,
-                    Toast.LENGTH_LONG
+                activity,
+                getString(R.string.lbl_error_in_payment) + e.message,
+                Toast.LENGTH_LONG
             ).show()
             e.printStackTrace()
         }
@@ -294,7 +294,7 @@ class OrderSummaryActivity : AppBaseActivity(), PaymentResultListener {
         orderRequest.shipping = shipping
 
         val orderItems: ArrayList<Line_items> =
-                intent.getSerializableExtra(Constants.KeyIntent.PRODUCTDATA) as ArrayList<Line_items>
+            intent.getSerializableExtra(Constants.KeyIntent.PRODUCTDATA) as ArrayList<Line_items>
         orderRequest.line_items = orderItems
 
         if (shippingItems != null) {
@@ -382,8 +382,8 @@ class OrderSummaryActivity : AppBaseActivity(), PaymentResultListener {
         changePasswordDialog.window?.setBackgroundDrawable(ColorDrawable(0))
         changePasswordDialog.setContentView(R.layout.dialog_failed_transaction)
         changePasswordDialog.window?.setLayout(
-                RelativeLayout.LayoutParams.MATCH_PARENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT
+            RelativeLayout.LayoutParams.MATCH_PARENT,
+            RelativeLayout.LayoutParams.WRAP_CONTENT
         )
         changePasswordDialog.tv_close.onClick {
             changePasswordDialog.dismiss()

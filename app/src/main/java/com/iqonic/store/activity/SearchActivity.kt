@@ -51,91 +51,91 @@ class SearchActivity : AppBaseActivity() {
     private var searchRequest = SearchRequest()
     private var totalPages = 0
     private val mProductAdapter = BaseAdapter<StoreProductModel>(
-            R.layout.item_viewproductgrid,
-            onBind = { view, model, _ ->
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    view.ivProduct.outlineProvider = object : ViewOutlineProvider() {
-                        @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-                        override fun getOutline(view: View?, outline: Outline?) {
-                            outline!!.setRoundRect(0, 0, view!!.width, (view.height + 20F).toInt(), 20F)
-                        }
+        R.layout.item_viewproductgrid,
+        onBind = { view, model, _ ->
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                view.ivProduct.outlineProvider = object : ViewOutlineProvider() {
+                    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+                    override fun getOutline(view: View?, outline: Outline?) {
+                        outline!!.setRoundRect(0, 0, view!!.width, (view.height + 20F).toInt(), 20F)
                     }
-                    view.ivProduct.clipToOutline = true
                 }
-                if (model.images!![0].src!!.isNotEmpty()) {
-                    view.ivProduct.loadImageFromUrl(model.images!![0].src!!)
-                }
-                val mName = model.name!!.split(",")
-                view.tvProductName.text = mName[0]
-                view.tvProductName.changeTextPrimaryColor()
+                view.ivProduct.clipToOutline = true
+            }
+            if (model.images!![0].src!!.isNotEmpty()) {
+                view.ivProduct.loadImageFromUrl(model.images!![0].src!!)
+            }
+            val mName = model.name!!.split(",")
+            view.tvProductName.text = mName[0]
+            view.tvProductName.changeTextPrimaryColor()
 
-                if (model.onSale) {
-                    view.tvSaleLabel.show()
+            if (model.onSale) {
+                view.tvSaleLabel.show()
+            } else {
+                view.tvSaleLabel.hide()
+            }
+            if (model.type!!.contains("grouped")) {
+                view.tvDiscountPrice.hide()
+                view.tvOriginalPrice.hide()
+                view.tvAdd.hide()
+            } else {
+                if (!model.onSale) {
+                    view.tvDiscountPrice.text = model.regularPrice!!.currencyFormat()
+                    view.tvOriginalPrice.show()
+                    if (model.regularPrice!!.isEmpty()) {
+                        view.tvOriginalPrice.text = ""
+                        view.tvDiscountPrice.text = model.price!!.currencyFormat()
+                    } else {
+                        view.tvOriginalPrice.text = ""
+                        view.tvDiscountPrice.text = model.regularPrice!!.currencyFormat()
+                    }
                 } else {
-                    view.tvSaleLabel.hide()
+                    if (model.salePrice!!.isNotEmpty()) {
+                        view.tvDiscountPrice.text = model.salePrice!!.currencyFormat()
+                    } else {
+                        view.tvOriginalPrice.show()
+                        view.tvDiscountPrice.text = model.price!!.currencyFormat()
+                    }
+                    view.tvOriginalPrice.applyStrike()
+                    view.tvOriginalPrice.text = model.regularPrice!!.currencyFormat()
+                    view.tvOriginalPrice.show()
                 }
-                if (model.type!!.contains("grouped")) {
-                    view.tvDiscountPrice.hide()
-                    view.tvOriginalPrice.hide()
+                view.tvOriginalPrice.changeTextSecondaryColor()
+                view.tvDiscountPrice.changeTextPrimaryColor()
+
+                view.tvAdd.background.setTint(Color.parseColor(getAccentColor()))
+                if (model.attributes!!.isNotEmpty()) {
+                    view.tvProductWeight.text = model.attributes!![0].options!![0]
+                    view.tvProductWeight.changeTextSecondaryColor()
+                }
+                if (model.in_stock) {
+                    view.tvAdd.show()
+                } else {
+                    view.tvAdd.hide()
+                }
+                if (!model.purchasable) {
                     view.tvAdd.hide()
                 } else {
-                    if (!model.onSale) {
-                        view.tvDiscountPrice.text = model.regularPrice!!.currencyFormat()
-                        view.tvOriginalPrice.show()
-                        if (model.regularPrice!!.isEmpty()) {
-                            view.tvOriginalPrice.text = ""
-                            view.tvDiscountPrice.text = model.price!!.currencyFormat()
-                        } else {
-                            view.tvOriginalPrice.text = ""
-                            view.tvDiscountPrice.text = model.regularPrice!!.currencyFormat()
-                        }
-                    } else {
-                        if (model.salePrice!!.isNotEmpty()) {
-                            view.tvDiscountPrice.text = model.salePrice!!.currencyFormat()
-                        } else {
-                            view.tvOriginalPrice.show()
-                            view.tvDiscountPrice.text = model.price!!.currencyFormat()
-                        }
-                        view.tvOriginalPrice.applyStrike()
-                        view.tvOriginalPrice.text = model.regularPrice!!.currencyFormat()
-                        view.tvOriginalPrice.show()
+                    view.tvAdd.show()
+                }
+            }
+            view.onClick {
+                if (getProductDetailConstant() == 0) {
+                    launchActivity<ProductDetailActivity1> {
+                        putExtra(Constants.KeyIntent.PRODUCT_ID, model.id)
+                        putExtra(Constants.KeyIntent.DATA, model)
                     }
-                    view.tvOriginalPrice.changeTextSecondaryColor()
-                    view.tvDiscountPrice.changeTextPrimaryColor()
-
-                    view.tvAdd.background.setTint(Color.parseColor(getAccentColor()))
-                    if (model.attributes!!.isNotEmpty()) {
-                        view.tvProductWeight.text = model.attributes!![0].options!![0]
-                        view.tvProductWeight.changeTextSecondaryColor()
-                    }
-                    if (model.in_stock) {
-                        view.tvAdd.show()
-                    } else {
-                        view.tvAdd.hide()
-                    }
-                    if (!model.purchasable) {
-                        view.tvAdd.hide()
-                    } else {
-                        view.tvAdd.show()
+                } else {
+                    launchActivity<ProductDetailActivity2> {
+                        putExtra(Constants.KeyIntent.PRODUCT_ID, model.id)
+                        putExtra(Constants.KeyIntent.DATA, model)
                     }
                 }
-                view.onClick {
-                    if (getProductDetailConstant() == 0) {
-                        launchActivity<ProductDetailActivity1> {
-                            putExtra(Constants.KeyIntent.PRODUCT_ID, model.id)
-                            putExtra(Constants.KeyIntent.DATA, model)
-                        }
-                    } else {
-                        launchActivity<ProductDetailActivity2> {
-                            putExtra(Constants.KeyIntent.PRODUCT_ID, model.id)
-                            putExtra(Constants.KeyIntent.DATA, model)
-                        }
-                    }
-                }
-                view.tvAdd.onClick {
-                    addCart(model.id)
-                }
-            })
+            }
+            view.tvAdd.onClick {
+                addCart(model.id)
+            }
+        })
 
     private fun addCart(modelId: Int) {
         if (isLoggedIn()) {
@@ -153,8 +153,8 @@ class SearchActivity : AppBaseActivity() {
         setContentView(R.layout.activity_search)
         toolbar.title = ""
         toolbar.navigationIcon!!.setColorFilter(
-                resources.getColor(R.color.colorBackArrow),
-                PorterDuff.Mode.SRC_ATOP
+            resources.getColor(R.color.colorBackArrow),
+            PorterDuff.Mode.SRC_ATOP
         )
         toolbar.setNavigationOnClickListener {
             onBackPressed()
@@ -194,7 +194,7 @@ class SearchActivity : AppBaseActivity() {
         }
 
         val searchEditText =
-                searchView.findViewById<View>(R.id.search_src_text) as EditText
+            searchView.findViewById<View>(R.id.search_src_text) as EditText
         searchEditText.setTextColor(resources.getColor(R.color.common_white))
         searchEditText.setHintTextColor(resources.getColor(R.color.common_white))
         searchView.onActionViewExpanded()
@@ -206,7 +206,7 @@ class SearchActivity : AppBaseActivity() {
                     super.onScrollStateChanged(recyclerView, newState)
                     val countItem = recyclerView.layoutManager?.itemCount
                     val lastVisiblePosition =
-                            (recyclerView.layoutManager as GridLayoutManager).findLastCompletelyVisibleItemPosition()
+                        (recyclerView.layoutManager as GridLayoutManager).findLastCompletelyVisibleItemPosition()
                     if (lastVisiblePosition != 0 && !mIsLoading && countItem?.minus(1) == lastVisiblePosition && totalPages > mPage) {
                         mIsLoading = true
                         mPage = mPage.plus(1)
@@ -308,35 +308,35 @@ class SearchActivity : AppBaseActivity() {
 
     private fun openFilterBottomSheet() {
         val filterDialog =
-                BottomSheetDialog(this); filterDialog.setContentView(R.layout.layout_filter)
+            BottomSheetDialog(this); filterDialog.setContentView(R.layout.layout_filter)
         val priceArray = arrayOf(
-                "1".currencyFormat(),
-                "100".currencyFormat(),
-                "500".currencyFormat(),
-                "700".currencyFormat(),
-                "1000".currencyFormat(),
-                "2000".currencyFormat(),
-                "5000".currencyFormat(),
-                "7000".currencyFormat(),
-                "10000".currencyFormat(),
-                "15000".currencyFormat(),
-                "20000".currencyFormat()
+            "1".currencyFormat(),
+            "100".currencyFormat(),
+            "500".currencyFormat(),
+            "700".currencyFormat(),
+            "1000".currencyFormat(),
+            "2000".currencyFormat(),
+            "5000".currencyFormat(),
+            "7000".currencyFormat(),
+            "10000".currencyFormat(),
+            "15000".currencyFormat(),
+            "20000".currencyFormat()
 
         )
         val priceArray2 =
-                arrayOf(
-                        "1",
-                        "100",
-                        "500",
-                        "700",
-                        "1000",
-                        "2000",
-                        "5000",
-                        "7000",
-                        "10000",
-                        "15000",
-                        "20000"
-                )
+            arrayOf(
+                "1",
+                "100",
+                "500",
+                "700",
+                "1000",
+                "2000",
+                "5000",
+                "7000",
+                "10000",
+                "15000",
+                "20000"
+            )
         filterDialog.rlMain.changeBackgroundColor()
         filterDialog.lblFilter.changeTextPrimaryColor()
         filterDialog.tvAttributesName.changeTint(getTextSecondaryColor())
@@ -351,40 +351,40 @@ class SearchActivity : AppBaseActivity() {
 
         if (mSelectedPrice.size == 2) {
             filterDialog.rangebar1.setRangePinsByValue(
-                    priceArray2.indexOf(mSelectedPrice[0].toString()).toFloat(),
-                    priceArray2.indexOf(mSelectedPrice[1].toString()).toFloat()
+                priceArray2.indexOf(mSelectedPrice[0].toString()).toFloat(),
+                priceArray2.indexOf(mSelectedPrice[1].toString()).toFloat()
             )
         }
 
         val brandAdapter =
-                BaseAdapter<Term>(R.layout.item_filter_brand, onBind = { view, model, _ ->
+            BaseAdapter<Term>(R.layout.item_filter_brand, onBind = { view, model, _ ->
 
-                    if (model.isParent) {
-                        view.tvAttributesName.show()
-                        view.termsView.hide()
-                        view.tvAttributesName.text = model.name
+                if (model.isParent) {
+                    view.tvAttributesName.show()
+                    view.termsView.hide()
+                    view.tvAttributesName.text = model.name
+                } else {
+                    view.termsView.show()
+                    view.tvAttributesName.hide()
+                    view.tvBrandName.text = model.name
+
+                    if (model.isSelected) {
+                        view.tvBrandName.changePrimaryColorDark()
+                        view.ivSelect.setImageResource(R.drawable.ic_check)
+                        view.ivSelect.changeBackgroundImageTint(getPrimaryColorDark())
+                        view.ivSelect.setStrokedBackground(
+                            Color.parseColor(getAccentColor()),
+                            Color.parseColor(getAccentColor()),
+                            0.4f
+                        )
                     } else {
-                        view.termsView.show()
-                        view.tvAttributesName.hide()
-                        view.tvBrandName.text = model.name
-
-                        if (model.isSelected) {
-                            view.tvBrandName.changePrimaryColorDark()
-                            view.ivSelect.setImageResource(R.drawable.ic_check)
-                            view.ivSelect.changeBackgroundImageTint(getPrimaryColorDark())
-                            view.ivSelect.setStrokedBackground(
-                                    Color.parseColor(getAccentColor()),
-                                    Color.parseColor(getAccentColor()),
-                                    0.4f
-                            )
-                        } else {
-                            view.tvBrandName.changeTextSecondaryColor()
-                            view.ivSelect.setImageResource(0)
-                            view.ivSelect.setStrokedBackground(color(R.color.checkbox_color))
-                        }
+                        view.tvBrandName.changeTextSecondaryColor()
+                        view.ivSelect.setImageResource(0)
+                        view.ivSelect.setStrokedBackground(color(R.color.checkbox_color))
                     }
-                    view.tvAttributesName.changeTint(getTextSecondaryColor())
-                })
+                }
+                view.tvAttributesName.changeTint(getTextSecondaryColor())
+            })
         brandAdapter.onItemClick = { _, _, model ->
             model.isSelected = !(model.isSelected)
             brandAdapter.notifyDataSetChanged()

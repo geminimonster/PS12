@@ -25,28 +25,28 @@ class CategoryActivity : AppBaseActivity() {
     private var mIsLoading = false
     private var countLoadMore = 1
     private val data: MutableMap<String, Int> =
-            HashMap()
+        HashMap()
     private var isLastPage: Boolean? = false
 
     private val mProductAdapter =
-            BaseAdapter<Category>(R.layout.item_viewcat, onBind = { view, model, _ ->
+        BaseAdapter<Category>(R.layout.item_viewcat, onBind = { view, model, _ ->
 
-                if (model.image !== null) {
-                    view.ivProduct.loadImageFromUrl(model.image.src)
-                    view.ivProduct.show()
-                } else {
-                    view.ivProduct.loadImageFromDrawable(R.drawable.app_logo)
+            if (model.image !== null) {
+                view.ivProduct.loadImageFromUrl(model.image.src)
+                view.ivProduct.show()
+            } else {
+                view.ivProduct.loadImageFromDrawable(R.drawable.app_logo)
+            }
+            view.tvProductName.text = model.name.getHtmlString()
+            view.tvProductName.changeTextPrimaryColor()
+            view.onClick {
+                launchActivity<ViewAllProductActivity> {
+                    putExtra(TITLE, model.name)
+                    putExtra(VIEWALLID, Constants.viewAllCode.CATEGORY)
+                    putExtra(KEYID, model.id)
                 }
-                view.tvProductName.text = model.name.getHtmlString()
-                view.tvProductName.changeTextPrimaryColor()
-                view.onClick {
-                    launchActivity<ViewAllProductActivity> {
-                        putExtra(TITLE, model.name)
-                        putExtra(VIEWALLID, Constants.viewAllCode.CATEGORY)
-                        putExtra(KEYID, model.id)
-                    }
-                }
-            })
+            }
+        })
 
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -74,10 +74,10 @@ class CategoryActivity : AppBaseActivity() {
                         var lastVisiblePosition = 0
                         if (recyclerView.layoutManager is LinearLayoutManager) {
                             lastVisiblePosition =
-                                    (recyclerView.layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition()
+                                (recyclerView.layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition()
                         } else if (recyclerView.layoutManager is GridLayoutManager) {
                             lastVisiblePosition =
-                                    (recyclerView.layoutManager as GridLayoutManager).findLastCompletelyVisibleItemPosition()
+                                (recyclerView.layoutManager as GridLayoutManager).findLastCompletelyVisibleItemPosition()
                         }
                         if (isLastPage == false) {
                             if (lastVisiblePosition != 0 && !mIsLoading && countItem?.minus(1) == lastVisiblePosition) {

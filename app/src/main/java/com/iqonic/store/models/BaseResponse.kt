@@ -30,69 +30,70 @@ data class CheckoutResponse(
     val checkout_url: String
 )
 
-class CreateOrderResponse (
+class CreateOrderResponse(
 
-    val id : Int,
-    val parent_id : Int,
-    val number : Int,
-    val order_key : String,
-    val created_via : String,
-    val version : String,
-    val status : String,
-    val currency : String,
-    val date_created : String,
-    val date_created_gmt : String,
-    val date_modified : String,
-    val date_modified_gmt : String,
-    val discount_total : Double,
-    val discount_tax : Double,
-    val shipping_total : Double,
-    val shipping_tax : Double,
-    val cart_tax : Double,
-    val total : Double,
-    val total_tax : Double,
-    val prices_include_tax : Boolean,
-    val customer_id : Int,
-    val customer_ip_address : String,
-    val customer_user_agent : String,
-    val customer_note : String,
-    val billing : Billing,
-    val shipping : Shipping,
-    val payment_method : String,
-    val payment_method_title : String,
-    val transaction_id : String,
-    val date_paid : String,
-    val date_paid_gmt : String,
-    val date_completed : String,
-    val date_completed_gmt : String,
-    val cart_hash : String,
-    val line_items : List<Line_items>,
-    val tax_lines : List<String>,
-    val shipping_lines : List<ShippingLines>,
-    val fee_lines : List<String>,
-    val coupon_lines : List<CouponLines>,
-    val refunds : List<String>,
-    val currency_symbol : String
+    val id: Int,
+    val parent_id: Int,
+    val number: Int,
+    val order_key: String,
+    val created_via: String,
+    val version: String,
+    val status: String,
+    val currency: String,
+    val date_created: String,
+    val date_created_gmt: String,
+    val date_modified: String,
+    val date_modified_gmt: String,
+    val discount_total: Double,
+    val discount_tax: Double,
+    val shipping_total: Double,
+    val shipping_tax: Double,
+    val cart_tax: Double,
+    val total: Double,
+    val total_tax: Double,
+    val prices_include_tax: Boolean,
+    val customer_id: Int,
+    val customer_ip_address: String,
+    val customer_user_agent: String,
+    val customer_note: String,
+    val billing: Billing,
+    val shipping: Shipping,
+    val payment_method: String,
+    val payment_method_title: String,
+    val transaction_id: String,
+    val date_paid: String,
+    val date_paid_gmt: String,
+    val date_completed: String,
+    val date_completed_gmt: String,
+    val cart_hash: String,
+    val line_items: List<Line_items>,
+    val tax_lines: List<String>,
+    val shipping_lines: List<ShippingLines>,
+    val fee_lines: List<String>,
+    val coupon_lines: List<CouponLines>,
+    val refunds: List<String>,
+    val currency_symbol: String
 ) : Serializable
 
 data class CartResponse(
-        var cart_id: String,
-        var created_at: String,
-        var full: String,
-        var gallery: List<String>,
-        var name: String,
-        var on_sale: Boolean,
-        var price: String,
-        var pro_id: Int,
-        var quantity: String,
-        var regular_price: String,
-        var sale_price: String,
-        var shipping_class: String,
-        var shipping_class_id: Int,
-        var sku: String,
-        var stock_status: String,
-        var thumbnail: String
+    var cart_id: String,
+    var created_at: String,
+    var full: String,
+    var gallery: List<String>,
+    var name: String,
+    var on_sale: Boolean,
+    var price: String,
+    var pro_id: Int,
+    var quantity: String,
+    var regular_price: String,
+    var sale_price: String,
+    var shipping_class: String,
+    var shipping_class_id: Int,
+    var sku: String,
+    var stock_status: String,
+    var thumbnail: String
 )
+
 data class RegisterResponse(
     val code: Int,
     val data: Data,
@@ -166,7 +167,7 @@ class Billing : Serializable {
     var state: String = ""
     var company: String = ""
     var email: String = ""
-    fun getFullAddress(sap:String=","):String{
+    fun getFullAddress(sap: String = ","): String {
         return "$address_1$sap$address_2$sap$city $postcode$sap$state$sap$country"
     }
 }
@@ -189,7 +190,7 @@ class Shipping : Serializable {
     var postcode: String = ""
     var state: String = ""
     var company: String = ""
-    fun getFullAddress(sap:String=","):String{
+    fun getFullAddress(sap: String = ","): String {
         return "$address_1$sap$address_2$sap$city $postcode$sap$state$sap$country"
     }
 }
@@ -302,8 +303,8 @@ data class Up(
 )
 
 data class StoreProductAttribute(
-    val attribute: List<StoreAttribute>?=null
-  //  val categories: List<Categories>?=null
+    val attribute: List<StoreAttribute>? = null
+    //  val categories: List<Categories>?=null
 )
 
 data class StoreAttribute(
@@ -315,6 +316,7 @@ data class StoreAttribute(
     val terms: List<Term>,
     val type: String
 )
+
 data class Term(
     val count: Int = 0,
     val description: String = "",

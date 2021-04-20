@@ -20,7 +20,8 @@ fun String.toCamelCase(): String {
     try {
         val toLowerCase = this.toLowerCase(Locale.getDefault())
         if (toLowerCase.isNotEmpty()) {
-            for (toProperCase in toLowerCase.trim { it <= ' ' }.split(" ".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()) {
+            for (toProperCase in toLowerCase.trim { it <= ' ' }.split(" ".toRegex())
+                .dropLastWhile { it.isEmpty() }.toTypedArray()) {
                 stringBuilder.append(" ").append(toProperCase(toProperCase))
             }
         }
@@ -47,12 +48,12 @@ fun toProperCase(str: String): String {
         if (str.isNotEmpty()) str.substring(
             0,
             1
-        ).toUpperCase(Locale.getDefault()) + str.substring(1).toLowerCase(Locale.getDefault()) else ""
+        ).toUpperCase(Locale.getDefault()) + str.substring(1)
+            .toLowerCase(Locale.getDefault()) else ""
     } catch (e: NullPointerException) {
         ""
     }
 }
-
 
 
 fun String.isValidColor(): Boolean {

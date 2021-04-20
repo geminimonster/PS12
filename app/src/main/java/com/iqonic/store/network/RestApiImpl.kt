@@ -41,6 +41,7 @@ class RestApiImpl(s: String) {
             }
         })
     }
+
     fun listAllCountry(
         onApiSuccess: (ArrayList<CountryModel>) -> Unit,
         onApiError: (aError: String) -> Unit
@@ -58,6 +59,7 @@ class RestApiImpl(s: String) {
             }
         })
     }
+
     fun listAllProductAttribute(
         onApiSuccess: (StoreProductAttribute) -> Unit,
         onApiError: (aError: String) -> Unit
@@ -98,7 +100,7 @@ class RestApiImpl(s: String) {
     }
 
     fun listAllCategory(
-        option: Map<String,Int>,
+        option: Map<String, Int>,
         onApiSuccess: (ArrayList<Category>) -> Unit,
         onApiError: (aError: String) -> Unit
     ) {
@@ -134,24 +136,27 @@ class RestApiImpl(s: String) {
             }
         })
     }
+
     fun listAllCategoryProduct(
-        option: Map<String,Int>,
+        option: Map<String, Int>,
         onApiSuccess: (ArrayList<StoreProductModel>) -> Unit,
         onApiError: (aError: String) -> Unit
     ) {
-        getRestApis.listAllCategoryProduct(option).enqueue(object : Callback<ArrayList<StoreProductModel>> {
-            override fun onResponse(
-                call: Call<ArrayList<StoreProductModel>>,
-                response: Response<ArrayList<StoreProductModel>>
-            ) {
-                successCallback(onApiSuccess, onApiError, response, call.request())
-            }
+        getRestApis.listAllCategoryProduct(option)
+            .enqueue(object : Callback<ArrayList<StoreProductModel>> {
+                override fun onResponse(
+                    call: Call<ArrayList<StoreProductModel>>,
+                    response: Response<ArrayList<StoreProductModel>>
+                ) {
+                    successCallback(onApiSuccess, onApiError, response, call.request())
+                }
 
-            override fun onFailure(call: Call<ArrayList<StoreProductModel>>, t: Throwable) {
-                failureCallback(onApiError, call.request(), t.toString())
-            }
-        })
+                override fun onFailure(call: Call<ArrayList<StoreProductModel>>, t: Throwable) {
+                    failureCallback(onApiError, call.request(), t.toString())
+                }
+            })
     }
+
     fun listSaleProducts(
         option: SearchRequest,
         onApiSuccess: (StoreProductModelNew) -> Unit,
@@ -172,7 +177,8 @@ class RestApiImpl(s: String) {
             })
     }
 
-    fun listReview(id:Int,
+    fun listReview(
+        id: Int,
         onApiSuccess: (ArrayList<ProductReviewData>) -> Unit,
         onApiError: (aError: String) -> Unit
     ) {
@@ -598,7 +604,7 @@ class RestApiImpl(s: String) {
         onApiSuccess: (BaseResponse) -> Unit,
         onApiError: (aError: String) -> Unit
     ) {
-        getRestApis.cancelOrder(orderId,request).enqueue(object : Callback<BaseResponse> {
+        getRestApis.cancelOrder(orderId, request).enqueue(object : Callback<BaseResponse> {
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
                 successCallback(onApiSuccess, onApiError, response, call.request())
             }
@@ -702,6 +708,7 @@ class RestApiImpl(s: String) {
             }
         })
     }
+
     fun getShippingMethod(
         request: RequestModel,
         onApiSuccess: (ShippingModel) -> Unit,
@@ -720,6 +727,7 @@ class RestApiImpl(s: String) {
             }
         })
     }
+
     fun deleteOrder(
         orderId: Int,
         onApiSuccess: (BaseResponse) -> Unit,

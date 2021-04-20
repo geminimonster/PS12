@@ -2,16 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/white"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/_8sdp"
-    android:background="@color/white">
+    android:paddingBottom="@dimen/_8sdp">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:paddingTop="@dimen/spacing_middle"
         android:paddingBottom="@dimen/spacing_middle"
-        android:gravity="center_horizontal"
         android:text="@string/lbl_select_language"
         android:textAppearance="@style/FontBold"
         android:textColor="@color/textColorPrimary"
@@ -24,8 +24,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listLanguage"
+        style="@style/RecycleView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/RecycleView"/>
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

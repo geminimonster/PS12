@@ -36,7 +36,7 @@ class WebViewExternalProductActivity : AppBaseActivity() {
         }
         mAppBarColor()
         webView.loadUrl(
-                intent.getStringExtra(EXTERNAL_URL)
+            intent.getStringExtra(EXTERNAL_URL)
         )
     }
 
@@ -61,8 +61,8 @@ class WebViewExternalProductActivity : AppBaseActivity() {
             }
 
             override fun onShowCustomView(
-                    paramView: View?,
-                    paramCustomViewCallback: CustomViewCallback
+                paramView: View?,
+                paramCustomViewCallback: CustomViewCallback
             ) {
                 if (customView != null) {
                     onHideCustomView()
@@ -73,8 +73,8 @@ class WebViewExternalProductActivity : AppBaseActivity() {
                 originalOrientation = requestedOrientation
                 customViewCallback = paramCustomViewCallback
                 (window.decorView as FrameLayout).addView(
-                        customView,
-                        FrameLayout.LayoutParams(-1, -1)
+                    customView,
+                    FrameLayout.LayoutParams(-1, -1)
                 )
                 window.decorView.systemUiVisibility = 3846
             }
@@ -109,27 +109,27 @@ class WebViewExternalProductActivity : AppBaseActivity() {
             }
 
             override fun onReceivedError(
-                    view: WebView?,
-                    request: WebResourceRequest?,
-                    error: WebResourceError
+                view: WebView?,
+                request: WebResourceRequest?,
+                error: WebResourceError
             ) {
                 mIsError = true
                 super.onReceivedError(view, request, error)
             }
 
             override fun onReceivedHttpError(
-                    view: WebView?,
-                    request: WebResourceRequest?,
-                    errorResponse: WebResourceResponse?
+                view: WebView?,
+                request: WebResourceRequest?,
+                errorResponse: WebResourceResponse?
             ) {
                 Log.e("Error", "onReceivedHttpError")
                 super.onReceivedHttpError(view, request, errorResponse)
             }
 
             override fun onReceivedSslError(
-                    view: WebView?,
-                    handler: SslErrorHandler?,
-                    error: SslError?
+                view: WebView?,
+                handler: SslErrorHandler?,
+                error: SslError?
             ) {
                 Log.e("Error", "onReceivedSslError")
                 super.onReceivedSslError(view, handler, error)
@@ -169,10 +169,10 @@ class WebViewExternalProductActivity : AppBaseActivity() {
                 setSupportMultipleWindows(false)
                 builtInZoomControls = false
                 setSupportZoom(
-                        false
+                    false
                 )
                 userAgentString =
-                        "Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.0.0 Mobile Safari/537.36"
+                    "Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.0.0 Mobile Safari/537.36"
             }
         } catch (ex: Exception) {
             ex.printStackTrace()

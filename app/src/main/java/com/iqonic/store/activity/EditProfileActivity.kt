@@ -121,15 +121,15 @@ class EditProfileActivity : AppBaseActivity() {
         } else {
             if (data != null && data.data != null) ivProfile.setImageURI(data.data)
             val path: String? =
-                    ImagePicker.getImagePathFromResult(this, requestCode, resultCode, data) ?: return
+                ImagePicker.getImagePathFromResult(this, requestCode, resultCode, data) ?: return
             val uri = FileProvider.getUriForFile(
-                    this,
-                    BuildConfig.APPLICATION_ID + ".provider",
-                    File(path)
+                this,
+                BuildConfig.APPLICATION_ID + ".provider",
+                File(path)
             )
             CropImage.activity(uri)
-                    .setOutputCompressQuality(40)
-                    .start(this)
+                .setOutputCompressQuality(40)
+                .start(this)
         }
     }
 
@@ -148,21 +148,21 @@ class EditProfileActivity : AppBaseActivity() {
         }
         editProfileImage.onClick {
             requestPermissions(
-                    arrayOf(
-                            android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                            android.Manifest.permission.READ_EXTERNAL_STORAGE
-                    ), onResult = {
-                if (it) {
-                    CropImage.activity()
+                arrayOf(
+                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE
+                ), onResult = {
+                    if (it) {
+                        CropImage.activity()
                             .setAspectRatio(1, 1)
                             .setGuidelines(CropImageView.Guidelines.OFF)
                             .setRequestedSize(300, 300)
                             .setOutputCompressQuality(40)
                             .start(this@EditProfileActivity)
-                } else {
-                    showPermissionAlert(this)
-                }
-            })
+                    } else {
+                        showPermissionAlert(this)
+                    }
+                })
         }
 
         llOrder.onClick {
@@ -182,10 +182,10 @@ class EditProfileActivity : AppBaseActivity() {
         spBillingCountry.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 
             override fun onItemSelected(
-                    parent: AdapterView<*>,
-                    view: View,
-                    position: Int,
-                    id: Long
+                parent: AdapterView<*>,
+                view: View,
+                position: Int,
+                id: Long
             ) {
                 onBillingCountryChanged(countryList[position].states)
             }
@@ -196,10 +196,10 @@ class EditProfileActivity : AppBaseActivity() {
         spCountry.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 
             override fun onItemSelected(
-                    parent: AdapterView<*>,
-                    view: View,
-                    position: Int,
-                    id: Long
+                parent: AdapterView<*>,
+                view: View,
+                position: Int,
+                id: Long
             ) {
                 onShippingCountryChanged(countryList[position].states)
             }
@@ -211,8 +211,8 @@ class EditProfileActivity : AppBaseActivity() {
         spBillingState.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 
             override fun onItemSelected(
-                    parent: AdapterView<*>, view: View,
-                    position: Int, id: Long
+                parent: AdapterView<*>, view: View,
+                position: Int, id: Long
             ) {
                 if (cbCheck.isChecked) {
                     spState.setSelection(position)
@@ -270,12 +270,12 @@ class EditProfileActivity : AppBaseActivity() {
             getSharedPrefInstance().removeKey(Constants.SharedPref.BILLING)
             getSharedPrefInstance().removeKey(Constants.SharedPref.SHIPPING)
             getSharedPrefInstance().setValue(
-                    Constants.SharedPref.BILLING,
-                    Gson().toJson(it.billing)
+                Constants.SharedPref.BILLING,
+                Gson().toJson(it.billing)
             )
             getSharedPrefInstance().setValue(
-                    Constants.SharedPref.SHIPPING,
-                    Gson().toJson(it.shipping)
+                Constants.SharedPref.SHIPPING,
+                Gson().toJson(it.shipping)
             )
             setResult(Activity.RESULT_OK)
             finish()
@@ -406,26 +406,26 @@ class EditProfileActivity : AppBaseActivity() {
 
                 if (it.first_name.isNotEmpty()) {
                     getSharedPrefInstance().setValue(
-                            Constants.SharedPref.USER_LAST_NAME,
-                            it.first_name
+                        Constants.SharedPref.USER_LAST_NAME,
+                        it.first_name
                     )
                 }
 
                 if (it.last_name.isNotEmpty()) {
                     getSharedPrefInstance().setValue(
-                            Constants.SharedPref.USER_LAST_NAME,
-                            it.last_name
+                        Constants.SharedPref.USER_LAST_NAME,
+                        it.last_name
                     )
                 }
 
                 getSharedPrefInstance().setValue(Constants.SharedPref.USER_ROLE, it.role)
                 getSharedPrefInstance().setValue(
-                        Constants.SharedPref.BILLING,
-                        Gson().toJson(it.billing)
+                    Constants.SharedPref.BILLING,
+                    Gson().toJson(it.billing)
                 )
                 getSharedPrefInstance().setValue(
-                        Constants.SharedPref.SHIPPING,
-                        Gson().toJson(it.shipping)
+                    Constants.SharedPref.SHIPPING,
+                    Gson().toJson(it.shipping)
                 )
                 getSharedPrefInstance().setValue(USER_PICODE, it.shipping.postcode)
 
@@ -597,7 +597,7 @@ class EditProfileActivity : AppBaseActivity() {
         rlMain.changeBackgroundColor()
         tvEmail.changeTextSecondaryColor()
         btnSaveProFile.backgroundTintList =
-                ColorStateList.valueOf(Color.parseColor(getButtonColor()))
+            ColorStateList.valueOf(Color.parseColor(getButtonColor()))
     }
 }
 

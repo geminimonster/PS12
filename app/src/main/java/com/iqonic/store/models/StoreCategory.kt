@@ -6,7 +6,7 @@ data class Category(
     val description: String,
     val display: String,
     val id: Int,
-    val image: CategoryImage?= null,
+    val image: CategoryImage? = null,
     val menu_order: Int,
     val name: String,
     val parent: Int,

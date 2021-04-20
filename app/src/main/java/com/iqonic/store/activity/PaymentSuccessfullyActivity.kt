@@ -19,7 +19,7 @@ class PaymentSuccessfullyActivity : AppBaseActivity() {
 
         changeColor()
         val response: CreateOrderResponse =
-                intent.getSerializableExtra(Constants.KeyIntent.ORDER_DATA) as CreateOrderResponse
+            intent.getSerializableExtra(Constants.KeyIntent.ORDER_DATA) as CreateOrderResponse
         amount.text = response.total.toString().currencyFormat()
         transactionId.text = response.transaction_id
         orderId.text = response.order_key

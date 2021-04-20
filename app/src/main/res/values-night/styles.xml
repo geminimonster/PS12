@@ -6,7 +6,7 @@
         <item name="android:colorAccent">@color/colorAccent</item>
         <item name="android:textColorPrimary">@color/colorAccent</item>
         <item name="windowActionBar">true</item>
-<!--        <item name="android:actionBarStyle">@style/ActionBar</item>-->
+        <!--        <item name="android:actionBarStyle">@style/ActionBar</item>-->
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
         <item name="android:titleTextStyle">@style/ActionBar.Text</item>
         <item name="titleTextColor">@color/colorTitleBarText</item>
@@ -398,6 +398,7 @@
         <item name="android:paddingStart">@dimen/_6sdp</item>
         <item name="android:paddingEnd">0dp</item>
     </style>
+
     <style name="ImageButton">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/_30sdp</item>
@@ -405,6 +406,7 @@
         <item name="android:padding">@dimen/spacing_control_half</item>
         <item name="android:layout_margin">@dimen/spacing_standard</item>
     </style>
+
     <style name="FullScreenDialog">
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsFloating">true</item>

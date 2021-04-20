@@ -1,4 +1,3 @@
-
 package com.iqonic.store.utils.rangeBar;
 
 
@@ -17,47 +16,32 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+
 import com.iqonic.store.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
 public class RangeBar extends View {
 
 
-    private static final String TAG = "RangeBar";
-
-    private static final float DEFAULT_TICK_START = 0;
-
-    private static final float DEFAULT_TICK_END = 10;
-
-    private static final float DEFAULT_TICK_INTERVAL = 1;
-
-    private static final float DEFAULT_TICK_HEIGHT_DP = 1;
-
-    private static final float DEFAULT_PIN_PADDING_DP = 16;
-
     public static final float DEFAULT_MIN_PIN_FONT_SP = 8;
-
     public static final float DEFAULT_MAX_PIN_FONT_SP = 24;
-
-    private static final float DEFAULT_BAR_WEIGHT_DP = 2;
-
-    private static final float DEFAULT_CIRCLE_BOUNDARY_SIZE_DP = 0;
-
-    private static final int DEFAULT_BAR_COLOR = Color.LTGRAY;
-
-    private static final int DEFAULT_TEXT_COLOR = Color.WHITE;
-
-    private static final int DEFAULT_TICK_COLOR = Color.BLACK;
-
-    private static final int DEFAULT_TICK_LABEL_COLOR = Color.LTGRAY;
-
-    private static final int DEFAULT_TICK_LABEL_SELECTED_COLOR = Color.BLACK;
-
-    private static final String DEFAULT_TICK_LABEL = "";
-
     public static final float DEFAULT_TICK_LABEL_FONT_SP = 4;
-
+    private static final String TAG = "RangeBar";
+    private static final float DEFAULT_TICK_START = 0;
+    private static final float DEFAULT_TICK_END = 10;
+    private static final float DEFAULT_TICK_INTERVAL = 1;
+    private static final float DEFAULT_TICK_HEIGHT_DP = 1;
+    private static final float DEFAULT_PIN_PADDING_DP = 16;
+    private static final float DEFAULT_BAR_WEIGHT_DP = 2;
+    private static final float DEFAULT_CIRCLE_BOUNDARY_SIZE_DP = 0;
+    private static final int DEFAULT_BAR_COLOR = Color.LTGRAY;
+    private static final int DEFAULT_TEXT_COLOR = Color.WHITE;
+    private static final int DEFAULT_TICK_COLOR = Color.BLACK;
+    private static final int DEFAULT_TICK_LABEL_COLOR = Color.LTGRAY;
+    private static final int DEFAULT_TICK_LABEL_SELECTED_COLOR = Color.BLACK;
+    private static final String DEFAULT_TICK_LABEL = "";
     // Corresponds to material indigo 500.
     private static final int DEFAULT_PIN_COLOR = 0xff3f51b5;
 
@@ -73,75 +57,41 @@ public class RangeBar extends View {
     private static final float DEFAULT_BAR_PADDING_BOTTOM_DP = 24;
 
     // Instance variables for all of the customizable attributes
-
+    private final DisplayMetrics mDisplayMetrices = getResources().getDisplayMetrics();
     private float mTickHeight = DEFAULT_TICK_HEIGHT_DP;
-
     private float mTickStart = DEFAULT_TICK_START;
-
     private float mTickEnd = DEFAULT_TICK_END;
-
     private float mTickInterval = DEFAULT_TICK_INTERVAL;
-
     private float mBarWeight = DEFAULT_BAR_WEIGHT_DP;
-
     private boolean mIsBarRounded = false;
-
     private int mBarColor = DEFAULT_BAR_COLOR;
-
     private int mPinColor = DEFAULT_PIN_COLOR;
-
     private int mTextColor = DEFAULT_TEXT_COLOR;
-
     private float mConnectingLineWeight = DEFAULT_CONNECTING_LINE_WEIGHT_DP;
-
     private ArrayList<Integer> mConnectingLineColors = new ArrayList<>();
-
     private float mThumbRadiusDP = DEFAULT_EXPANDED_PIN_RADIUS_DP;
-
     private int mTickDefaultColor = DEFAULT_TICK_COLOR;
-
     private ArrayList<Integer> mTickColors = new ArrayList<>();
-
     private int mTickLabelColor = DEFAULT_TICK_LABEL_COLOR;
-
     private int mTickLabelSelectedColor = DEFAULT_TICK_LABEL_SELECTED_COLOR;
-
     private int mActiveTickLabelColor;
-
     private int mActiveTickLabelSelectedColor;
-
     private float mTickLabelSize = DEFAULT_TICK_LABEL_FONT_SP;
-
     private CharSequence[] mTickBottomLabels;
-
     private CharSequence[] mTickTopLabels;
-
     private String mTickDefaultLabel = DEFAULT_TICK_LABEL;
-
     private float mExpandedPinRadius = DEFAULT_EXPANDED_PIN_RADIUS_DP;
-
     private int mCircleColor = DEFAULT_CONNECTING_LINE_COLOR;
-
     private int mCircleColorLeft;
-
     private int mCircleColorRight;
-
     private int mCircleBoundaryColor = DEFAULT_CONNECTING_LINE_COLOR;
-
     private float mCircleBoundarySize = DEFAULT_CIRCLE_BOUNDARY_SIZE_DP;
-
     private float mCircleSize = DEFAULT_CIRCLE_SIZE_DP;
-
     private float mMinPinFont = DEFAULT_MIN_PIN_FONT_SP;
-
     private float mMaxPinFont = DEFAULT_MAX_PIN_FONT_SP;
-
     // setTickCount only resets indices before a thumb has been pressed or a
     // setThumbIndices() is called, to correspond with intended usage
     private boolean mFirstSetTickCount = true;
-
-    private final DisplayMetrics mDisplayMetrices = getResources().getDisplayMetrics();
-
     private int mDefaultWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 250, mDisplayMetrices);
 
     private int mDefaultHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 75, mDisplayMetrices);
@@ -591,128 +541,6 @@ public class RangeBar extends View {
     }
 
     /**
-     * Sets the start tick in the RangeBar.
-     *
-     * @param tickStart Integer specifying the number of ticks.
-     */
-    public void setTickStart(float tickStart) {
-        int tickCount = (int) ((mTickEnd - tickStart) / mTickInterval) + 1;
-        if (isValidTickCount(tickCount)) {
-            mTickCount = tickCount;
-            mTickStart = tickStart;
-
-            // Prevents resetting the indices when creating new activity, but
-            // allows it on the first setting.
-            if (mFirstSetTickCount) {
-                mLeftIndex = 0;
-                mRightIndex = mTickCount - 1;
-
-                if (mListener != null) {
-                    mListener.onRangeChangeListener(this, mLeftIndex, mRightIndex,
-                            getPinValue(mLeftIndex),
-                            getPinValue(mRightIndex));
-                }
-            }
-            if (indexOutOfRange(mLeftIndex, mRightIndex)) {
-                mLeftIndex = 0;
-                mRightIndex = mTickCount - 1;
-
-                if (mListener != null) {
-                    mListener.onRangeChangeListener(this, mLeftIndex, mRightIndex,
-                            getPinValue(mLeftIndex),
-                            getPinValue(mRightIndex));
-                }
-            }
-
-            createBar();
-            createPins();
-        } else {
-            Log.e(TAG, "tickCount less than 2; invalid tickCount.");
-            throw new IllegalArgumentException("tickCount less than 2; invalid tickCount.");
-        }
-    }
-
-    /**
-     * Sets the start tick in the RangeBar.
-     *
-     * @param tickInterval Integer specifying the number of ticks.
-     */
-    public void setTickInterval(float tickInterval) {
-        int tickCount = (int) ((mTickEnd - mTickStart) / tickInterval) + 1;
-        if (isValidTickCount(tickCount)) {
-            mTickCount = tickCount;
-            mTickInterval = tickInterval;
-
-            // Prevents resetting the indices when creating new activity, but
-            // allows it on the first setting.
-            if (mFirstSetTickCount) {
-                mLeftIndex = 0;
-                mRightIndex = mTickCount - 1;
-
-                if (mListener != null) {
-                    mListener.onRangeChangeListener(this, mLeftIndex, mRightIndex,
-                            getPinValue(mLeftIndex), getPinValue(mRightIndex));
-                }
-            }
-            if (indexOutOfRange(mLeftIndex, mRightIndex)) {
-                mLeftIndex = 0;
-                mRightIndex = mTickCount - 1;
-
-                if (mListener != null) {
-                    mListener.onRangeChangeListener(this, mLeftIndex, mRightIndex,
-                            getPinValue(mLeftIndex), getPinValue(mRightIndex));
-                }
-            }
-
-            createBar();
-            createPins();
-        } else {
-            Log.e(TAG, "tickCount less than 2; invalid tickCount.");
-            throw new IllegalArgumentException("tickCount less than 2; invalid tickCount.");
-        }
-    }
-
-    /**
-     * Sets the end tick in the RangeBar.
-     *
-     * @param tickEnd Integer specifying the number of ticks.
-     */
-    public void setTickEnd(float tickEnd) {
-        int tickCount = (int) ((tickEnd - mTickStart) / mTickInterval) + 1;
-        if (isValidTickCount(tickCount)) {
-            mTickCount = tickCount;
-            mTickEnd = tickEnd;
-
-            // Prevents resetting the indices when creating new activity, but
-            // allows it on the first setting.
-            if (mFirstSetTickCount) {
-                mLeftIndex = 0;
-                mRightIndex = mTickCount - 1;
-
-                if (mListener != null) {
-                    mListener.onRangeChangeListener(this, mLeftIndex, mRightIndex,
-                            getPinValue(mLeftIndex), getPinValue(mRightIndex));
-                }
-            }
-            if (indexOutOfRange(mLeftIndex, mRightIndex)) {
-                mLeftIndex = 0;
-                mRightIndex = mTickCount - 1;
-
-                if (mListener != null) {
-                    mListener.onRangeChangeListener(this, mLeftIndex, mRightIndex,
-                            getPinValue(mLeftIndex), getPinValue(mRightIndex));
-                }
-            }
-
-            createBar();
-            createPins();
-        } else {
-            Log.e(TAG, "tickCount less than 2; invalid tickCount.");
-            throw new IllegalArgumentException("tickCount less than 2; invalid tickCount.");
-        }
-    }
-
-    /**
      * Sets the height of the ticks in the range bar.
      *
      * @param tickHeight Float specifying the height of each tick mark in dp.
@@ -789,7 +617,6 @@ public class RangeBar extends View {
         invalidate();
     }
 
-
     /**
      * Set if the pins should dissapear after released
      *
@@ -802,38 +629,15 @@ public class RangeBar extends View {
         invalidate();
     }
 
-     /**
-      * Set the default color of the ticks.
-      *
-      * @param tickDefaultColor Integer specifying the color of the ticks.
-      */
+    /**
+     * Set the default color of the ticks.
+     *
+     * @param tickDefaultColor Integer specifying the color of the ticks.
+     */
 
     public void setTickDefaultColor(int tickDefaultColor) {
         this.mTickDefaultColor = tickDefaultColor;
         setTickColors(tickDefaultColor);
-        createBar();
-    }
-
-    /**
-     * Set the colors of the ticks.
-     *
-     * @param tickColors List of Integers specifying the color of the ticks.
-     */
-    public void setTickColors(ArrayList<Integer> tickColors) {
-        this.mTickColors = new ArrayList<>(tickColors);
-        createBar();
-    }
-
-    /**
-     * Set the color of the ticks.
-     *
-     * @param color Integer specifying the color of the ticks.
-     */
-    public void setTickColors(int color) {
-        for (int i = 0; i < mTickColors.size(); i++) {
-            mTickColors.set(i, color);
-        }
-
         createBar();
     }
 
@@ -844,17 +648,6 @@ public class RangeBar extends View {
 
     public void setTickLabelSelectedColor(int tickLabelSelectedColor) {
         mTickLabelSelectedColor = tickLabelSelectedColor;
-        createBar();
-    }
-
-    public void setTickTopLabels(CharSequence[] tickLabels) {
-        mTickTopLabels = tickLabels;
-
-        createBar();
-    }
-
-    public void setTickBottomLabels(CharSequence[] tickLabels) {
-        mTickBottomLabels = tickLabels;
         createBar();
     }
 
@@ -933,6 +726,15 @@ public class RangeBar extends View {
     }
 
     /**
+     * Gets left selector color
+     *
+     * @return
+     */
+    public int getLeftSelectorColor() {
+        return mCircleColorLeft;
+    }
+
+    /**
      * Sets left selector circle color
      *
      * @param mCircleColorLeft
@@ -940,6 +742,15 @@ public class RangeBar extends View {
     public void setLeftSelectorColor(int mCircleColorLeft) {
         this.mCircleColorLeft = mCircleColorLeft;
         createPins();
+    }
+
+    /**
+     * Gets right selector color
+     *
+     * @return
+     */
+    public int getRightSelectorColor() {
+        return mCircleColorRight;
     }
 
     /**
@@ -953,24 +764,6 @@ public class RangeBar extends View {
     }
 
     /**
-     * Gets left selector color
-     *
-     * @return
-     */
-    public int getLeftSelectorColor() {
-        return mCircleColorLeft;
-    }
-
-    /**
-     * Gets right selector color
-     *
-     * @return
-     */
-    public int getRightSelectorColor() {
-        return mCircleColorRight;
-    }
-
-    /**
      * Gets the start tick.
      *
      * @return the start tick.
@@ -980,12 +773,94 @@ public class RangeBar extends View {
     }
 
     /**
+     * Sets the start tick in the RangeBar.
+     *
+     * @param tickStart Integer specifying the number of ticks.
+     */
+    public void setTickStart(float tickStart) {
+        int tickCount = (int) ((mTickEnd - tickStart) / mTickInterval) + 1;
+        if (isValidTickCount(tickCount)) {
+            mTickCount = tickCount;
+            mTickStart = tickStart;
+
+            // Prevents resetting the indices when creating new activity, but
+            // allows it on the first setting.
+            if (mFirstSetTickCount) {
+                mLeftIndex = 0;
+                mRightIndex = mTickCount - 1;
+
+                if (mListener != null) {
+                    mListener.onRangeChangeListener(this, mLeftIndex, mRightIndex,
+                            getPinValue(mLeftIndex),
+                            getPinValue(mRightIndex));
+                }
+            }
+            if (indexOutOfRange(mLeftIndex, mRightIndex)) {
+                mLeftIndex = 0;
+                mRightIndex = mTickCount - 1;
+
+                if (mListener != null) {
+                    mListener.onRangeChangeListener(this, mLeftIndex, mRightIndex,
+                            getPinValue(mLeftIndex),
+                            getPinValue(mRightIndex));
+                }
+            }
+
+            createBar();
+            createPins();
+        } else {
+            Log.e(TAG, "tickCount less than 2; invalid tickCount.");
+            throw new IllegalArgumentException("tickCount less than 2; invalid tickCount.");
+        }
+    }
+
+    /**
      * Gets the end tick.
      *
      * @return the end tick.
      */
     public float getTickEnd() {
         return mTickEnd;
+    }
+
+    /**
+     * Sets the end tick in the RangeBar.
+     *
+     * @param tickEnd Integer specifying the number of ticks.
+     */
+    public void setTickEnd(float tickEnd) {
+        int tickCount = (int) ((tickEnd - mTickStart) / mTickInterval) + 1;
+        if (isValidTickCount(tickCount)) {
+            mTickCount = tickCount;
+            mTickEnd = tickEnd;
+
+            // Prevents resetting the indices when creating new activity, but
+            // allows it on the first setting.
+            if (mFirstSetTickCount) {
+                mLeftIndex = 0;
+                mRightIndex = mTickCount - 1;
+
+                if (mListener != null) {
+                    mListener.onRangeChangeListener(this, mLeftIndex, mRightIndex,
+                            getPinValue(mLeftIndex), getPinValue(mRightIndex));
+                }
+            }
+            if (indexOutOfRange(mLeftIndex, mRightIndex)) {
+                mLeftIndex = 0;
+                mRightIndex = mTickCount - 1;
+
+                if (mListener != null) {
+                    mListener.onRangeChangeListener(this, mLeftIndex, mRightIndex,
+                            getPinValue(mLeftIndex), getPinValue(mRightIndex));
+                }
+            }
+
+            createBar();
+            createPins();
+        } else {
+            Log.e(TAG, "tickCount less than 2; invalid tickCount.");
+            throw new IllegalArgumentException("tickCount less than 2; invalid tickCount.");
+        }
     }
 
     /**
@@ -1006,6 +881,12 @@ public class RangeBar extends View {
         return mTickTopLabels;
     }
 
+    public void setTickTopLabels(CharSequence[] tickLabels) {
+        mTickTopLabels = tickLabels;
+
+        createBar();
+    }
+
     /**
      * Gets the tick bottom labels.
      *
@@ -1013,6 +894,11 @@ public class RangeBar extends View {
      */
     public CharSequence[] getTickBottomLabels() {
         return mTickBottomLabels;
+    }
+
+    public void setTickBottomLabels(CharSequence[] tickLabels) {
+        mTickBottomLabels = tickLabels;
+        createBar();
     }
 
     /**
@@ -1025,9 +911,30 @@ public class RangeBar extends View {
         return mTickColors;
     }
 
+    /**
+     * Set the colors of the ticks.
+     *
+     * @param tickColors List of Integers specifying the color of the ticks.
+     */
+    public void setTickColors(ArrayList<Integer> tickColors) {
+        this.mTickColors = new ArrayList<>(tickColors);
+        createBar();
+    }
 
     /**
+     * Set the color of the ticks.
      *
+     * @param color Integer specifying the color of the ticks.
+     */
+    public void setTickColors(int color) {
+        for (int i = 0; i < mTickColors.size(); i++) {
+            mTickColors.set(i, color);
+        }
+
+        createBar();
+    }
+
+    /**
      * @param index
      * @return specified color
      */
@@ -1238,6 +1145,46 @@ public class RangeBar extends View {
         return mTickInterval;
     }
 
+    /**
+     * Sets the start tick in the RangeBar.
+     *
+     * @param tickInterval Integer specifying the number of ticks.
+     */
+    public void setTickInterval(float tickInterval) {
+        int tickCount = (int) ((mTickEnd - mTickStart) / tickInterval) + 1;
+        if (isValidTickCount(tickCount)) {
+            mTickCount = tickCount;
+            mTickInterval = tickInterval;
+
+            // Prevents resetting the indices when creating new activity, but
+            // allows it on the first setting.
+            if (mFirstSetTickCount) {
+                mLeftIndex = 0;
+                mRightIndex = mTickCount - 1;
+
+                if (mListener != null) {
+                    mListener.onRangeChangeListener(this, mLeftIndex, mRightIndex,
+                            getPinValue(mLeftIndex), getPinValue(mRightIndex));
+                }
+            }
+            if (indexOutOfRange(mLeftIndex, mRightIndex)) {
+                mLeftIndex = 0;
+                mRightIndex = mTickCount - 1;
+
+                if (mListener != null) {
+                    mListener.onRangeChangeListener(this, mLeftIndex, mRightIndex,
+                            getPinValue(mLeftIndex), getPinValue(mRightIndex));
+                }
+            }
+
+            createBar();
+            createPins();
+        } else {
+            Log.e(TAG, "tickCount less than 2; invalid tickCount.");
+            throw new IllegalArgumentException("tickCount less than 2; invalid tickCount.");
+        }
+    }
+
     @Override
     public void setEnabled(boolean enabled) {
         if (!enabled) {
@@ -1378,7 +1325,7 @@ public class RangeBar extends View {
             mActiveCircleColorLeft = mCircleColorLeft;
             mActiveCircleColorRight = mCircleColorRight;
             mActiveCircleBoundaryColor = mCircleBoundaryColor;
-            mTickDefaultColor = ta.getColor(R.styleable.RangeBar_mrb_tickDefaultColor , DEFAULT_TICK_COLOR);
+            mTickDefaultColor = ta.getColor(R.styleable.RangeBar_mrb_tickDefaultColor, DEFAULT_TICK_COLOR);
             mActiveTickDefaultColor = mTickDefaultColor;
             mTickColors = getColors(ta.getTextArray(R.styleable.RangeBar_mrb_tickColors), mTickDefaultColor);
             mActiveTickColors = new ArrayList<>(mTickColors);
@@ -1811,6 +1758,7 @@ public class RangeBar extends View {
 
     /**
      * Loads list of colors and sets default
+     *
      * @param colors
      * @return ArrayList<Integer>
      */
@@ -1851,6 +1799,7 @@ public class RangeBar extends View {
     /**
      * This flag is useful for tracking touch events that were meant as scroll events.
      * Copied from hidden method of {@link View} isInScrollingContainer.
+     *
      * @return true if any of this View parents is a scrolling View.
      */
     private boolean isInScrollingContainer() {

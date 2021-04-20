@@ -21,10 +21,11 @@ class SpinnerAdapter(
         convertView: View?,
         parent: ViewGroup
     ): View {
-        val row: View = LayoutInflater.from(parent.context).inflate(R.layout.spinner_items, parent, false)
+        val row: View =
+            LayoutInflater.from(parent.context).inflate(R.layout.spinner_items, parent, false)
         val textView = row.findViewById<View>(R.id.tvItem) as TextView
         textView.text = getItem(position)
-        textView.setPadding(4,20,4,8)
+        textView.setPadding(4, 20, 4, 8)
         textView.changeTextSecondaryColor()
         return row
     }

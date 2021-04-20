@@ -10,8 +10,10 @@ import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 
-fun Spinner.create(@LayoutRes itemLayout: Int, @IdRes textViewId: Int, items: Array<String>,
-                   onItemSelected: (String, Int) -> Unit = { _, _ -> }) {
+fun Spinner.create(
+    @LayoutRes itemLayout: Int, @IdRes textViewId: Int, items: Array<String>,
+    onItemSelected: (String, Int) -> Unit = { _, _ -> }
+) {
     val aAdapter = ArrayAdapter(context, itemLayout, textViewId, items)
     adapter = aAdapter
     onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -24,8 +26,10 @@ fun Spinner.create(@LayoutRes itemLayout: Int, @IdRes textViewId: Int, items: Ar
     }
 }
 
-fun Spinner.create(@LayoutRes itemLayout: Int, @IdRes textViewId: Int, items: MutableList<String>,
-                   onItemSelected: (String, Int) -> Unit = { _, _ -> }) {
+fun Spinner.create(
+    @LayoutRes itemLayout: Int, @IdRes textViewId: Int, items: MutableList<String>,
+    onItemSelected: (String, Int) -> Unit = { _, _ -> }
+) {
     val aAdapter = ArrayAdapter(context, itemLayout, textViewId, items)
     adapter = aAdapter
     onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -38,8 +42,10 @@ fun Spinner.create(@LayoutRes itemLayout: Int, @IdRes textViewId: Int, items: Mu
     }
 }
 
-fun AutoCompleteTextView.create(@LayoutRes itemLayout: Int, @IdRes textViewId: Int, items: Array<String>,
-                                onItemSelected: (String, Int) -> Unit = { _, _ -> }) {
+fun AutoCompleteTextView.create(
+    @LayoutRes itemLayout: Int, @IdRes textViewId: Int, items: Array<String>,
+    onItemSelected: (String, Int) -> Unit = { _, _ -> }
+) {
     val adapter = ArrayAdapter(context, itemLayout, textViewId, items)
     setAdapter(adapter)
     onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -52,8 +58,10 @@ fun AutoCompleteTextView.create(@LayoutRes itemLayout: Int, @IdRes textViewId: I
     }
 }
 
-fun AutoCompleteTextView.create(@LayoutRes itemLayout: Int, @IdRes textViewId: Int, items: MutableList<String>,
-                                onItemSelected: (String, Int) -> Unit = { _, _ -> }) {
+fun AutoCompleteTextView.create(
+    @LayoutRes itemLayout: Int, @IdRes textViewId: Int, items: MutableList<String>,
+    onItemSelected: (String, Int) -> Unit = { _, _ -> }
+) {
     val adapter = ArrayAdapter(context, itemLayout, textViewId, items)
     setAdapter(adapter)
     onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -66,12 +74,14 @@ fun AutoCompleteTextView.create(@LayoutRes itemLayout: Int, @IdRes textViewId: I
     }
 }
 
-fun <T> RecyclerView.create(itemSize: Int = 0, itemLayout: Int, items: Array<T>, layoutMgr: RecyclerView.LayoutManager,
-                            onBindView: View.(T, Int) -> Unit,
-                            itemClick: (T, Int) -> Unit = { _, _ -> },
-                            itemLongClick: (T, Int) -> Unit = { _, _ -> },
-                            onScrollTop: () -> Unit = {},
-                            onScrollBottom: () -> Unit = {}) {
+fun <T> RecyclerView.create(
+    itemSize: Int = 0, itemLayout: Int, items: Array<T>, layoutMgr: RecyclerView.LayoutManager,
+    onBindView: View.(T, Int) -> Unit,
+    itemClick: (T, Int) -> Unit = { _, _ -> },
+    itemLongClick: (T, Int) -> Unit = { _, _ -> },
+    onScrollTop: () -> Unit = {},
+    onScrollBottom: () -> Unit = {}
+) {
     adapter = RecyclerAdapter(itemLayout, items, itemSize, onBindView, itemClick, itemLongClick)
     layoutManager = layoutMgr
     addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -85,12 +95,17 @@ fun <T> RecyclerView.create(itemSize: Int = 0, itemLayout: Int, items: Array<T>,
     })
 }
 
-fun <T> RecyclerView.create(itemSize: Int = 0, itemLayout: Int, items: MutableList<T>, layoutMgr: RecyclerView.LayoutManager,
-                            onBindView: View.(item: T, position: Int) -> Unit,
-                            itemClick: (item: T, position: Int) -> Unit = { _, _ -> },
-                            itemLongClick: (item: T, position: Int) -> Unit = { _, _ -> },
-                            onScrollTop: () -> Unit = {},
-                            onScrollBottom: () -> Unit = {}) {
+fun <T> RecyclerView.create(
+    itemSize: Int = 0,
+    itemLayout: Int,
+    items: MutableList<T>,
+    layoutMgr: RecyclerView.LayoutManager,
+    onBindView: View.(item: T, position: Int) -> Unit,
+    itemClick: (item: T, position: Int) -> Unit = { _, _ -> },
+    itemLongClick: (item: T, position: Int) -> Unit = { _, _ -> },
+    onScrollTop: () -> Unit = {},
+    onScrollBottom: () -> Unit = {}
+) {
     adapter = RecyclerAdapter(itemSize, itemLayout, items, onBindView, itemClick, itemLongClick)
     layoutManager = layoutMgr
     addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -109,7 +124,11 @@ fun ViewPager.onPageSelected(onPageSelected: (Int) -> Unit) {
         override fun onPageScrollStateChanged(state: Int) {
         }
 
-        override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+        override fun onPageScrolled(
+            position: Int,
+            positionOffset: Float,
+            positionOffsetPixels: Int
+        ) {
         }
 
         override fun onPageSelected(position: Int) {

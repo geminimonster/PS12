@@ -13,7 +13,10 @@ class HMACSha1SignatureService(override val signatureMethod: String = METHOD) : 
         try {
             Preconditions.checkEmptyString(baseString, "Base string cant be null or empty string")
             Preconditions.checkEmptyString(apiSecret, "Api secret cant be null or empty string")
-            return doSign(baseString, OAuthEncoder.encode(apiSecret) + '&'.toString() + OAuthEncoder.encode(tokenSecret))
+            return doSign(
+                baseString,
+                OAuthEncoder.encode(apiSecret) + '&'.toString() + OAuthEncoder.encode(tokenSecret)
+            )
         } catch (e: Exception) {
             throw OAuthSignatureException(baseString, e)
         }

@@ -29,77 +29,88 @@ import kotlinx.android.synthetic.main.layout_nodata.*
 
 class WishListFragment : BaseFragment() {
 
-    private val mListAdapter = BaseAdapter<WishList>(R.layout.item_wishlist, onBind = { view, model, _ ->
-        if (activity !== null) {
-            if (model.sale_price.isNotEmpty()) {
-                view.tvOriginalPrice.applyStrike()
-                view.tvDiscountPrice.text = model.sale_price.currencyFormat()
-                view.tvOriginalPrice.text = model.regular_price.currencyFormat()
-            } else {
-                if (model.regular_price.isEmpty()) {
-                    view.tvDiscountPrice.text = model.price.currencyFormat()
+    private val mListAdapter =
+        BaseAdapter<WishList>(R.layout.item_wishlist, onBind = { view, model, _ ->
+            if (activity !== null) {
+                if (model.sale_price.isNotEmpty()) {
+                    view.tvOriginalPrice.applyStrike()
+                    view.tvDiscountPrice.text = model.sale_price.currencyFormat()
+                    view.tvOriginalPrice.text = model.regular_price.currencyFormat()
                 } else {
-                    view.tvDiscountPrice.text = model.regular_price.currencyFormat()
-                }
-            }
-
-            view.tvProductName.text = model.name
-            view.tvProductName.changeTextPrimaryColor()
-            view.tvDiscountPrice.changeTextPrimaryColor()
-            view.tvOriginalPrice.changeTextSecondaryColor()
-            if (model.full.isNotEmpty()) view.ivProduct.loadImageFromUrl(model.full)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                view.ivProduct.outlineProvider = object : ViewOutlineProvider() {
-                    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-                    override fun getOutline(view: View?, outline: Outline?) {
-                        outline!!.setRoundRect(0, 0, view!!.width, (view.height + 20F).toInt(), 20F)
+                    if (model.regular_price.isEmpty()) {
+                        view.tvDiscountPrice.text = model.price.currencyFormat()
+                    } else {
+                        view.tvDiscountPrice.text = model.regular_price.currencyFormat()
                     }
                 }
-                view.ivProduct.clipToOutline = true
+
+                view.tvProductName.text = model.name
+                view.tvProductName.changeTextPrimaryColor()
+                view.tvDiscountPrice.changeTextPrimaryColor()
+                view.tvOriginalPrice.changeTextSecondaryColor()
+                if (model.full.isNotEmpty()) view.ivProduct.loadImageFromUrl(model.full)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    view.ivProduct.outlineProvider = object : ViewOutlineProvider() {
+                        @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+                        override fun getOutline(view: View?, outline: Outline?) {
+                            outline!!.setRoundRect(
+                                0,
+                                0,
+                                view!!.width,
+                                (view.height + 20F).toInt(),
+                                20F
+                            )
+                        }
+                    }
+                    view.ivProduct.clipToOutline = true
+                }
             }
-        }
-        view.onClick {
-            if (getProductDetailConstant() == 0) {
-                activity?.launchActivity<ProductDetailActivity1> {
-                    putExtra(Constants.KeyIntent.PRODUCT_ID, model.pro_id)
+            view.onClick {
+                if (getProductDetailConstant() == 0) {
+                    activity?.launchActivity<ProductDetailActivity1> {
+                        putExtra(Constants.KeyIntent.PRODUCT_ID, model.pro_id)
 
-                }
-            } else {
-                activity?.launchActivity<ProductDetailActivity2> {
-                    putExtra(Constants.KeyIntent.PRODUCT_ID, model.pro_id)
+                    }
+                } else {
+                    activity?.launchActivity<ProductDetailActivity2> {
+                        putExtra(Constants.KeyIntent.PRODUCT_ID, model.pro_id)
+                    }
                 }
             }
-        }
-        view.ivMoveToCart.onClick {
-            val requestModel = RequestModel()
-            requestModel.pro_id = model.pro_id
-            requestModel.quantity = 1
-            activity?.setResult(Activity.RESULT_OK)
-            getRestApiImpl().addItemToCart(request = requestModel, onApiSuccess = {
-                if (activity == null) return@addItemToCart
-                snackBar(getString(R.string.success_add))
-                activity?.sendCartBroadcast()
-                activity!!.fetchAndStoreCartData()
-                (activity as AppBaseActivity).removeFromWishList(requestModel)
-                {
-                    if (it) snackBar(getString(R.string.lbl_remove)); hideProgress()
-                    wishListItemChange()
-                }
-            }, onApiError = {
-                if (activity == null) return@addItemToCart
-                snackBar(it)
-                (activity as AppBaseActivity).removeFromWishList(requestModel)
-                {
-                    if (it) snackBar(getString(R.string.lbl_remove)); hideProgress()
-                    wishListItemChange()
-                }
-                (activity as AppBaseActivity).fetchAndStoreCartData()
+            view.ivMoveToCart.onClick {
+                val requestModel = RequestModel()
+                requestModel.pro_id = model.pro_id
+                requestModel.quantity = 1
+                activity?.setResult(Activity.RESULT_OK)
+                getRestApiImpl().addItemToCart(request = requestModel, onApiSuccess = {
+                    if (activity == null) return@addItemToCart
+                    snackBar(getString(R.string.success_add))
+                    activity?.sendCartBroadcast()
+                    activity!!.fetchAndStoreCartData()
+                    (activity as AppBaseActivity).removeFromWishList(requestModel)
+                    {
+                        if (it) snackBar(getString(R.string.lbl_remove)); hideProgress()
+                        wishListItemChange()
+                    }
+                }, onApiError = {
+                    if (activity == null) return@addItemToCart
+                    snackBar(it)
+                    (activity as AppBaseActivity).removeFromWishList(requestModel)
+                    {
+                        if (it) snackBar(getString(R.string.lbl_remove)); hideProgress()
+                        wishListItemChange()
+                    }
+                    (activity as AppBaseActivity).fetchAndStoreCartData()
 
-            })
-        }
-    })
+                })
+            }
+        })
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? = inflater.inflate(R.layout.fragment_wishlist, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? = inflater.inflate(R.layout.fragment_wishlist, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -69,8 +69,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/spacing_standard_new"
-            android:text="@string/lbl_pay"
             android:backgroundTint="@color/colorAccent"
+            android:text="@string/lbl_pay"
             app:cornerRadius="@dimen/spacing_standard" />
 
     </LinearLayout>

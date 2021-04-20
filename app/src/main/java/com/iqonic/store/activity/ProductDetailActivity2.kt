@@ -103,29 +103,29 @@ class ProductDetailActivity2 : AppBaseActivity() {
     private var image: String = ""
 
     private val mProductAdapter = BaseAdapter<StoreUpSale>(
-            R.layout.item_home_dashboard1,
-            onBind = { view, model, _ ->
-                setProductItem1(view, model)
-            })
+        R.layout.item_home_dashboard1,
+        onBind = { view, model, _ ->
+            setProductItem1(view, model)
+        })
 
     private val mCategoryAdapter = BaseAdapter<StoreCategory>(
-            R.layout.item_category,
-            onBind = { view, model, _ ->
-                view.tvCategoryName.text = model.name
-                view.tvCategoryName.changeTextSecondaryColor()
-                view.onClick {
-                    launchActivity<ViewAllProductActivity> {
-                        putExtra(Constants.KeyIntent.TITLE, model.name)
-                        putExtra(Constants.KeyIntent.VIEWALLID, CATEGORY)
-                        putExtra(Constants.KeyIntent.KEYID, model.id)
+        R.layout.item_category,
+        onBind = { view, model, _ ->
+            view.tvCategoryName.text = model.name
+            view.tvCategoryName.changeTextSecondaryColor()
+            view.onClick {
+                launchActivity<ViewAllProductActivity> {
+                    putExtra(Constants.KeyIntent.TITLE, model.name)
+                    putExtra(Constants.KeyIntent.VIEWALLID, CATEGORY)
+                    putExtra(Constants.KeyIntent.KEYID, model.id)
 
-                    }
                 }
-            })
+            }
+        })
 
     private fun setProductItem1(
-            view: View,
-            model: StoreUpSale
+        view: View,
+        model: StoreUpSale
     ) {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -357,19 +357,18 @@ class ProductDetailActivity2 : AppBaseActivity() {
                  *
                  */
                 if (it[0].attributes != null) {
-                    if(it[0].attributes!!.isEmpty()){
+                    if (it[0].attributes!!.isEmpty()) {
                         llAdditionalInformation.hide()
-                    }
-                    else{
+                    } else {
                         llAdditionalInformation.show()
                     }
                     llAdditionalInformation.show()
                     for (att in it[0].attributes!!) {
                         val vi =
-                                applicationContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                            applicationContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                         val v: View = vi.inflate(R.layout.view_attributes, null)
                         val textView =
-                                v.findViewById<View>(R.id.txtAttName) as TextView
+                            v.findViewById<View>(R.id.txtAttName) as TextView
                         textView.changeTextSecondaryColor()
                         textView.text = att.name.toString() + " : "
                         textView.typeface = fontRegular()
@@ -379,32 +378,32 @@ class ProductDetailActivity2 : AppBaseActivity() {
                             sizeList.add(s.trim())
                         }
                         mAttributeAdapter =
-                                BaseAdapter(R.layout.item_attributes, onBind = { vv, item, position ->
-                                    if (item.isNotEmpty()) {
-                                        val attSize =
-                                                vv.findViewById<View>(R.id.tvSize) as TextView
-                                        attSize.typeface = fontRegular()
-                                        attSize.changeTextSecondaryColor()
-                                        if (sizeList.size - 1 == position) {
-                                            attSize.text = item
-                                        } else {
-                                            attSize.text = "$item ,"
-                                        }
+                            BaseAdapter(R.layout.item_attributes, onBind = { vv, item, position ->
+                                if (item.isNotEmpty()) {
+                                    val attSize =
+                                        vv.findViewById<View>(R.id.tvSize) as TextView
+                                    attSize.typeface = fontRegular()
+                                    attSize.changeTextSecondaryColor()
+                                    if (sizeList.size - 1 == position) {
+                                        attSize.text = item
+                                    } else {
+                                        attSize.text = "$item ,"
                                     }
-                                })
+                                }
+                            })
                         mAttributeAdapter?.clearItems()
                         mAttributeAdapter?.addItems(sizeList)
                         val recycleView =
-                                v.findViewById<View>(R.id.rvAttributeView) as RecyclerView
+                            v.findViewById<View>(R.id.rvAttributeView) as RecyclerView
                         recycleView.setHorizontalLayout()
                         recycleView.adapter = mAttributeAdapter
                         llAttributeView.addView(
-                                v,
-                                0,
-                                ViewGroup.LayoutParams(
-                                        ViewGroup.LayoutParams.FILL_PARENT,
-                                        ViewGroup.LayoutParams.FILL_PARENT
-                                )
+                            v,
+                            0,
+                            ViewGroup.LayoutParams(
+                                ViewGroup.LayoutParams.FILL_PARENT,
+                                ViewGroup.LayoutParams.FILL_PARENT
+                            )
                         )
                     }
                 }
@@ -416,10 +415,9 @@ class ProductDetailActivity2 : AppBaseActivity() {
                     llAttribute.hide()
                     setPriceDetail(it[0])
                     viewVariableImage(it[0])
-                    if(it[0].description.toString().isEmpty()){
+                    if (it[0].description.toString().isEmpty()) {
                         llDescription.hide()
-                    }
-                    else{
+                    } else {
                         tvTags.text = it[0].description?.getHtmlString().toString()
                     }
                 } else if (it[0].type == "variable") {
@@ -455,21 +453,21 @@ class ProductDetailActivity2 : AppBaseActivity() {
                         spAttribute.adapter = this.mYearAdapter
 
                         spAttribute.onItemSelectedListener = object :
-                                AdapterView.OnItemSelectedListener {
+                            AdapterView.OnItemSelectedListener {
 
                             override fun onItemSelected(
-                                    parent: AdapterView<*>, view: View,
-                                    position: Int, id: Long
+                                parent: AdapterView<*>, view: View,
+                                position: Int, id: Long
                             ) {
                                 it.forEach { its ->
                                     if (mVariationsList[position] == its.id) {
                                         setPriceDetail(its)
                                         viewVariableImage(its)
-                                        if(its.description.toString().isEmpty()){
+                                        if (its.description.toString().isEmpty()) {
                                             llDescription.hide()
-                                        }
-                                        else{
-                                            tvTags.text = its.description?.getHtmlString().toString()
+                                        } else {
+                                            tvTags.text =
+                                                its.description?.getHtmlString().toString()
                                         }
                                         mYearAdapter!!.notifyDataSetChanged()
                                     }
@@ -482,10 +480,9 @@ class ProductDetailActivity2 : AppBaseActivity() {
 
                     } else {
                         llAttribute.hide()
-                        if(it[0].description.toString().isEmpty()){
+                        if (it[0].description.toString().isEmpty()) {
                             llDescription.hide()
-                        }
-                        else{
+                        } else {
                             tvTags.text = it[0].description?.getHtmlString().toString()
                         }
                     }
@@ -494,12 +491,11 @@ class ProductDetailActivity2 : AppBaseActivity() {
                     upcomingSale.hide()
                     groupItems.show()
                     viewVariableImage(it[0])
-                   extraProduct.setVerticalLayout()
+                    extraProduct.setVerticalLayout()
                     extraProduct.adapter = mGroupCartAdapter
-                    if(it[0].description.toString().isEmpty()){
+                    if (it[0].description.toString().isEmpty()) {
                         llDescription.hide()
-                    }
-                    else{
+                    } else {
                         tvTags.text = it[0].description?.getHtmlString().toString()
                     }
                     mGroupCartAdapter.clearItems()
@@ -513,10 +509,9 @@ class ProductDetailActivity2 : AppBaseActivity() {
                     llAttribute.hide()
                     setPriceDetail(it[0])
                     viewVariableImage(it[0])
-                    if(it[0].description.toString().isEmpty()){
+                    if (it[0].description.toString().isEmpty()) {
                         llDescription.hide()
-                    }
-                    else{
+                    } else {
                         tvTags.text = it[0].description?.getHtmlString().toString()
                     }
                     mIsExternalProduct = true
@@ -597,8 +592,8 @@ class ProductDetailActivity2 : AppBaseActivity() {
                     it[0].is_added_wishlist -> {
                         mIsInWishList = true
                         changeFavIcon(
-                                R.drawable.ic_heart_fill,
-                                getAccentColor()
+                            R.drawable.ic_heart_fill,
+                            getAccentColor()
                         )
                     }
                     else -> {
@@ -652,15 +647,15 @@ class ProductDetailActivity2 : AppBaseActivity() {
             tvSaleLabel.show()
             tvItemProductOriginalPrice.applyStrike()
             tvItemProductOriginalPrice.text =
-                    its.regularPrice?.currencyFormat()
+                its.regularPrice?.currencyFormat()
             upcomingSale.hide()
 
             val discount =
-                    calculateDiscount(its.salePrice, its.regularPrice)
+                calculateDiscount(its.salePrice, its.regularPrice)
             if (discount > 0.0) {
                 tvSaleDiscount.show()
                 tvSaleDiscount.text =
-                        String.format("%.2f", discount) + getString(R.string.lbl_off)
+                    String.format("%.2f", discount) + getString(R.string.lbl_off)
             }
             onSaleOffer(its)
         } else {
@@ -683,7 +678,7 @@ class ProductDetailActivity2 : AppBaseActivity() {
             tvSaleOffer.show()
             val endTime = its.dateOnSaleTo.toString() + " 23:59:59"
             val dateFormat = SimpleDateFormat(
-                    "yyyy-MM-dd HH:mm:ss"
+                "yyyy-MM-dd HH:mm:ss"
             )
             try {
                 val endDate: Date = dateFormat.parse(endTime)
@@ -710,18 +705,18 @@ class ProductDetailActivity2 : AppBaseActivity() {
                         val elapsedSeconds: Long = differenta / secondsInMilli
                         if (elapsedDays > 0) {
                             tvSaleOffer.text =
-                                    getString(R.string.lbl_special_price_ends_in_less_then) + " " + elapsedDays + getString(
-                                            R.string.lbl_d
-                                    ) + " " + elapsedHours + getString(R.string.lbl_h) + " " + elapsedMinutes + getString(
-                                            R.string.lbl_m
-                                    ) + " " + elapsedSeconds + getString(R.string.lbl_s)
+                                getString(R.string.lbl_special_price_ends_in_less_then) + " " + elapsedDays + getString(
+                                    R.string.lbl_d
+                                ) + " " + elapsedHours + getString(R.string.lbl_h) + " " + elapsedMinutes + getString(
+                                    R.string.lbl_m
+                                ) + " " + elapsedSeconds + getString(R.string.lbl_s)
                         } else {
                             tvSaleOffer.text =
-                                    getString(R.string.lbl_special_price_ends_in_less_then) + " " + elapsedHours + getString(
-                                            R.string.lbl_h
-                                    ) + " " + elapsedMinutes + getString(R.string.lbl_m) + " " + elapsedSeconds + getString(
-                                            R.string.lbl_s
-                                    )
+                                getString(R.string.lbl_special_price_ends_in_less_then) + " " + elapsedHours + getString(
+                                    R.string.lbl_h
+                                ) + " " + elapsedMinutes + getString(R.string.lbl_m) + " " + elapsedSeconds + getString(
+                                    R.string.lbl_s
+                                )
                         }
                     }
 
@@ -747,9 +742,9 @@ class ProductDetailActivity2 : AppBaseActivity() {
         if (its.dateOnSaleFrom != "") {
             upcomingSale.show()
             tvUpcomingSale.text =
-                    getString(R.string.lbl_sale_start_from) + " " + its.dateOnSaleFrom + " " + getString(
-                            R.string.lbl_to
-                    ) + " " + its.dateOnSaleTo + ". " + getString(R.string.lbl_ge_amazing_discounts_on_the_products)
+                getString(R.string.lbl_sale_start_from) + " " + its.dateOnSaleFrom + " " + getString(
+                    R.string.lbl_to
+                ) + " " + its.dateOnSaleTo + ". " + getString(R.string.lbl_ge_amazing_discounts_on_the_products)
         } else {
             upcomingSale.hide()
         }
@@ -758,28 +753,28 @@ class ProductDetailActivity2 : AppBaseActivity() {
     private fun onFavouriteClick() {
         if (mIsInWishList) {
             changeFavIcon(
-                    R.drawable.ic_heart,
-                    getAccentColor()
+                R.drawable.ic_heart,
+                getAccentColor()
             ); ivFavourite.isClickable = false
 
             val requestModel = RequestModel(); requestModel.pro_id =
-                    mPId
+                mPId
             removeFromWishList(requestModel) {
                 ivFavourite.isClickable = true
                 mIsInWishList = false
                 if (it) changeFavIcon(
-                        R.drawable.ic_heart,
-                        getAccentColor()
+                    R.drawable.ic_heart,
+                    getAccentColor()
                 ) else changeFavIcon(
-                        R.drawable.ic_heart_fill,
-                        getAccentColor()
+                    R.drawable.ic_heart_fill,
+                    getAccentColor()
                 )
             }
         } else {
             if (isLoggedIn()) {
                 changeFavIcon(
-                        R.drawable.ic_heart_fill,
-                        getAccentColor()
+                    R.drawable.ic_heart_fill,
+                    getAccentColor()
                 ); ivFavourite.isClickable = false
 
                 val requestModel = RequestModel()
@@ -788,8 +783,8 @@ class ProductDetailActivity2 : AppBaseActivity() {
                     ivFavourite.isClickable = true
                     mIsInWishList = true
                     if (it) changeFavIcon(
-                            R.drawable.ic_heart_fill,
-                            getAccentColor()
+                        R.drawable.ic_heart_fill,
+                        getAccentColor()
                     ) else changeFavIcon(R.drawable.ic_heart, getAccentColor())
                 }
             } else {
@@ -799,8 +794,8 @@ class ProductDetailActivity2 : AppBaseActivity() {
     }
 
     private fun changeFavIcon(
-            drawable: Int,
-            iconTint: String = getAccentColor()
+        drawable: Int,
+        iconTint: String = getAccentColor()
     ) {
         ivFavourite.setImageResource(drawable)
         ivFavourite.changeBackgroundImageTint(iconTint)
@@ -811,71 +806,71 @@ class ProductDetailActivity2 : AppBaseActivity() {
      *
      */
     private val mGroupCartAdapter =
-            BaseAdapter<StoreProductModel>(R.layout.item_group, onBind = { view, model, _ ->
-                view.tvProductName.text = model.name
-                view.tvProductName.changeTextPrimaryColor()
-                view.tvAdd.changeBackgroundTint(getAccentColor())
-                if (model.onSale) {
-                    view.tvSaleLabel.show()
-                } else {
-                    view.tvSaleLabel.hide()
-                }
-                if (model.images!![0].src!!.isNotEmpty()) {
-                    view.ivProduct.loadImageFromUrl(model.images!![0].src!!)
-                }
+        BaseAdapter<StoreProductModel>(R.layout.item_group, onBind = { view, model, _ ->
+            view.tvProductName.text = model.name
+            view.tvProductName.changeTextPrimaryColor()
+            view.tvAdd.changeBackgroundTint(getAccentColor())
+            if (model.onSale) {
+                view.tvSaleLabel.show()
+            } else {
+                view.tvSaleLabel.hide()
+            }
+            if (model.images!![0].src!!.isNotEmpty()) {
+                view.ivProduct.loadImageFromUrl(model.images!![0].src!!)
+            }
 
-                if (!model.onSale) {
+            if (!model.onSale) {
+                view.tvPrice.text = model.regularPrice!!.currencyFormat()
+                view.tvOriginalPrice.show()
+                if (model.regularPrice!!.isEmpty()) {
+                    view.tvOriginalPrice.text = ""
+                    view.tvPrice.text = model.price!!.currencyFormat()
+                } else {
+                    view.tvOriginalPrice.text = ""
                     view.tvPrice.text = model.regularPrice!!.currencyFormat()
+                }
+            } else {
+                if (model.salePrice!!.isNotEmpty()) {
+                    view.tvPrice.text = model.salePrice!!.currencyFormat()
+                } else {
                     view.tvOriginalPrice.show()
-                    if (model.regularPrice!!.isEmpty()) {
-                        view.tvOriginalPrice.text = ""
-                        view.tvPrice.text = model.price!!.currencyFormat()
-                    } else {
-                        view.tvOriginalPrice.text = ""
-                        view.tvPrice.text = model.regularPrice!!.currencyFormat()
+                    view.tvPrice.text = model.price!!.currencyFormat()
+                }
+                view.tvOriginalPrice.applyStrike()
+                view.tvOriginalPrice.text = model.regularPrice!!.currencyFormat()
+                view.tvOriginalPrice.show()
+            }
+            view.tvOriginalPrice.changeTextSecondaryColor()
+            view.tvPrice.changeTextPrimaryColor()
+            if (model.in_stock) {
+                view.tvAdd.show()
+            } else {
+                view.tvAdd.hide()
+            }
+            if (!model.purchasable) {
+                view.tvAdd.hide()
+            } else {
+                view.tvAdd.show()
+            }
+            view.tvAdd.onClick {
+                if (isLoggedIn()) {
+                    addItemToCartGroupItem(model.id)
+                } else launchActivity<SignInUpActivity> { }
+            }
+            view.onClick {
+                if (getProductDetailConstant() == 0) {
+                    launchActivity<ProductDetailActivity1> {
+                        putExtra(PRODUCT_ID, model.id)
+                        putExtra(DATA, model)
                     }
                 } else {
-                    if (model.salePrice!!.isNotEmpty()) {
-                        view.tvPrice.text = model.salePrice!!.currencyFormat()
-                    } else {
-                        view.tvOriginalPrice.show()
-                        view.tvPrice.text = model.price!!.currencyFormat()
-                    }
-                    view.tvOriginalPrice.applyStrike()
-                    view.tvOriginalPrice.text = model.regularPrice!!.currencyFormat()
-                    view.tvOriginalPrice.show()
-                }
-                view.tvOriginalPrice.changeTextSecondaryColor()
-                view.tvPrice.changeTextPrimaryColor()
-                if (model.in_stock) {
-                    view.tvAdd.show()
-                } else {
-                    view.tvAdd.hide()
-                }
-                if (!model.purchasable) {
-                    view.tvAdd.hide()
-                } else {
-                    view.tvAdd.show()
-                }
-                view.tvAdd.onClick {
-                    if (isLoggedIn()) {
-                        addItemToCartGroupItem(model.id)
-                    } else launchActivity<SignInUpActivity> { }
-                }
-                view.onClick {
-                    if (getProductDetailConstant() == 0) {
-                        launchActivity<ProductDetailActivity1> {
-                            putExtra(PRODUCT_ID, model.id)
-                            putExtra(DATA, model)
-                        }
-                    } else {
-                        launchActivity<ProductDetailActivity2> {
-                            putExtra(PRODUCT_ID, model.id)
-                            putExtra(DATA, model)
-                        }
+                    launchActivity<ProductDetailActivity2> {
+                        putExtra(PRODUCT_ID, model.id)
+                        putExtra(DATA, model)
                     }
                 }
-            })
+            }
+        })
 
     private fun changeColor() {
         tvAvailability.changeAccentColor()

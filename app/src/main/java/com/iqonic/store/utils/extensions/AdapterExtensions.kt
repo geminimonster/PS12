@@ -15,7 +15,14 @@ internal class RecyclerAdapter<T> : RecyclerView.Adapter<RecyclerAdapter.ViewHol
     private val itemClick: (T, Int) -> Unit
     private val itemLongClick: (T, Int) -> Unit
 
-    constructor(itemLayout: Int, items: Array<T>, itemSize: Int = 0, onBindView: View.(T, Int) -> Unit, itemClick: (T, Int) -> Unit = { _, _ -> }, itemLongClick: (T, Int) -> Unit = { _, _ -> }) {
+    constructor(
+        itemLayout: Int,
+        items: Array<T>,
+        itemSize: Int = 0,
+        onBindView: View.(T, Int) -> Unit,
+        itemClick: (T, Int) -> Unit = { _, _ -> },
+        itemLongClick: (T, Int) -> Unit = { _, _ -> }
+    ) {
         this.itemLayout = itemLayout
         this.items = items
         this.itemSize = itemSize
@@ -24,7 +31,14 @@ internal class RecyclerAdapter<T> : RecyclerView.Adapter<RecyclerAdapter.ViewHol
         this.itemLongClick = itemLongClick
     }
 
-    constructor(itemSize: Int = 0, itemLayout: Int, items: MutableList<T>, onBindView: View.(T, Int) -> Unit, itemClick: (T, Int) -> Unit = { _, _ -> }, itemLongClick: (T, Int) -> Unit = { _, _ -> }) {
+    constructor(
+        itemSize: Int = 0,
+        itemLayout: Int,
+        items: MutableList<T>,
+        onBindView: View.(T, Int) -> Unit,
+        itemClick: (T, Int) -> Unit = { _, _ -> },
+        itemLongClick: (T, Int) -> Unit = { _, _ -> }
+    ) {
         this.itemLayout = itemLayout
         this.itemsList = items
         this.itemSize = itemSize
@@ -33,7 +47,8 @@ internal class RecyclerAdapter<T> : RecyclerView.Adapter<RecyclerAdapter.ViewHol
         this.itemLongClick = itemLongClick
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(parent inflate itemLayout)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        ViewHolder(parent inflate itemLayout)
 
     override fun getItemCount(): Int {
         return itemSize

@@ -54,81 +54,84 @@ class MyCartFragment : BaseFragment() {
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_cart, container, false)
     }
 
     private val mCartAdapter =
-            BaseAdapter<CartResponse>(R.layout.item_cart, onBind = { view, model, position ->
-                view.tvProductName.text = model.name
+        BaseAdapter<CartResponse>(R.layout.item_cart, onBind = { view, model, position ->
+            view.tvProductName.text = model.name
 
-                if (model.full != null) {
-                    view.ivProduct.loadImageFromUrl(model.full)
-                }
+            if (model.full != null) {
+                view.ivProduct.loadImageFromUrl(model.full)
+            }
 
-                if (model.sale_price.isNotEmpty() && model.on_sale) {
-                    view.tvOriginalPrice.text =
-                            (model.regular_price.toFloat().toInt() * model.quantity.toInt()).toString()
-                                    .currencyFormat()
-                    view.tvOriginalPrice.applyStrike()
-                    view.tvPrice.text = (model.sale_price.toFloat().toInt() * model.quantity.toInt()).toString()
-                            .currencyFormat()
+            if (model.sale_price.isNotEmpty() && model.on_sale) {
+                view.tvOriginalPrice.text =
+                    (model.regular_price.toFloat().toInt() * model.quantity.toInt()).toString()
+                        .currencyFormat()
+                view.tvOriginalPrice.applyStrike()
+                view.tvPrice.text =
+                    (model.sale_price.toFloat().toInt() * model.quantity.toInt()).toString()
+                        .currencyFormat()
+            } else {
+                view.tvPrice.text =
+                    (model.regular_price.toFloat().toInt() * model.quantity.toInt()).toString()
+                        .currencyFormat()
+            }
+
+            view.qty_spinner.text = model.quantity
+
+            view.delete_layout.onClick { view.swipeLayout.close(true); removeCartItem(model) }
+
+            view.ivMinus.onClick { minusClick(model, position) }
+
+            view.ivAdd.onClick { addClick(model, position) }
+
+            view.front_layout.onClick {
+                if (getProductDetailConstant() == 0) {
+                    activity?.launchActivity<ProductDetailActivity1> {
+                        putExtra(Constants.KeyIntent.PRODUCT_ID, model.pro_id)
+                    }
                 } else {
-                    view.tvPrice.text =
-                            (model.regular_price.toFloat().toInt() * model.quantity.toInt()).toString()
-                                    .currencyFormat()
-                }
-
-                view.qty_spinner.text = model.quantity
-
-                view.delete_layout.onClick { view.swipeLayout.close(true); removeCartItem(model) }
-
-                view.ivMinus.onClick { minusClick(model, position) }
-
-                view.ivAdd.onClick { addClick(model, position) }
-
-                view.front_layout.onClick {
-                    if (getProductDetailConstant() == 0) {
-                        activity?.launchActivity<ProductDetailActivity1> {
-                            putExtra(Constants.KeyIntent.PRODUCT_ID, model.pro_id)
-                        }
-                    } else {
-                        activity?.launchActivity<ProductDetailActivity2> {
-                            putExtra(Constants.KeyIntent.PRODUCT_ID, model.pro_id)
-                        }
+                    activity?.launchActivity<ProductDetailActivity2> {
+                        putExtra(Constants.KeyIntent.PRODUCT_ID, model.pro_id)
                     }
                 }
+            }
 
-                view.tvProductName.changeTextPrimaryColor()
-                view.qty_spinner.changeTextPrimaryColor()
-                view.ivMinus.backgroundTintList = ColorStateList.valueOf(Color.parseColor(getPrimaryColorDark()))
-                view.ivAdd.backgroundTintList = ColorStateList.valueOf(Color.parseColor(getPrimaryColorDark()))
-                view.tvPrice.changeTextPrimaryColor()
-                view.tvOriginalPrice.changeTextSecondaryColor()
-                view.delete_layout.setCardBackgroundColor(Color.parseColor(getButtonColor()))
-            })
+            view.tvProductName.changeTextPrimaryColor()
+            view.qty_spinner.changeTextPrimaryColor()
+            view.ivMinus.backgroundTintList =
+                ColorStateList.valueOf(Color.parseColor(getPrimaryColorDark()))
+            view.ivAdd.backgroundTintList =
+                ColorStateList.valueOf(Color.parseColor(getPrimaryColorDark()))
+            view.tvPrice.changeTextPrimaryColor()
+            view.tvOriginalPrice.changeTextSecondaryColor()
+            view.delete_layout.setCardBackgroundColor(Color.parseColor(getButtonColor()))
+        })
 
     @SuppressLint("SetTextI18n")
     private val mShippingMethodAdapter =
-            BaseAdapter<Method>(R.layout.item_shipping_method, onBind = { view, model, position ->
-                if (model.id == "free_shipping" || model.cost == "0" || model.cost.isEmpty()) {
-                    view.shippingMethod.text = model.methodTitle
-                    view.shippingCost.hide()
-                } else {
-                    view.shippingMethod.text = model.methodTitle + ": "
-                    view.shippingCost.text = model.cost.currencyFormat()
-                }
-                if (selectedMethod == position) {
-                    view.imgDone.setImageResource(R.drawable.ic_baseline_done_24)
-                } else {
-                    view.imgDone.setImageResource(0)
-                }
-                view.shippingMethod.changeTextSecondaryColor()
-                view.shippingCost.changeTextPrimaryColor()
-            })
+        BaseAdapter<Method>(R.layout.item_shipping_method, onBind = { view, model, position ->
+            if (model.id == "free_shipping" || model.cost == "0" || model.cost.isEmpty()) {
+                view.shippingMethod.text = model.methodTitle
+                view.shippingCost.hide()
+            } else {
+                view.shippingMethod.text = model.methodTitle + ": "
+                view.shippingCost.text = model.cost.currencyFormat()
+            }
+            if (selectedMethod == position) {
+                view.imgDone.setImageResource(R.drawable.ic_baseline_done_24)
+            } else {
+                view.imgDone.setImageResource(0)
+            }
+            view.shippingMethod.changeTextSecondaryColor()
+            view.shippingCost.changeTextPrimaryColor()
+        })
 
     private fun addClick(model: CartResponse, position: Int) {
         val qty = model.quantity.toInt()
@@ -176,7 +179,8 @@ class MyCartFragment : BaseFragment() {
                     putExtra(DISCOUNT_MRP, mTotalDiscountMRP)
                 }
             } else {
-                Toast.makeText(context, "You do not provided shipping address.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "You do not provided shipping address.", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
         tvChange.onClick {
@@ -222,7 +226,7 @@ class MyCartFragment : BaseFragment() {
                 tvShipping.text = mShippingCost.currencyFormat()
             }
             tvTotalCartAmount.text =
-                    (mTotalCount.toInt() + mShippingCost.toInt()).toString().currencyFormat()
+                (mTotalCount.toInt() + mShippingCost.toInt()).toString().currencyFormat()
         }
 
     }
@@ -321,12 +325,12 @@ class MyCartFragment : BaseFragment() {
                             itemData.quantity = it[i].quantity.toInt()
                             mOrderItems!!.add(itemData)
                             mTotalDiscountMRP +=
-                                    when {
-                                        it[i].sale_price.isNotEmpty() && it[i].on_sale -> {
-                                            it[i].regular_price.toDouble() - it[i].sale_price.toDouble()
-                                        }
-                                        else -> 0.0
+                                when {
+                                    it[i].sale_price.isNotEmpty() && it[i].on_sale -> {
+                                        it[i].regular_price.toDouble() - it[i].sale_price.toDouble()
                                     }
+                                    else -> 0.0
+                                }
 
                             mTotalCount += try {
                                 when {
@@ -334,7 +338,8 @@ class MyCartFragment : BaseFragment() {
                                         it[i].sale_price.toFloat().toInt() * it[i].quantity.toInt()
                                     }
                                     it[i].regular_price.isNotEmpty() -> {
-                                        it[i].regular_price.toFloat().toInt() * it[i].quantity.toInt()
+                                        it[i].regular_price.toFloat()
+                                            .toInt() * it[i].quantity.toInt()
                                     }
                                     else -> {
                                         it[i].price.toFloat().toInt() * it[i].quantity.toInt()
@@ -346,7 +351,8 @@ class MyCartFragment : BaseFragment() {
                             mTotalMRPCount += try {
                                 when {
                                     it[i].regular_price.isNotEmpty() -> {
-                                        it[i].regular_price.toFloat().toInt() * it[i].quantity.toInt()
+                                        it[i].regular_price.toFloat()
+                                            .toInt() * it[i].quantity.toInt()
                                     }
                                     else -> {
                                         it[i].price.toFloat().toInt() * it[i].quantity.toInt()
@@ -368,14 +374,15 @@ class MyCartFragment : BaseFragment() {
                         if (mTotalDiscountMRP <= 0.0) {
                             llMRPDiscount.hide()
                         } else {
-                            tvDiscountMRPTotal.text = "- " + mTotalDiscountMRP.toString().currencyFormat()
+                            tvDiscountMRPTotal.text =
+                                "- " + mTotalDiscountMRP.toString().currencyFormat()
                             llMRPDiscount.show()
                         }
                         if (isRemoveCoupons) {
                             tvDiscount.text = "0".currencyFormat()
                             tvTotalCartAmount.text =
-                                    (mTotalCount.toInt() + mShippingCost.toInt()).toString()
-                                            .currencyFormat()
+                                (mTotalCount.toInt() + mShippingCost.toInt()).toString()
+                                    .currencyFormat()
                             tvEditCoupon.text = getString(R.string.lbl_apply)
                             tvEditCoupon.onClick {
                                 launchActivity<CouponActivity>(Constants.RequestCode.COUPON_CODE) { }
@@ -462,7 +469,7 @@ class MyCartFragment : BaseFragment() {
             llShippingAmount.hide()
             tvFreeShipping.show()
         } else {
-            if(llShippingAmount!=null){
+            if (llShippingAmount != null) {
                 llShippingAmount.hide()
                 tvFreeShipping.hide()
             }
@@ -575,27 +582,27 @@ class MyCartFragment : BaseFragment() {
             if (mCoupons!!.minimum_amount.toFloat() > 0.0) {
                 if (mTotalCount < mCoupons!!.minimum_amount.toFloat()) {
                     txtApplyCouponCode.text =
-                            getString(R.string.lbl_coupon_is_valid_only_orders_of) + mCoupons!!.minimum_amount.currencyFormat() + getString(
-                                    R.string.lbl_coupon_is_valid_only_orders_of1
-                            )
+                        getString(R.string.lbl_coupon_is_valid_only_orders_of) + mCoupons!!.minimum_amount.currencyFormat() + getString(
+                            R.string.lbl_coupon_is_valid_only_orders_of1
+                        )
                     return
                 } else if (mCoupons!!.maximum_amount.toFloat() > 0.0) {
                     if (mTotalCount > mCoupons!!.maximum_amount.toFloat()) {
                         txtApplyCouponCode.text =
-                                getString(R.string.lbl_coupon_is_valid_only_orders_of) + mCoupons!!.maximum_amount.currencyFormat() + " and below."
+                            getString(R.string.lbl_coupon_is_valid_only_orders_of) + mCoupons!!.maximum_amount.currencyFormat() + " and below."
                         return
                     }
                 }
             } else if (mCoupons!!.maximum_amount.toFloat() > 0.0) {
                 if (mTotalCount > mCoupons!!.maximum_amount.toFloat()) {
                     txtApplyCouponCode.text =
-                            getString(R.string.lbl_coupon_is_valid_only_orders_of) + mCoupons!!.maximum_amount.currencyFormat() + " and below."
+                        getString(R.string.lbl_coupon_is_valid_only_orders_of) + mCoupons!!.maximum_amount.currencyFormat() + " and below."
                     return
                 }
             } else if (mCoupons?.discount_type == "fixed_cart") {
                 if (mTotalCount < mCoupons!!.amount.toFloat()) {
                     txtApplyCouponCode.text =
-                            getString(R.string.lbl_coupon_is_valid_only_orders_of) + (mCoupons!!.amount.toFloat() + EXTRA_ADD_AMOUNT) + " and above. Try other coupon."
+                        getString(R.string.lbl_coupon_is_valid_only_orders_of) + (mCoupons!!.amount.toFloat() + EXTRA_ADD_AMOUNT) + " and above. Try other coupon."
                     return
                 }
             } else if (mCoupons?.discount_type == "fixed_product") {
@@ -616,23 +623,23 @@ class MyCartFragment : BaseFragment() {
                 }
                 if (!isValidCoupon) {
                     txtApplyCouponCode.text =
-                            "Coupon is valid only if all product price have " + (mCoupons!!.amount.toFloat() + EXTRA_ADD_AMOUNT) + " and above. Try other coupon."
+                        "Coupon is valid only if all product price have " + (mCoupons!!.amount.toFloat() + EXTRA_ADD_AMOUNT) + " and above. Try other coupon."
                     return
                 }
             }
             when (mCoupons?.discount_type) {
                 "percent" -> {
                     mTotalDiscount =
-                            ((mTotalCount.toFloat() * mCoupons!!.amount.toFloat()) / 100).toString()
+                        ((mTotalCount.toFloat() * mCoupons!!.amount.toFloat()) / 100).toString()
                     txtDiscountlbl.text =
-                            getString(R.string.lbl_discount) + " (" + mCoupons!!.amount + getString(R.string.lbl_off) + ")"
+                        getString(R.string.lbl_discount) + " (" + mCoupons!!.amount + getString(R.string.lbl_off) + ")"
                 }
                 "fixed_cart" -> {
                     mTotalDiscount = mCoupons!!.amount
                     txtDiscountlbl.text =
-                            getString(R.string.lbl_discount) + " (" + getString(R.string.lbl_flat) + mCoupons!!.amount.currencyFormat() + getString(
-                                    R.string.lbl_off
-                            ) + ")"
+                        getString(R.string.lbl_discount) + " (" + getString(R.string.lbl_flat) + mCoupons!!.amount.currencyFormat() + getString(
+                            R.string.lbl_off
+                        ) + ")"
                 }
                 "fixed_product" -> {
                     val finalAmout = mCoupons!!.amount.split(".")
@@ -642,9 +649,9 @@ class MyCartFragment : BaseFragment() {
                 else -> {
                     mTotalDiscount = mCoupons!!.amount
                     txtDiscountlbl.text =
-                            getString(R.string.lbl_discount) + " (" + getString(R.string.lbl_flat) + mCoupons!!.amount.currencyFormat() + getString(
-                                    R.string.lbl_off1
-                            ) + ")"
+                        getString(R.string.lbl_discount) + " (" + getString(R.string.lbl_flat) + mCoupons!!.amount.currencyFormat() + getString(
+                            R.string.lbl_off1
+                        ) + ")"
                 }
             }
             if (mTotalDiscount.toDouble() == 0.0) {
@@ -655,9 +662,9 @@ class MyCartFragment : BaseFragment() {
             mTotalCount = mTotalCount.minus(mTotalDiscount.toFloat())
 
             tvTotalCartAmount.text =
-                    (mTotalCount.toInt() + mShippingCost.toInt()).toString().currencyFormat()
+                (mTotalCount.toInt() + mShippingCost.toInt()).toString().currencyFormat()
             txtApplyCouponCode.text =
-                    getString(R.string.lbl_applied_coupon) + mCoupons!!.code.toUpperCase()
+                getString(R.string.lbl_applied_coupon) + mCoupons!!.code.toUpperCase()
             tvEditCoupon.text = getString(R.string.lbl_remove)
 
             tvEditCoupon.onClick {
@@ -676,7 +683,7 @@ class MyCartFragment : BaseFragment() {
         tvEditCoupon.text = getString(R.string.lbl_apply)
         tvDiscount.text = "0".currencyFormat()
         tvTotalCartAmount.text =
-                (mTotalCount.toInt() + mShippingCost.toInt()).toString().currencyFormat()
+            (mTotalCount.toInt() + mShippingCost.toInt()).toString().currencyFormat()
         tvEditCoupon.onClick {
             launchActivity<CouponActivity>(Constants.RequestCode.COUPON_CODE) { }
         }

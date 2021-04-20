@@ -3,19 +3,19 @@ package com.iqonic.store.models
 import java.io.Serializable
 
 data class ProductReviewData(
-        val _links: ReviewLinks,
-        val date_created: String,
-        val date_created_gmt: String,
-        val id: Int,
-        val product_id: Int,
-        val rating: Int,
-        val review: String,
-        val name: String,
-        val reviewer_avatar_urls: ReviewerAvatarUrls,
-        val email: String,
-        val status: String,
-        val verified: Boolean,
-        var isExist: Boolean=false
+    val _links: ReviewLinks,
+    val date_created: String,
+    val date_created_gmt: String,
+    val id: Int,
+    val product_id: Int,
+    val rating: Int,
+    val review: String,
+    val name: String,
+    val reviewer_avatar_urls: ReviewerAvatarUrls,
+    val email: String,
+    val status: String,
+    val verified: Boolean,
+    var isExist: Boolean = false
 )
 
 data class ReviewLinks(

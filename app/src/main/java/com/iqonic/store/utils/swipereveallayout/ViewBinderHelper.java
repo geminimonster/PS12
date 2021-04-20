@@ -1,4 +1,3 @@
-
 package com.iqonic.store.utils.swipereveallayout;
 
 import android.os.Bundle;
@@ -24,20 +23,18 @@ import java.util.Set;
  */
 public class ViewBinderHelper {
     private static final String BUNDLE_MAP_KEY = "ViewBinderHelper_Bundle_Map_Key";
-
+    private final Object stateChangeLock = new Object();
     private Map<String, Integer> mapStates = Collections.synchronizedMap(new HashMap<String, Integer>());
     private Map<String, SwipeRevealLayout> mapLayouts = Collections.synchronizedMap(new HashMap<String, SwipeRevealLayout>());
     private Set<String> lockedSwipeSet = Collections.synchronizedSet(new HashSet<String>());
-
     private volatile boolean openOnlyOne = false;
-    private final Object stateChangeLock = new Object();
 
     /**
      * Help to save and restore open/close state of the swipeLayout. Call this method
      * when you bind your view holder with the data object.
      *
      * @param swipeLayout swipeLayout of the current view.
-     * @param id a string that uniquely defines the data object of the current view.
+     * @param id          a string that uniquely defines the data object of the current view.
      */
     public void bind(final SwipeRevealLayout swipeLayout, final String id) {
         if (swipeLayout.shouldRequestLayout()) {
@@ -125,6 +122,7 @@ public class ViewBinderHelper {
 
     /**
      * Lock swipe for some layouts.
+     *
      * @param id a string that uniquely defines the data object.
      */
     public void lockSwipe(String... id) {
@@ -133,6 +131,7 @@ public class ViewBinderHelper {
 
     /**
      * Unlock swipe for some layouts.
+     *
      * @param id a string that uniquely defines the data object.
      */
     public void unlockSwipe(String... id) {
@@ -148,6 +147,7 @@ public class ViewBinderHelper {
 
     /**
      * Open a specific layout.
+     *
      * @param id unique id which identifies the data object which is bind to the layout.
      */
     public void openLayout(final String id) {
@@ -157,8 +157,7 @@ public class ViewBinderHelper {
             if (mapLayouts.containsKey(id)) {
                 final SwipeRevealLayout layout = mapLayouts.get(id);
                 layout.open(true);
-            }
-            else if (openOnlyOne) {
+            } else if (openOnlyOne) {
                 closeOthers(id, mapLayouts.get(id));
             }
         }
@@ -166,6 +165,7 @@ public class ViewBinderHelper {
 
     /**
      * Close a specific layout.
+     *
      * @param id unique id which identifies the data object which is bind to the layout.
      */
     public void closeLayout(final String id) {
@@ -181,7 +181,8 @@ public class ViewBinderHelper {
 
     /**
      * Close others swipe layout.
-     * @param id layout which bind with this data object id will be excluded.
+     *
+     * @param id          layout which bind with this data object id will be excluded.
      * @param swipeLayout will be excluded.
      */
     private void closeOthers(String id, SwipeRevealLayout swipeLayout) {

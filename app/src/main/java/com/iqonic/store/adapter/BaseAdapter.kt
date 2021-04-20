@@ -6,46 +6,60 @@ import androidx.recyclerview.widget.RecyclerView
 import com.iqonic.store.utils.extensions.inflate
 
 
-class BaseAdapter<T>(private val layout: Int, val onBind: (view: View, item: T, position: Int) -> Unit) : RecyclerView.Adapter<BaseAdapter<T>.ViewHolder<T>>() {
+class BaseAdapter<T>(
+    private val layout: Int,
+    val onBind: (view: View, item: T, position: Int) -> Unit
+) : RecyclerView.Adapter<BaseAdapter<T>.ViewHolder<T>>() {
     var items = ArrayList<T>()
-    var onItemClick:((pos:Int, view:View, item: T) -> Unit)? =null
+    var onItemClick: ((pos: Int, view: View, item: T) -> Unit)? = null
     var size: Int? = null
 
     fun addItem(item: T) {
         this.items.add(item)
         notifyItemInserted(items.size - 1)
     }
+
     fun addMoreItems(aList: java.util.ArrayList<T>) {
         items.addAll(aList)
         setModelSize(itemCount + items.size)
         notifyDataSetChanged()
     }
+
     fun addNewItem(item: T) {
         items.add(item)
         notifyItemInserted(items.size - 1)
     }
+
     fun getModel(): java.util.ArrayList<T> {
         return items
     }
+
     fun addItems(items: List<T>) {
         this.items.addAll(items)
         notifyDataSetChanged()
     }
+
     fun removeItem(pos: Int) {
         items.removeAt(pos)
         notifyItemRemoved(pos)
     }
+
     fun clearItems() {
         this.items.clear()
         notifyDataSetChanged()
     }
+
     fun setModelSize(aSize: Int) {
         size = aSize
         notifyDataSetChanged()
     }
-    inner class ViewHolder<T>(private val view: View, val onBind: (view: View, item: T, position: Int) -> Unit) : RecyclerView.ViewHolder(view) ,View.OnClickListener{
+
+    inner class ViewHolder<T>(
+        private val view: View,
+        val onBind: (view: View, item: T, position: Int) -> Unit
+    ) : RecyclerView.ViewHolder(view), View.OnClickListener {
         override fun onClick(p0: View?) {
-            onItemClick?.invoke(adapterPosition,p0!!,items[adapterPosition])
+            onItemClick?.invoke(adapterPosition, p0!!, items[adapterPosition])
         }
 
         fun bind(item: T, position: Int) {

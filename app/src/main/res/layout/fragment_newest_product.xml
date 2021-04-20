@@ -2,9 +2,9 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fLMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/fLMain"
     android:background="@color/colorScreenBackground"
     android:orientation="vertical"
     tools:ignore="MissingPrefix">
@@ -28,6 +28,7 @@
             android:layout_marginEnd="@dimen/spacing_control"
             android:paddingBottom="@dimen/spacing_xlarge"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
         <include layout="@layout/layout_nodata" />
 
 

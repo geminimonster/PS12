@@ -11,7 +11,7 @@
         <include
             android:id="@+id/toolbar_lay"
             layout="@layout/toolbar"
-            android:visibility="visible"/>
+            android:visibility="visible" />
 
         <include
             layout="@layout/content_dash_board"

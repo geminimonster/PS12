@@ -24,9 +24,9 @@ import kotlinx.android.synthetic.main.dialog_change_password.*
 class SignInFragment : BaseFragment() {
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.activity_sign_in, container, false)
     }
@@ -91,22 +91,22 @@ class SignInFragment : BaseFragment() {
     private fun doLogin() {
         val mUsername = edtEmail.textToString()
         (activity as AppBaseActivity).signIn(
-                edtEmail.textToString(),
-                edtPassword.textToString(),
-                onApiSuccess = {
-                    (activity as AppBaseActivity).setResult(Activity.RESULT_OK)
-                    getSharedPrefInstance().removeKey(USER_USERNAME)
-                    getSharedPrefInstance().setValue(USER_USERNAME, mUsername)
-                    if (it.billing.first_name.isEmpty()) {
-                        activity?.launchActivity<EditProfileActivity> { }
-                    } else {
-                        activity?.launchActivityWithNewTask<DashBoardActivity>()
-                    }
-                    (activity as AppBaseActivity).finish()
-                },
-                onError = {
-                    activity?.snackBarError(it)
-                })
+            edtEmail.textToString(),
+            edtPassword.textToString(),
+            onApiSuccess = {
+                (activity as AppBaseActivity).setResult(Activity.RESULT_OK)
+                getSharedPrefInstance().removeKey(USER_USERNAME)
+                getSharedPrefInstance().setValue(USER_USERNAME, mUsername)
+                if (it.billing.first_name.isEmpty()) {
+                    activity?.launchActivity<EditProfileActivity> { }
+                } else {
+                    activity?.launchActivityWithNewTask<DashBoardActivity>()
+                }
+                (activity as AppBaseActivity).finish()
+            },
+            onError = {
+                activity?.snackBarError(it)
+            })
 
     }
 
@@ -115,8 +115,8 @@ class SignInFragment : BaseFragment() {
         changePasswordDialog.window?.setBackgroundDrawable(ColorDrawable(0))
         changePasswordDialog.setContentView(R.layout.dialog_change_password)
         changePasswordDialog.window?.setLayout(
-                RelativeLayout.LayoutParams.MATCH_PARENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT
+            RelativeLayout.LayoutParams.MATCH_PARENT,
+            RelativeLayout.LayoutParams.WRAP_CONTENT
         )
         changePasswordDialog.lblForgotPwd.changeTextPrimaryColor()
         changePasswordDialog.edtForgotEmail.changeTextPrimaryColor()

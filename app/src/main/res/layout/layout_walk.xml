@@ -19,8 +19,8 @@
             android:id="@+id/ivWalk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/spacing_standard_new"
             android:contentDescription="@string/text_todo"
+            android:padding="@dimen/spacing_standard_new"
             android:scaleType="centerInside"
             android:src="@drawable/ic_walk" />
     </androidx.cardview.widget.CardView>

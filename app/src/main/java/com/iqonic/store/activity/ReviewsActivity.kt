@@ -27,49 +27,49 @@ class ReviewsActivity : AppBaseActivity() {
     private var mIsCheckUser: Boolean = false
 
     private val mReviewAdapter =
-            BaseAdapter<ProductReviewData>(R.layout.item_review, onBind = { view, model, _ ->
-                view.tvProductReviewRating.text = model.rating.toString()
-                view.tvProductReviewSubHeading.text = model.review.getHtmlString()
-                view.tvProductReviewCmt.text = model.name
+        BaseAdapter<ProductReviewData>(R.layout.item_review, onBind = { view, model, _ ->
+            view.tvProductReviewRating.text = model.rating.toString()
+            view.tvProductReviewSubHeading.text = model.review.getHtmlString()
+            view.tvProductReviewCmt.text = model.name
 
-                view.tvProductReviewDuration.text = convertToLocalDate(model.date_created)
-                if (model.rating == 1) {
-                    view.tvProductReviewRating.changeBackgroundTint(color(R.color.red))
-                }
-                if (model.rating == 2 || model.rating == 3) {
-                    view.tvProductReviewRating.changeBackgroundTint(color(R.color.yellow))
-                }
-                if (model.rating == 5 || model.rating == 4) {
-                    view.tvProductReviewRating.changeBackgroundTint(color(R.color.green))
-                }
+            view.tvProductReviewDuration.text = convertToLocalDate(model.date_created)
+            if (model.rating == 1) {
+                view.tvProductReviewRating.changeBackgroundTint(color(R.color.red))
+            }
+            if (model.rating == 2 || model.rating == 3) {
+                view.tvProductReviewRating.changeBackgroundTint(color(R.color.yellow))
+            }
+            if (model.rating == 5 || model.rating == 4) {
+                view.tvProductReviewRating.changeBackgroundTint(color(R.color.green))
+            }
 
-                view.ivMenu.onClick {
-                    val popup = PopupMenu(this@ReviewsActivity, view.ivMenu)
-                    popup.menuInflater.inflate(R.menu.menu_review, popup.menu)
-                    popup.setOnMenuItemClickListener { item ->
-                        when (item!!.itemId) {
-                            R.id.nav_delete -> confirmDialog(model)
+            view.ivMenu.onClick {
+                val popup = PopupMenu(this@ReviewsActivity, view.ivMenu)
+                popup.menuInflater.inflate(R.menu.menu_review, popup.menu)
+                popup.setOnMenuItemClickListener { item ->
+                    when (item!!.itemId) {
+                        R.id.nav_delete -> confirmDialog(model)
 
-                            R.id.nav_update -> updateReview(model)
-                        }
-                        true
+                        R.id.nav_update -> updateReview(model)
                     }
-                    popup.show()
+                    true
                 }
+                popup.show()
+            }
 
-                if (model.email == getEmail()) {
-                    view.ivMenu.show()
-                    model.isExist = true
-                    mIsCheckUser = true
-                } else {
-                    view.ivMenu.hide()
-                    model.isExist = false
-                    mIsCheckUser = false
-                }
-                view.tvProductReviewCmt.changeTextPrimaryColor()
-                view.tvProductReviewSubHeading.changeTextSecondaryColor()
-                view.tvProductReviewDuration.changeTextSecondaryColor()
-            })
+            if (model.email == getEmail()) {
+                view.ivMenu.show()
+                model.isExist = true
+                mIsCheckUser = true
+            } else {
+                view.ivMenu.hide()
+                model.isExist = false
+                mIsCheckUser = false
+            }
+            view.tvProductReviewCmt.changeTextPrimaryColor()
+            view.tvProductReviewSubHeading.changeTextSecondaryColor()
+            view.tvProductReviewDuration.changeTextSecondaryColor()
+        })
 
     @RequiresApi(Build.VERSION_CODES.M)
     @SuppressLint("ClickableViewAccessibility")
@@ -82,8 +82,8 @@ class ReviewsActivity : AppBaseActivity() {
         changeColor()
         mPId = intent.getIntExtra(Constants.KeyIntent.PRODUCT_ID, 0)
         ivBackground.setStrokedBackground(
-                color(R.color.favourite_unselected_background),
-                color(R.color.dots_color)
+            color(R.color.favourite_unselected_background),
+            color(R.color.dots_color)
         )
         rvReview.setVerticalLayout()
         rvReview.adapter = mReviewAdapter
@@ -166,7 +166,7 @@ class ReviewsActivity : AppBaseActivity() {
         tvReviewRate.show()
 
         val mAvgRating =
-                (5 * fiveStar + 4 * fourStar + 3 * threeStar + 2 * twoStar + 1 * oneStar) / (fiveStar + fourStar + threeStar + twoStar + oneStar)
+            (5 * fiveStar + 4 * fourStar + 3 * threeStar + 2 * twoStar + 1 * oneStar) / (fiveStar + fourStar + threeStar + twoStar + oneStar)
         tvReviewRate.text = mAvgRating.toString()
     }
 
@@ -177,8 +177,8 @@ class ReviewsActivity : AppBaseActivity() {
         dialog.setCanceledOnTouchOutside(false)
 
         dialog.window?.setLayout(
-                RelativeLayout.LayoutParams.MATCH_PARENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT
+            RelativeLayout.LayoutParams.MATCH_PARENT,
+            RelativeLayout.LayoutParams.WRAP_CONTENT
         )
         dialog.lblReview.changeTextPrimaryColor()
         dialog.edtReview.changeTextPrimaryColor()
@@ -253,8 +253,8 @@ class ReviewsActivity : AppBaseActivity() {
         dialog.setContentView(R.layout.dialog_rate)
 
         dialog.window?.setLayout(
-                RelativeLayout.LayoutParams.MATCH_PARENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT
+            RelativeLayout.LayoutParams.MATCH_PARENT,
+            RelativeLayout.LayoutParams.WRAP_CONTENT
         )
         dialog.edtReview.setText(mode.review.getHtmlString())
         dialog.ratingBar.rating = mode.rating.toFloat()
@@ -277,19 +277,19 @@ class ReviewsActivity : AppBaseActivity() {
             if (isNetworkAvailable()) {
                 showProgress(true)
                 getRestApiImpl().updateProductReview(
-                        mode.id,
-                        requestModel,
-                        onApiSuccess = {
-                            showProgress(false)
-                            toast(R.string.success_add)
-                            dialog.dismiss()
-                            listProductReviews()
-                        },
-                        onApiError = {
-                            showProgress(false)
-                            dialog.dismiss()
-                            snackBarError(it)
-                        })
+                    mode.id,
+                    requestModel,
+                    onApiSuccess = {
+                        showProgress(false)
+                        toast(R.string.success_add)
+                        dialog.dismiss()
+                        listProductReviews()
+                    },
+                    onApiError = {
+                        showProgress(false)
+                        dialog.dismiss()
+                        snackBarError(it)
+                    })
             } else {
                 showProgress(false)
                 dialog.dismiss()

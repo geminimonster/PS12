@@ -33,7 +33,8 @@ object Preconditions {
     }
 
     private fun check(requirements: Boolean, error: String?) {
-        val message = if (error == null || error.trim { it <= ' ' }.isEmpty()) DEFAULT_MESSAGE else error
+        val message =
+            if (error == null || error.trim { it <= ' ' }.isEmpty()) DEFAULT_MESSAGE else error
         if (!requirements) {
             throw IllegalArgumentException(message)
         }

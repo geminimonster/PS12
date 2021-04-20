@@ -72,8 +72,8 @@ class HomeFragment1 : BaseFragment() {
     private lateinit var mDashboardJson: BuilderDashboard
 
     private fun setProductItem(
-            view: View,
-            model: StoreProductModel
+        view: View,
+        model: StoreProductModel
     ) {
         if (model.images!![0].src!!.isNotEmpty()) {
             view.ivProduct.loadImageFromUrl(model.images!![0].src!!)
@@ -130,7 +130,7 @@ class HomeFragment1 : BaseFragment() {
 
             view.tvAdd.background.setTint(Color.parseColor(getAccentColor()))
             if (model.attributes!!.isNotEmpty()) {
-                if(model.attributes!![0].options!!.isNotEmpty()){
+                if (model.attributes!![0].options!!.isNotEmpty()) {
                     view.tvProductWeight.text = model.attributes!![0].options!![0]
                     view.tvProductWeight.changeTextSecondaryColor()
                 }
@@ -167,9 +167,9 @@ class HomeFragment1 : BaseFragment() {
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_home1, container, false)
 
 
@@ -216,7 +216,7 @@ class HomeFragment1 : BaseFragment() {
     @SuppressLint("InflateParams")
     private fun mProductUI() {
         val inflater =
-                context!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            context!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         mViewNewest = inflater.inflate(R.layout.dashboard_productlist, null)
         mViewFeatured = inflater.inflate(R.layout.dashboard_productlist, null)
         mViewDealOfTheDay = inflater.inflate(R.layout.dashboard_dealofferview, null)
@@ -230,19 +230,19 @@ class HomeFragment1 : BaseFragment() {
     @SuppressLint("InflateParams")
     private fun mSliderUI() {
         val inflater =
-                context!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            context!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         mSliderView = inflater.inflate(R.layout.dashboard_sliderview, null)
     }
 
     private fun onAddView(
-            mView: View?,
-            isGridView: Boolean = false,
-            title: String,
-            mViewAll: String,
-            code: Int,
-            specialKey: String = "",
-            productList: List<StoreProductModel>,
-            modelSize: Int = 5
+        mView: View?,
+        isGridView: Boolean = false,
+        title: String,
+        mViewAll: String,
+        code: Int,
+        specialKey: String = "",
+        productList: List<StoreProductModel>,
+        modelSize: Int = 5
     ) {
         val recyclerView = mView!!.findViewById(R.id.rvNewProduct) as RecyclerView
         val viewAllProduct = mView.findViewById(R.id.viewAllItem) as TextView
@@ -261,10 +261,10 @@ class HomeFragment1 : BaseFragment() {
 
         if (isGridView) {
             val productAdapter = BaseAdapter<StoreProductModel>(
-                    R.layout.item_viewproductgrid,
-                    onBind = { view, model, _ ->
-                        setProductItem(view, model)
-                    })
+                R.layout.item_viewproductgrid,
+                onBind = { view, model, _ ->
+                    setProductItem(view, model)
+                })
             productAdapter.addItems(productList)
             recyclerView.adapter = productAdapter
             productAdapter.setModelSize(modelSize)
@@ -275,10 +275,10 @@ class HomeFragment1 : BaseFragment() {
             }
         } else {
             val productAdapter = BaseAdapter<StoreProductModel>(
-                    R.layout.item_home_dashboard1,
-                    onBind = { view, model, _ ->
-                        setProductItem(view, model)
-                    })
+                R.layout.item_home_dashboard1,
+                onBind = { view, model, _ ->
+                    setProductItem(view, model)
+                })
             productAdapter.addItems(productList)
             productAdapter.setModelSize(modelSize)
 
@@ -299,7 +299,7 @@ class HomeFragment1 : BaseFragment() {
     }
 
     private fun addSlider(
-            productList: List<DashboardBanner>
+        productList: List<DashboardBanner>
     ) {
         val slideViewPager = mSliderView!!.findViewById(R.id.slideViewPager) as ViewPager
         val dots = mSliderView!!.findViewById(R.id.dots) as DotsIndicator
@@ -418,7 +418,7 @@ class HomeFragment1 : BaseFragment() {
                             if (it.banner.isNotEmpty()) {
                                 if (mDashboardJson.sliderView!!.enable == true) {
                                     addSlider(
-                                            productList = it.banner
+                                        productList = it.banner
                                     )
                                 }
                             }
@@ -427,12 +427,12 @@ class HomeFragment1 : BaseFragment() {
                             if (it.newest.isNotEmpty()) {
                                 if (mDashboardJson.newProduct!!.enable == true) {
                                     onAddView(
-                                            mView = mViewNewest,
-                                            title = mDashboardJson.newProduct!!.title!!,
-                                            mViewAll = mDashboardJson.newProduct!!.viewAll!!,
-                                            code = Constants.viewAllCode.NEWEST,
-                                            productList = it.newest,
-                                            modelSize = 5
+                                        mView = mViewNewest,
+                                        title = mDashboardJson.newProduct!!.title!!,
+                                        mViewAll = mDashboardJson.newProduct!!.viewAll!!,
+                                        code = Constants.viewAllCode.NEWEST,
+                                        productList = it.newest,
+                                        modelSize = 5
                                     )
                                     mLLDynamic!!.addView(mViewNewest!!)
                                 }
@@ -442,12 +442,12 @@ class HomeFragment1 : BaseFragment() {
                             if (it.featured.isNotEmpty()) {
                                 if (mDashboardJson.feature!!.enable == true) {
                                     onAddView(
-                                            mView = mViewFeatured,
-                                            title = mDashboardJson.feature!!.title!!,
-                                            mViewAll = mDashboardJson.feature!!.viewAll!!,
-                                            code = Constants.viewAllCode.FEATURED,
-                                            productList = it.featured,
-                                            modelSize = 5
+                                        mView = mViewFeatured,
+                                        title = mDashboardJson.feature!!.title!!,
+                                        mViewAll = mDashboardJson.feature!!.viewAll!!,
+                                        code = Constants.viewAllCode.FEATURED,
+                                        productList = it.featured,
+                                        modelSize = 5
                                     )
                                     mLLDynamic!!.addView(mViewFeatured!!)
                                 }
@@ -457,14 +457,14 @@ class HomeFragment1 : BaseFragment() {
                             if (it.deal_of_the_day.isNotEmpty()) {
                                 if (mDashboardJson.dealOfTheDay!!.enable == true) {
                                     onAddView(
-                                            mView = mViewDealOfTheDay,
-                                            title = mDashboardJson.dealOfTheDay!!.title!!,
-                                            mViewAll = mDashboardJson.dealOfTheDay!!.viewAll!!,
-                                            code = Constants.viewAllCode.SPECIAL_PRODUCT,
-                                            productList = it.deal_of_the_day,
-                                            isGridView = true,
-                                            modelSize = 2,
-                                            specialKey = "deal_of_the_day"
+                                        mView = mViewDealOfTheDay,
+                                        title = mDashboardJson.dealOfTheDay!!.title!!,
+                                        mViewAll = mDashboardJson.dealOfTheDay!!.viewAll!!,
+                                        code = Constants.viewAllCode.SPECIAL_PRODUCT,
+                                        productList = it.deal_of_the_day,
+                                        isGridView = true,
+                                        modelSize = 2,
+                                        specialKey = "deal_of_the_day"
                                     )
                                     mLLDynamic!!.addView(mViewDealOfTheDay!!)
                                 }
@@ -474,12 +474,12 @@ class HomeFragment1 : BaseFragment() {
                             if (it.best_selling_product.isNotEmpty()) {
                                 if (mDashboardJson.bestSaleProduct!!.enable == true) {
                                     onAddView(
-                                            mView = mViewBestSelling,
-                                            title = mDashboardJson.bestSaleProduct!!.title!!,
-                                            mViewAll = mDashboardJson.bestSaleProduct!!.viewAll!!,
-                                            code = Constants.viewAllCode.BESTSELLING,
-                                            productList = it.best_selling_product,
-                                            modelSize = 5
+                                        mView = mViewBestSelling,
+                                        title = mDashboardJson.bestSaleProduct!!.title!!,
+                                        mViewAll = mDashboardJson.bestSaleProduct!!.viewAll!!,
+                                        code = Constants.viewAllCode.BESTSELLING,
+                                        productList = it.best_selling_product,
+                                        modelSize = 5
                                     )
                                     mLLDynamic!!.addView(mViewBestSelling!!)
                                 }
@@ -489,12 +489,12 @@ class HomeFragment1 : BaseFragment() {
                             if (it.sale_product.isNotEmpty()) {
                                 if (mDashboardJson.saleProduct!!.enable == true) {
                                     onAddView(
-                                            mView = mViewSale,
-                                            title = mDashboardJson.saleProduct!!.title!!,
-                                            mViewAll = mDashboardJson.saleProduct!!.viewAll!!,
-                                            code = Constants.viewAllCode.SALE,
-                                            productList = it.sale_product,
-                                            modelSize = 5
+                                        mView = mViewSale,
+                                        title = mDashboardJson.saleProduct!!.title!!,
+                                        mViewAll = mDashboardJson.saleProduct!!.viewAll!!,
+                                        code = Constants.viewAllCode.SALE,
+                                        productList = it.sale_product,
+                                        modelSize = 5
                                     )
                                     mLLDynamic!!.addView(mViewSale!!)
                                 }
@@ -504,14 +504,14 @@ class HomeFragment1 : BaseFragment() {
                             if (it.offer.isNotEmpty()) {
                                 if (mDashboardJson.offerProduct!!.enable == true) {
                                     onAddView(
-                                            mView = mViewOffer,
-                                            title = mDashboardJson.offerProduct!!.title!!,
-                                            mViewAll = mDashboardJson.offerProduct!!.viewAll!!,
-                                            isGridView = true,
-                                            code = Constants.viewAllCode.SPECIAL_PRODUCT,
-                                            productList = it.offer,
-                                            modelSize = 2,
-                                            specialKey = "offer"
+                                        mView = mViewOffer,
+                                        title = mDashboardJson.offerProduct!!.title!!,
+                                        mViewAll = mDashboardJson.offerProduct!!.viewAll!!,
+                                        isGridView = true,
+                                        code = Constants.viewAllCode.SPECIAL_PRODUCT,
+                                        productList = it.offer,
+                                        modelSize = 2,
+                                        specialKey = "offer"
                                     )
                                     mLLDynamic!!.addView(mViewOffer!!)
                                 }
@@ -521,13 +521,13 @@ class HomeFragment1 : BaseFragment() {
                             if (it.suggested_for_you.isNotEmpty()) {
                                 if (mDashboardJson.suggestionProduct!!.enable == true) {
                                     onAddView(
-                                            mView = mViewSuggested,
-                                            title = mDashboardJson.suggestionProduct!!.title!!,
-                                            mViewAll = mDashboardJson.suggestionProduct!!.viewAll!!,
-                                            code = Constants.viewAllCode.SPECIAL_PRODUCT,
-                                            productList = it.suggested_for_you,
-                                            modelSize = 5,
-                                            specialKey = "suggested_for_you"
+                                        mView = mViewSuggested,
+                                        title = mDashboardJson.suggestionProduct!!.title!!,
+                                        mViewAll = mDashboardJson.suggestionProduct!!.viewAll!!,
+                                        code = Constants.viewAllCode.SPECIAL_PRODUCT,
+                                        productList = it.suggested_for_you,
+                                        modelSize = 5,
+                                        specialKey = "suggested_for_you"
                                     )
                                     mLLDynamic!!.addView(mViewSuggested!!)
                                 }
@@ -537,13 +537,13 @@ class HomeFragment1 : BaseFragment() {
                             if (it.you_may_like.isNotEmpty()) {
                                 if (mDashboardJson.youMayLikeProduct!!.enable == true) {
                                     onAddView(
-                                            mView = mViewYouMayLike,
-                                            title = mDashboardJson.youMayLikeProduct!!.title!!,
-                                            mViewAll = mDashboardJson.youMayLikeProduct!!.viewAll!!,
-                                            code = Constants.viewAllCode.SPECIAL_PRODUCT,
-                                            productList = it.you_may_like,
-                                            modelSize = 5,
-                                            specialKey = "you_may_like"
+                                        mView = mViewYouMayLike,
+                                        title = mDashboardJson.youMayLikeProduct!!.title!!,
+                                        mViewAll = mDashboardJson.youMayLikeProduct!!.viewAll!!,
+                                        code = Constants.viewAllCode.SPECIAL_PRODUCT,
+                                        productList = it.you_may_like,
+                                        modelSize = 5,
+                                        specialKey = "you_may_like"
                                     )
                                     mLLDynamic!!.addView(mViewYouMayLike!!)
                                 }

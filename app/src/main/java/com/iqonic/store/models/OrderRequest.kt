@@ -17,11 +17,11 @@ data class OrderRequest(
 )
 
 data class ShippingLines(
-    var method_id: String="",
-    var method_title:String="",
-    var total: String="",
-    var instance_id: String="",
-    var total_tax: String="",
+    var method_id: String = "",
+    var method_title: String = "",
+    var total: String = "",
+    var instance_id: String = "",
+    var total_tax: String = "",
     var taxes: ArrayList<Any>? = null,
     var meta_data: ArrayList<Any>? = null
 ) : Serializable

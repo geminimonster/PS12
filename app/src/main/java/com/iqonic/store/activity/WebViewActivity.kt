@@ -34,7 +34,7 @@ class WebViewActivity : AppBaseActivity() {
         title = getString(R.string.lbl_payment)
 
         webView.loadUrl(
-                intent.getStringExtra(Constants.KeyIntent.CHECKOUT_URL)
+            intent.getStringExtra(Constants.KeyIntent.CHECKOUT_URL)
         )
         BroadcastReceiverExt(this@WebViewActivity) {
             onAction(Constants.AppBroadcasts.CART_COUNT_CHANGE) {
@@ -63,8 +63,8 @@ class WebViewActivity : AppBaseActivity() {
             }
 
             override fun onShowCustomView(
-                    paramView: View?,
-                    paramCustomViewCallback: CustomViewCallback
+                paramView: View?,
+                paramCustomViewCallback: CustomViewCallback
             ) {
                 if (customView != null) {
                     onHideCustomView()
@@ -75,8 +75,8 @@ class WebViewActivity : AppBaseActivity() {
                 originalOrientation = requestedOrientation
                 customViewCallback = paramCustomViewCallback
                 (window.decorView as FrameLayout).addView(
-                        customView,
-                        FrameLayout.LayoutParams(-1, -1)
+                    customView,
+                    FrameLayout.LayoutParams(-1, -1)
                 )
                 window.decorView.systemUiVisibility = 3846
             }
@@ -110,9 +110,9 @@ class WebViewActivity : AppBaseActivity() {
                         showProgress(false)
                         setResult(Activity.RESULT_OK)
                         Toast.makeText(
-                                this@WebViewActivity,
-                                "Order placed successfully",
-                                Toast.LENGTH_LONG
+                            this@WebViewActivity,
+                            "Order placed successfully",
+                            Toast.LENGTH_LONG
                         ).show()
                         fetchAndStoreCartData()
                         finish()
@@ -124,32 +124,32 @@ class WebViewActivity : AppBaseActivity() {
             }
 
             override fun onReceivedError(
-                    view: WebView?,
-                    request: WebResourceRequest?,
-                    error: WebResourceError
+                view: WebView?,
+                request: WebResourceRequest?,
+                error: WebResourceError
             ) {
                 mIsError = true
                 super.onReceivedError(view, request, error)
             }
 
             override fun onReceivedHttpError(
-                    view: WebView?,
-                    request: WebResourceRequest?,
-                    errorResponse: WebResourceResponse?
+                view: WebView?,
+                request: WebResourceRequest?,
+                errorResponse: WebResourceResponse?
             ) {
                 Log.e("Error", "onReceivedHttpError")
                 super.onReceivedHttpError(view, request, errorResponse)
             }
 
             override fun onReceivedSslError(
-                    view: WebView?,
-                    handler: SslErrorHandler?,
-                    error: SslError?
+                view: WebView?,
+                handler: SslErrorHandler?,
+                error: SslError?
             ) {
                 Log.e("Error", "onReceivedSslError")
                 super.onReceivedSslError(view, handler, error)
                 Toast.makeText(this@WebViewActivity, "onReceivedSslError", Toast.LENGTH_LONG)
-                        .show()
+                    .show()
                 finish()
             }
 
@@ -188,10 +188,10 @@ class WebViewActivity : AppBaseActivity() {
                 setSupportMultipleWindows(false)
                 builtInZoomControls = false
                 setSupportZoom(
-                        false
+                    false
                 )
                 userAgentString =
-                        "Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.0.0 Mobile Safari/537.36"
+                    "Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.0.0 Mobile Safari/537.36"
             }
         } catch (ex: Exception) {
             ex.printStackTrace()

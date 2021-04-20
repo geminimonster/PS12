@@ -48,7 +48,7 @@ class StripePaymentActivity : AppBaseActivity() {
             getString(R.string.stripe_publisher_key)
         )
         if (isNetworkAvailable()) {
-           // showProgress(true)
+            // showProgress(true)
             val requestModel = RequestModel()
             requestModel.apiKey = getString(R.string.stripe_secret_key)
             val amount = intent.getStringExtra(Constants.KeyIntent.PRICE)
@@ -166,7 +166,7 @@ class StripePaymentActivity : AppBaseActivity() {
             intent.getSerializableExtra(Constants.KeyIntent.PRODUCTDATA) as ArrayList<Line_items>
         orderRequest.line_items = orderItems
 
-        if(intent.getStringExtra(Constants.KeyIntent.COUPON_CODE)!=null){
+        if (intent.getStringExtra(Constants.KeyIntent.COUPON_CODE) != null) {
             val couponCode = intent.getStringExtra(Constants.KeyIntent.COUPON_CODE)
             if (couponCode.isNotEmpty()) {
                 val couponLines: ArrayList<CouponLines> = ArrayList(1)
@@ -225,8 +225,7 @@ class StripePaymentActivity : AppBaseActivity() {
         return false
     }
 
-    private fun changeColor()
-    {
+    private fun changeColor() {
         tvPay.changeTint(getAccentColor())
         lblCardDetail.changeTextPrimaryColor()
         lblAmountPayable.changeTextPrimaryColor()
@@ -236,6 +235,6 @@ class StripePaymentActivity : AppBaseActivity() {
         transactionId.changeTextPrimaryColor()
         tvOrderAgain.changeTint(getAccentColor())
         tvPay.backgroundTintList =
-                ColorStateList.valueOf(Color.parseColor(getButtonColor()))
+            ColorStateList.valueOf(Color.parseColor(getButtonColor()))
     }
 }

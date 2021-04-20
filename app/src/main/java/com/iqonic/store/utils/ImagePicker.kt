@@ -29,7 +29,6 @@ import android.provider.MediaStore
 import android.util.Log
 
 
-
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
@@ -113,7 +112,11 @@ object ImagePicker {
 
 
         if (!mGalleryOnly) {
-            if (!appManifestContainsPermission(context, Manifest.permission.CAMERA) || hasCameraAccess(context)) {
+            if (!appManifestContainsPermission(
+                    context,
+                    Manifest.permission.CAMERA
+                ) || hasCameraAccess(context)
+            ) {
                 val takePhotoIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                 takePhotoIntent.putExtra("return-data", true)
                 takePhotoIntent.putExtra(
@@ -141,7 +144,11 @@ object ImagePicker {
         return chooserIntent
     }
 
-    private fun addIntentsToList(context: Context, list: MutableList<Intent>, intent: Intent): MutableList<Intent> {
+    private fun addIntentsToList(
+        context: Context,
+        list: MutableList<Intent>,
+        intent: Intent
+    ): MutableList<Intent> {
         Log.i(TAG, "Adding intents of type: " + intent.action!!)
         val resInfo = context.packageManager.queryIntentActivities(intent, 0)
         for (resolveInfo in resInfo) {

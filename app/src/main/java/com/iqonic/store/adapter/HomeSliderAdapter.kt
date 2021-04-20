@@ -15,13 +15,14 @@ class HomeSliderAdapter(private var mImg: List<DashboardBanner>) : PagerAdapter(
     fun setListener(mListener: OnClickListener) {
         this.mListener = mListener
     }
+
     override fun instantiateItem(parent: ViewGroup, position: Int): Any {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_slider, parent, false)
 
         view.img.loadImageFromUrl(mImg[position].image)
         view.setOnClickListener {
             if (mListener != null) {
-                mListener!!.onClick(position,mImg)
+                mListener!!.onClick(position, mImg)
             }
         }
         parent.addView(view)
@@ -32,7 +33,8 @@ class HomeSliderAdapter(private var mImg: List<DashboardBanner>) : PagerAdapter(
 
     override fun getCount(): Int = mImg.size
 
-    override fun destroyItem(parent: ViewGroup, position: Int, `object`: Any) = parent.removeView(`object` as View)
+    override fun destroyItem(parent: ViewGroup, position: Int, `object`: Any) =
+        parent.removeView(`object` as View)
 
     interface OnClickListener {
         fun onClick(position: Int, mImg: List<DashboardBanner>)

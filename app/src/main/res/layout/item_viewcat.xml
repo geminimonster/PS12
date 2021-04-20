@@ -2,11 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_shadow"
-    android:orientation="vertical"
     android:layout_marginStart="@dimen/spacing_control_half"
     android:layout_marginEnd="@dimen/spacing_control_half"
-    android:layout_marginBottom="@dimen/spacing_standard">
+    android:layout_marginBottom="@dimen/spacing_standard"
+    android:background="@drawable/bg_shadow"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"

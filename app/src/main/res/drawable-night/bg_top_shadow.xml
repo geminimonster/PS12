@@ -16,8 +16,7 @@
     </item>
     <item>
         <shape>
-            <padding android:top="1dp"
-                />
+            <padding android:top="1dp" />
             <solid android:color="#00353535" />
             <corners android:radius="3dp" />
         </shape>
@@ -31,8 +30,7 @@
     </item>
     <item>
         <shape>
-            <padding android:top="1dp"
-                />
+            <padding android:top="1dp" />
 
             <solid android:color="#00353535" />
             <corners android:radius="3dp" />

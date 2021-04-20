@@ -115,13 +115,22 @@ class CircleImageView : androidx.appcompat.widget.AppCompatImageView {
     }
 
     @JvmOverloads
-    constructor(context: Context, attrs: AttributeSet, defStyle: Int = 0) : super(context, attrs, defStyle) {
+    constructor(context: Context, attrs: AttributeSet, defStyle: Int = 0) : super(
+        context,
+        attrs,
+        defStyle
+    ) {
 
         val a = context.obtainStyledAttributes(attrs, R.styleable.CircleImageView, defStyle, 0)
 
-        mBorderWidth = a.getDimensionPixelSize(R.styleable.CircleImageView_civ_border_width, DEFAULT_BORDER_WIDTH)
-        mBorderColor = a.getColor(R.styleable.CircleImageView_civ_border_color, DEFAULT_BORDER_COLOR)
-        mBorderOverlay = a.getBoolean(R.styleable.CircleImageView_civ_border_overlay, DEFAULT_BORDER_OVERLAY)
+        mBorderWidth = a.getDimensionPixelSize(
+            R.styleable.CircleImageView_civ_border_width,
+            DEFAULT_BORDER_WIDTH
+        )
+        mBorderColor =
+            a.getColor(R.styleable.CircleImageView_civ_border_color, DEFAULT_BORDER_COLOR)
+        mBorderOverlay =
+            a.getBoolean(R.styleable.CircleImageView_civ_border_overlay, DEFAULT_BORDER_OVERLAY)
         mFillColor = a.getColor(R.styleable.CircleImageView_civ_fill_color, DEFAULT_FILL_COLOR)
 
         name = a.getString(R.styleable.CircleImageView_name)
@@ -167,11 +176,26 @@ class CircleImageView : androidx.appcompat.widget.AppCompatImageView {
         }
 
         if (mFillColor != Color.TRANSPARENT) {
-            canvas.drawCircle(mDrawableRect.centerX(), mDrawableRect.centerY(), mDrawableRadius, mFillPaint)
+            canvas.drawCircle(
+                mDrawableRect.centerX(),
+                mDrawableRect.centerY(),
+                mDrawableRadius,
+                mFillPaint
+            )
         }
-        canvas.drawCircle(mDrawableRect.centerX(), mDrawableRect.centerY(), mDrawableRadius, mBitmapPaint)
+        canvas.drawCircle(
+            mDrawableRect.centerX(),
+            mDrawableRect.centerY(),
+            mDrawableRadius,
+            mBitmapPaint
+        )
         if (mBorderWidth > 0) {
-            canvas.drawCircle(mBorderRect.centerX(), mBorderRect.centerY(), mBorderRadius, mBorderPaint)
+            canvas.drawCircle(
+                mBorderRect.centerX(),
+                mBorderRect.centerY(),
+                mBorderRadius,
+                mBorderPaint
+            )
         }
     }
 
@@ -193,7 +217,7 @@ class CircleImageView : androidx.appcompat.widget.AppCompatImageView {
 
     @Deprecated("Use {@link #setBorderColor(int)} instead")
     fun setBorderColorResource(@ColorRes borderColorRes: Int) {
-        borderColor = ContextCompat.getColor(context,borderColorRes)
+        borderColor = ContextCompat.getColor(context, borderColorRes)
     }
 
     /**
@@ -205,7 +229,7 @@ class CircleImageView : androidx.appcompat.widget.AppCompatImageView {
      */
     @Deprecated("Fill Color support is going to be removed in the future")
     fun setFillColorResource(@ColorRes fillColorRes: Int) {
-        fillColor = ContextCompat.getColor(context,fillColorRes)
+        fillColor = ContextCompat.getColor(context, fillColorRes)
     }
 
     override fun setImageBitmap(bm: Bitmap) {
@@ -259,9 +283,17 @@ class CircleImageView : androidx.appcompat.widget.AppCompatImageView {
             val bitmap: Bitmap
 
             if (drawable is ColorDrawable) {
-                bitmap = Bitmap.createBitmap(COLORDRAWABLE_DIMENSION, COLORDRAWABLE_DIMENSION, BITMAP_CONFIG)
+                bitmap = Bitmap.createBitmap(
+                    COLORDRAWABLE_DIMENSION,
+                    COLORDRAWABLE_DIMENSION,
+                    BITMAP_CONFIG
+                )
             } else {
-                bitmap = Bitmap.createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, BITMAP_CONFIG)
+                bitmap = Bitmap.createBitmap(
+                    drawable.intrinsicWidth,
+                    drawable.intrinsicHeight,
+                    BITMAP_CONFIG
+                )
             }
 
             val canvas = Canvas(bitmap)
@@ -318,7 +350,10 @@ class CircleImageView : androidx.appcompat.widget.AppCompatImageView {
 
         mBorderRect.set(calculateBounds())
         mBorderRadius =
-                Math.min((mBorderRect.height() - mBorderWidth) / 2.0f, (mBorderRect.width() - mBorderWidth) / 2.0f)
+            Math.min(
+                (mBorderRect.height() - mBorderWidth) / 2.0f,
+                (mBorderRect.width() - mBorderWidth) / 2.0f
+            )
 
         mDrawableRect.set(mBorderRect)
         if (!mBorderOverlay && mBorderWidth > 0) {
@@ -359,7 +394,10 @@ class CircleImageView : androidx.appcompat.widget.AppCompatImageView {
         }
 
         mShaderMatrix.setScale(scale, scale)
-        mShaderMatrix.postTranslate((dx + 0.5f).toInt() + mDrawableRect.left, (dy + 0.5f).toInt() + mDrawableRect.top)
+        mShaderMatrix.postTranslate(
+            (dx + 0.5f).toInt() + mDrawableRect.left,
+            (dy + 0.5f).toInt() + mDrawableRect.top
+        )
 
         mBitmapShader!!.setLocalMatrix(mShaderMatrix)
     }

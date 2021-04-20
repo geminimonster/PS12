@@ -50,24 +50,7 @@
     <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS" /> <!-- EvMe -->
     <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_READ" />
     <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_WRITE" />
-    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" /> <!-- Android package visibility setting -->
-    <queries>
-
-        <!-- For browser content -->
-        <intent>
-            <action android:name="android.intent.action.VIEW" />
-
-            <category android:name="android.intent.category.BROWSABLE" />
-
-            <data android:scheme="https" />
-        </intent>
-        <!-- End of browser content -->
-        <!-- For CustomTabsService -->
-        <intent>
-            <action android:name="android.support.customtabs.action.CustomTabsService" />
-        </intent>
-        <!-- End of CustomTabsService -->
-    </queries>
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
 
     <application
         android:name="com.iqonic.store.ProShopApp"
@@ -241,52 +224,13 @@
             android:theme="@style/Stripe3DS2Theme" />
         <activity android:name="com.facebook.CustomTabMainActivity" />
         <activity
-            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
             android:excludeFromRecents="true"
             android:exported="true"
             android:launchMode="singleTask"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
+            android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="firebase.auth"
-                    android:path="/"
-                    android:scheme="genericidp" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
-            android:excludeFromRecents="true"
-            android:exported="true"
-            android:launchMode="singleTask"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="firebase.auth"
-                    android:path="/"
-                    android:scheme="recaptcha" />
-            </intent-filter>
-        </activity>
-
-        <service
-            android:name="com.google.firebase.auth.api.fallback.service.FirebaseAuthFallbackService"
-            android:enabled="true"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="com.google.firebase.auth.api.gms.service.START" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </service>
         <service
             android:name="com.google.firebase.components.ComponentDiscoveryService"
             android:directBootAware="true"
@@ -307,7 +251,7 @@
 
         <meta-data
             android:name="onesignal_app_id"
-            android:value="1ba69f0e-ba59-4593-9b4b-7f2d55b17d6d" /> <!-- Deprecated - Pulled from OneSignal dashboard. -->
+            android:value="69638a56-f66b-46f6-809a-91f113edce2f" /> <!-- Deprecated - Pulled from OneSignal dashboard. -->
         <meta-data
             android:name="onesignal_google_project_number"
             android:value="str:REMOTE" />
@@ -389,8 +333,7 @@
         <service
             android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
             android:exported="true"
-            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
-            android:visibleToInstantApps="true" />
+            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" />
         <!--
              FirebaseMessagingService performs security checks at runtime,
              no need for explicit permissions despite exported="true"
@@ -431,7 +374,6 @@
         <provider
             android:name="com.google.firebase.provider.FirebaseInitProvider"
             android:authorities="com.store.proshop.firebaseinitprovider"
-            android:directBootAware="true"
             android:exported="false"
             android:initOrder="100" />
 
@@ -462,11 +404,6 @@
             android:exported="false"
             android:initOrder="100" />
 
-        <service
-            android:name="com.google.android.gms.ads.AdService"
-            android:enabled="true"
-            android:exported="false" />
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -491,94 +428,6 @@
                 <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED" />
             </intent-filter>
         </receiver>
-
-        <provider
-            android:name="androidx.work.impl.WorkManagerInitializer"
-            android:authorities="com.store.proshop.workmanager-init"
-            android:directBootAware="false"
-            android:exported="false"
-            android:multiprocess="true" />
-
-        <service
-            android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"
-            android:directBootAware="false"
-            android:enabled="@bool/enable_system_alarm_service_default"
-            android:exported="false" />
-        <service
-            android:name="androidx.work.impl.background.systemjob.SystemJobService"
-            android:directBootAware="false"
-            android:enabled="@bool/enable_system_job_service_default"
-            android:exported="true"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
-
-        <receiver
-            android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
-            android:directBootAware="false"
-            android:enabled="true"
-            android:exported="false" />
-        <receiver
-            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
-            android:directBootAware="false"
-            android:enabled="false"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
-                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
-            </intent-filter>
-        </receiver>
-        <receiver
-            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
-            android:directBootAware="false"
-            android:enabled="false"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="android.intent.action.BATTERY_OKAY" />
-                <action android:name="android.intent.action.BATTERY_LOW" />
-            </intent-filter>
-        </receiver>
-        <receiver
-            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy"
-            android:directBootAware="false"
-            android:enabled="false"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
-                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
-            </intent-filter>
-        </receiver>
-        <receiver
-            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy"
-            android:directBootAware="false"
-            android:enabled="false"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver>
-        <receiver
-            android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
-            android:directBootAware="false"
-            android:enabled="false"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="android.intent.action.TIME_SET" />
-                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
-            </intent-filter>
-        </receiver>
-        <receiver
-            android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver"
-            android:directBootAware="false"
-            android:enabled="@bool/enable_system_alarm_service_default"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies" />
-            </intent-filter>
-        </receiver>
-
-        <service
-            android:name="androidx.room.MultiInstanceInvalidationService"
-            android:exported="false" />
     </application>
 
 </manifest>

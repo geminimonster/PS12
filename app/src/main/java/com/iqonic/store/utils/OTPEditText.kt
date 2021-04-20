@@ -11,7 +11,12 @@ import android.widget.EditText
 import androidx.fragment.app.FragmentActivity
 import com.iqonic.store.utils.extensions.hideSoftKeyboard
 
-class OTPEditText(val mEditTextList: Array<EditText?>, val context: FragmentActivity,val transaparant:Drawable,val dot:Drawable) {
+class OTPEditText(
+    val mEditTextList: Array<EditText?>,
+    val context: FragmentActivity,
+    val transaparant: Drawable,
+    val dot: Drawable
+) {
     init {
         mEditTextList.forEachIndexed { index, editText ->
             editText?.setOnKeyListener(PinOnKeyListener(index))
@@ -26,7 +31,8 @@ class OTPEditText(val mEditTextList: Array<EditText?>, val context: FragmentActi
             (v as EditText).background = transaparant
     }
 
-    inner class PinOnKeyListener internal constructor(private val mCurrentIndex: Int) : View.OnKeyListener {
+    inner class PinOnKeyListener internal constructor(private val mCurrentIndex: Int) :
+        View.OnKeyListener {
 
         override fun onKey(v: View, keyCode: Int, event: KeyEvent): Boolean {
             if (keyCode == KeyEvent.KEYCODE_DEL && event.action == KeyEvent.ACTION_DOWN) {

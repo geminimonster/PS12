@@ -44,7 +44,10 @@ open class AppBaseActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         mToolbar.setNavigationIcon(R.drawable.ic_keyboard_backspace)
         mToolbar.changeToolbarFont()
-        mToolbar.navigationIcon!!.setColorFilter(Color.parseColor(getTextTitleColor()), PorterDuff.Mode.SRC_ATOP)
+        mToolbar.navigationIcon!!.setColorFilter(
+            Color.parseColor(getTextTitleColor()),
+            PorterDuff.Mode.SRC_ATOP
+        )
         mToolbar.setTitleTextColor(Color.parseColor(getTextTitleColor()))
     }
 
@@ -53,7 +56,10 @@ open class AppBaseActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         mToolbar.setNavigationIcon(R.drawable.ic_keyboard_backspace)
         mToolbar.changeToolbarFont()
-        mToolbar.navigationIcon!!.setColorFilter(Color.parseColor(getAccentColor()), PorterDuff.Mode.SRC_ATOP)
+        mToolbar.navigationIcon!!.setColorFilter(
+            Color.parseColor(getAccentColor()),
+            PorterDuff.Mode.SRC_ATOP
+        )
         mToolbar.setTitleTextColor(Color.parseColor(getTextTitleColor()))
     }
 
@@ -69,7 +75,7 @@ open class AppBaseActivity : AppCompatActivity() {
             progressDialog = Dialog(this)
             progressDialog!!.window!!.setBackgroundDrawable(ColorDrawable(0))
             progressDialog!!.setContentView(R.layout.custom_dialog)
-            if(getPrimaryColor().isNotEmpty()){
+            if (getPrimaryColor().isNotEmpty()) {
                 progressDialog!!.tv_progress_msg.changePrimaryColor()
             }
         }
@@ -77,7 +83,8 @@ open class AppBaseActivity : AppCompatActivity() {
         language = Locale(ProShopApp.language)
         if (!isNetworkAvailable()) {
             openNetworkDialog {
-                recreate();onNetworkRetry?.invoke() }
+                recreate();onNetworkRetry?.invoke()
+            }
         }
     }
 
@@ -87,16 +94,15 @@ open class AppBaseActivity : AppCompatActivity() {
                 val window = activity.window
                 var flags = activity.window.decorView.systemUiVisibility
                 flags =
-                        flags or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                    flags or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
                 activity.window.decorView.systemUiVisibility = flags
                 window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-                if(getPrimaryColor().isEmpty()){
-                    window.statusBarColor = ContextCompat.getColor(this, R.color.colorToolBarBackground)
-                }
-                else
-                {
+                if (getPrimaryColor().isEmpty()) {
+                    window.statusBarColor =
+                        ContextCompat.getColor(this, R.color.colorToolBarBackground)
+                } else {
                     when {
-                        getSharedPrefInstance().getIntValue(MODE,1)==1 -> {
+                        getSharedPrefInstance().getIntValue(MODE, 1) == 1 -> {
                             window.statusBarColor = color(R.color.colorPrimary)
 
                         }
@@ -107,13 +113,12 @@ open class AppBaseActivity : AppCompatActivity() {
                 }
             }
             else -> {
-                if(getPrimaryColor().isEmpty()){
-                    window.statusBarColor = ContextCompat.getColor(this, R.color.colorToolBarBackground)
-                }
-                else
-                {
+                if (getPrimaryColor().isEmpty()) {
+                    window.statusBarColor =
+                        ContextCompat.getColor(this, R.color.colorToolBarBackground)
+                } else {
                     when {
-                        getSharedPrefInstance().getIntValue(MODE,1)==1 -> {
+                        getSharedPrefInstance().getIntValue(MODE, 1) == 1 -> {
                             window.statusBarColor = color(R.color.colorPrimary)
 
                         }
@@ -127,10 +132,10 @@ open class AppBaseActivity : AppCompatActivity() {
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
-    fun mAppBarColor(){
+    fun mAppBarColor() {
         val actionBar: ActionBar? = supportActionBar
-        val colorDrawable:ColorDrawable = when {
-            getSharedPrefInstance().getIntValue(MODE,1)==1 -> {
+        val colorDrawable: ColorDrawable = when {
+            getSharedPrefInstance().getIntValue(MODE, 1) == 1 -> {
                 ColorDrawable(getColor(R.color.colorPrimary))
             }
             else -> {

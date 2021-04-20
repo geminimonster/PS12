@@ -145,10 +145,10 @@ class DashBoardActivity : AppBaseActivity() {
 
     private fun setUpDrawerToggle() {
         val toggle = object :
-                ActionBarDrawerToggle(
-                        this, drawerLayout,
-                        R.string.navigation_drawer_open, R.string.navigation_drawer_close
-                ) {
+            ActionBarDrawerToggle(
+                this, drawerLayout,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close
+            ) {
             private val scaleFactor = 4f
             override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
                 super.onDrawerSlide(drawerView, slideOffset)
@@ -167,8 +167,8 @@ class DashBoardActivity : AppBaseActivity() {
         toggle.isDrawerIndicatorEnabled = false
         toolbar.setNavigationIcon(R.drawable.ic_drawer)
         toolbar.navigationIcon!!.setColorFilter(
-                Color.parseColor(getTextTitleColor()),
-                PorterDuff.Mode.SRC_ATOP
+            Color.parseColor(getTextTitleColor()),
+            PorterDuff.Mode.SRC_ATOP
         )
         toolbar.setNavigationOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
@@ -208,14 +208,14 @@ class DashBoardActivity : AppBaseActivity() {
             when {
                 isLoggedIn() -> {
                     val dialog = getAlertDialog(
-                            getString(R.string.lbl_logout_confirmation),
-                            onPositiveClick = { _, _ ->
-                                clearLoginPref()
-                                launchActivityWithNewTask<DashBoardActivity>()
-                            },
-                            onNegativeClick = { dialog, _ ->
-                                dialog.dismiss()
-                            })
+                        getString(R.string.lbl_logout_confirmation),
+                        onPositiveClick = { _, _ ->
+                            clearLoginPref()
+                            launchActivityWithNewTask<DashBoardActivity>()
+                        },
+                        onNegativeClick = { dialog, _ ->
+                            dialog.dismiss()
+                        })
                     dialog.show()
                     closeDrawer()
                 }

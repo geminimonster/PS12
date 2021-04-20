@@ -20,7 +20,7 @@ class LocaleManager(context: Context) {
 
 
     val language: String?
-        get() = getSharedPrefInstance().getStringValue(LANGUAGE_KEY, LANGUAGE_ENGLISH)
+        get() = getSharedPrefInstance().getStringValue(LANGUAGE_KEY, LANGUAGE_PERSIAN)
 
     fun setLocale(c: Context): Context {
         return updateResources(c, language)
@@ -35,7 +35,7 @@ class LocaleManager(context: Context) {
     private fun persistLanguage(language: String) {
         // use commit() instead of apply(), because sometimes we kill the application process
         // immediately that prevents apply() from finishing
-        getSharedPrefInstance().setValue(LANGUAGE_KEY,language)
+        getSharedPrefInstance().setValue(LANGUAGE_KEY, language)
     }
 
     private fun updateResources(context: Context, language: String?): Context {
@@ -68,12 +68,12 @@ class LocaleManager(context: Context) {
         }
 
         val locales = set.toTypedArray()
-       // config.locales = LocaleList(*locales)
+        // config.locales = LocaleList(*locales)
     }
 
     companion object {
 
-        val LANGUAGE_ENGLISH = "en"
+        val LANGUAGE_PERSIAN = "fa"
         val LANGUAGE_UKRAINIAN = "uk"
         val LANGUAGE_RUSSIAN = "ru"
         private val LANGUAGE_KEY = "language_key"

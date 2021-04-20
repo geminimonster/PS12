@@ -13,8 +13,8 @@
         android:layout_width="@dimen/_90sdp"
         android:layout_height="@dimen/_90sdp"
         android:layout_alignBottom="@id/rl_content"
-        android:elevation="0dp"
         android:layout_alignParentTop="true"
+        android:elevation="0dp"
         app:cardCornerRadius="@dimen/_6sdp">
 
         <ImageView

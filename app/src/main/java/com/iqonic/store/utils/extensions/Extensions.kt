@@ -269,6 +269,7 @@ fun TextView.changeTextSecondaryColor() {
 fun TextView.changeTitleColor() {
     setTextColor(Color.parseColor(getTextTitleColor()))
 }
+
 fun TextView.changeBackgroundTint(color: String) {
     background.setTint(Color.parseColor(color))
 }

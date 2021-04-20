@@ -43,9 +43,9 @@ class ProShopApp : MultiDexApplication() {
 
         // OneSignal Initialization
         OneSignal.startInit(this)
-                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
-                .unsubscribeWhenNotificationsAreDisabled(true)
-                .init()
+            .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+            .unsubscribeWhenNotificationsAreDisabled(true)
+            .init()
 
         getSharedPrefInstance().apply {
             appTheme = getIntValue(THEME, Constants.THEME.LIGHT)
@@ -54,12 +54,12 @@ class ProShopApp : MultiDexApplication() {
         }
         // Set Custom Font
         ViewPump.init(
-                ViewPump.builder().addInterceptor(
-                        CalligraphyInterceptor(
-                                CalligraphyConfig.Builder().setDefaultFontPath(getString(R.string.font_regular))
-                                        .setFontAttrId(R.attr.fontPath).build()
-                        )
-                ).build()
+            ViewPump.builder().addInterceptor(
+                CalligraphyInterceptor(
+                    CalligraphyConfig.Builder().setDefaultFontPath(getString(R.string.font_regular))
+                        .setFontAttrId(R.attr.fontPath).build()
+                )
+            ).build()
         )
 
     }
@@ -108,8 +108,8 @@ class ProShopApp : MultiDexApplication() {
             appInstance.mainContent {
                 mAppData = it
                 getSharedPrefInstance().setValue(
-                        DASHBOARDDATA,
-                        Gson().toJson(it.dashboard!!)
+                    DASHBOARDDATA,
+                    Gson().toJson(it.dashboard!!)
                 )
                 if (it.dashboard.layout == "layout1") {
                     getSharedPrefInstance().removeKey(KEY_DASHBOARD)
@@ -131,15 +131,15 @@ class ProShopApp : MultiDexApplication() {
                     mAppData.appSetup!!.consumerKey!!.isNotEmpty() -> {
                         getSharedPrefInstance().removeKey(CONSUMERKEY)
                         getSharedPrefInstance().setValue(
-                                CONSUMERKEY,
-                                mAppData.appSetup!!.consumerKey
+                            CONSUMERKEY,
+                            mAppData.appSetup!!.consumerKey
                         )
                     }
                     else -> {
                         getSharedPrefInstance().removeKey(CONSUMERKEY)
                         getSharedPrefInstance().setValue(
-                                CONSUMERKEY,
-                                getAppInstance().getString(R.string.consumerKey)
+                            CONSUMERKEY,
+                            getAppInstance().getString(R.string.consumerKey)
                         )
                     }
                 }
@@ -148,15 +148,15 @@ class ProShopApp : MultiDexApplication() {
                     mAppData.appSetup!!.consumerSecret!!.isNotEmpty() -> {
                         getSharedPrefInstance().removeKey(CONSUMERSECRET)
                         getSharedPrefInstance().setValue(
-                                CONSUMERSECRET,
-                                mAppData.appSetup!!.consumerSecret
+                            CONSUMERSECRET,
+                            mAppData.appSetup!!.consumerSecret
                         )
                     }
                     else -> {
                         getSharedPrefInstance().removeKey(CONSUMERSECRET)
                         getSharedPrefInstance().setValue(
-                                CONSUMERSECRET,
-                                getAppInstance().getString(R.string.consumerSecret)
+                            CONSUMERSECRET,
+                            getAppInstance().getString(R.string.consumerSecret)
                         )
                     }
                 }
@@ -171,8 +171,8 @@ class ProShopApp : MultiDexApplication() {
                             }
                             else -> {
                                 getSharedPrefInstance().setValue(
-                                        PRIMARYCOLOR,
-                                        mAppData.appSetup!!.primaryColor!!
+                                    PRIMARYCOLOR,
+                                    mAppData.appSetup!!.primaryColor!!
                                 )
                             }
                         }
@@ -180,8 +180,8 @@ class ProShopApp : MultiDexApplication() {
                     else -> {
                         getSharedPrefInstance().removeKey(PRIMARYCOLOR)
                         getSharedPrefInstance().setValue(
-                                PRIMARYCOLOR,
-                                appInstance.resources.getString(R.color.colorPrimary)
+                            PRIMARYCOLOR,
+                            appInstance.resources.getString(R.color.colorPrimary)
                         )
                     }
                 }
@@ -196,8 +196,8 @@ class ProShopApp : MultiDexApplication() {
                             }
                             else -> {
                                 getSharedPrefInstance().setValue(
-                                        PRIMARYCOLORDARK,
-                                        mAppData.appSetup!!.primaryColor!!
+                                    PRIMARYCOLORDARK,
+                                    mAppData.appSetup!!.primaryColor!!
                                 )
                             }
                         }
@@ -205,8 +205,8 @@ class ProShopApp : MultiDexApplication() {
                     else -> {
                         getSharedPrefInstance().removeKey(PRIMARYCOLORDARK)
                         getSharedPrefInstance().setValue(
-                                PRIMARYCOLORDARK,
-                                appInstance.resources.getString(R.color.colorPrimary)
+                            PRIMARYCOLORDARK,
+                            appInstance.resources.getString(R.color.colorPrimary)
                         )
                     }
                 }
@@ -221,8 +221,8 @@ class ProShopApp : MultiDexApplication() {
                             }
                             else -> {
                                 getSharedPrefInstance().setValue(
-                                        ACCENTCOLOR,
-                                        mAppData.appSetup!!.secondaryColor!!
+                                    ACCENTCOLOR,
+                                    mAppData.appSetup!!.secondaryColor!!
                                 )
                             }
                         }
@@ -230,8 +230,8 @@ class ProShopApp : MultiDexApplication() {
                     else -> {
                         getSharedPrefInstance().removeKey(ACCENTCOLOR)
                         getSharedPrefInstance().setValue(
-                                ACCENTCOLOR,
-                                appInstance.resources.getString(R.color.colorAccent)
+                            ACCENTCOLOR,
+                            appInstance.resources.getString(R.color.colorAccent)
                         )
                     }
                 }
@@ -246,16 +246,16 @@ class ProShopApp : MultiDexApplication() {
                             }
                             else -> {
                                 getSharedPrefInstance().setValue(
-                                        TEXTPRIMARYCOLOR,
-                                        mAppData.appSetup!!.textPrimaryColor!!
+                                    TEXTPRIMARYCOLOR,
+                                    mAppData.appSetup!!.textPrimaryColor!!
                                 )
                             }
                         }
                     }
                     else -> {
                         getSharedPrefInstance().setValue(
-                                TEXTPRIMARYCOLOR,
-                                appInstance.resources.getString(R.color.textColorPrimary)
+                            TEXTPRIMARYCOLOR,
+                            appInstance.resources.getString(R.color.textColorPrimary)
                         )
                     }
                 }
@@ -269,8 +269,8 @@ class ProShopApp : MultiDexApplication() {
                             }
                             else -> {
                                 getSharedPrefInstance().setValue(
-                                        TEXTSECONDARYCOLOR,
-                                        mAppData.appSetup!!.textSecondaryColor!!
+                                    TEXTSECONDARYCOLOR,
+                                    mAppData.appSetup!!.textSecondaryColor!!
                                 )
                             }
                         }
@@ -278,8 +278,8 @@ class ProShopApp : MultiDexApplication() {
                     else -> {
                         getSharedPrefInstance().removeKey(TEXTSECONDARYCOLOR)
                         getSharedPrefInstance().setValue(
-                                TEXTSECONDARYCOLOR,
-                                appInstance.resources.getString(R.color.textColorSecondary)
+                            TEXTSECONDARYCOLOR,
+                            appInstance.resources.getString(R.color.textColorSecondary)
                         )
                     }
                 }
@@ -293,8 +293,8 @@ class ProShopApp : MultiDexApplication() {
                             }
                             else -> {
                                 getSharedPrefInstance().setValue(
-                                        BACKGROUNDCOLOR,
-                                        mAppData.appSetup!!.backgroundColor!!
+                                    BACKGROUNDCOLOR,
+                                    mAppData.appSetup!!.backgroundColor!!
                                 )
                             }
                         }
@@ -302,8 +302,8 @@ class ProShopApp : MultiDexApplication() {
                     else -> {
                         getSharedPrefInstance().removeKey(BACKGROUNDCOLOR)
                         getSharedPrefInstance().setValue(
-                                BACKGROUNDCOLOR,
-                                appInstance.resources.getString(R.color.colorScreenBackground)
+                            BACKGROUNDCOLOR,
+                            appInstance.resources.getString(R.color.colorScreenBackground)
                         )
                     }
                 }
@@ -316,8 +316,8 @@ class ProShopApp : MultiDexApplication() {
                     else -> {
                         getSharedPrefInstance().removeKey(APPURL)
                         getSharedPrefInstance().setValue(
-                                APPURL,
-                                getAppInstance().getString(R.string.base_url)
+                            APPURL,
+                            getAppInstance().getString(R.string.base_url)
                         )
                     }
                 }

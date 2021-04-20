@@ -266,7 +266,7 @@
     <string name="lbl_no_minimum_order_value_needed">لا يوجد حد أدنى قيمة النظام اللازمة.</string>
     <string name="lbl_valid_till">صالح لغاية</string>
     <string name="lbl_mail_to">ميلتو</string>
-    <string name="lbl_send_email">ارسل بريد الكتروني...</string>
+    <string name="lbl_send_email">ارسل بريد الكتروني…</string>
     <string name="lbl_paid_on">المدفوعة على</string>
     <string name="lbl_order_title">طلب #</string>
     <string name="lbl_images">صور</string>

@@ -10,15 +10,20 @@ import android.os.Build
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 
-fun Context.isGPSEnable(): Boolean = getLocationManager().isProviderEnabled(LocationManager.GPS_PROVIDER)
+fun Context.isGPSEnable(): Boolean =
+    getLocationManager().isProviderEnabled(LocationManager.GPS_PROVIDER)
 
 
 fun Context.getLocationManager() = getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
-fun Context.getConnectivityManager() = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+fun Context.getConnectivityManager() =
+    getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
 
-inline fun <reified T : Any> Context.launchActivity(options: Bundle? = null, noinline init: Intent.() -> Unit = {}) {
+inline fun <reified T : Any> Context.launchActivity(
+    options: Bundle? = null,
+    noinline init: Intent.() -> Unit = {}
+) {
     val intent = newIntent<T>(this)
     intent.init()
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
@@ -33,10 +38,12 @@ inline fun <reified T : Any> Context.launchActivity(options: Bundle? = null, noi
  */
 
 @Throws(PackageManager.NameNotFoundException::class)
-fun Context.getAppVersionName(pName: String = packageName): String = packageManager.getPackageInfo(pName, 0).versionName
+fun Context.getAppVersionName(pName: String = packageName): String =
+    packageManager.getPackageInfo(pName, 0).versionName
 
 
-fun Context.dialNumber(number: String) = startActivity(Intent(Intent.ACTION_DIAL, Uri.parse("tel:$number")))
+fun Context.dialNumber(number: String) =
+    startActivity(Intent(Intent.ACTION_DIAL, Uri.parse("tel:$number")))
 
 fun Context.isPermissionGranted(permissions: Array<String>): Boolean {
     permissions.forEach {

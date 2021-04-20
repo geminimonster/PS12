@@ -405,6 +405,7 @@
         <item name="android:paddingStart">@dimen/_6sdp</item>
         <item name="android:paddingEnd">0dp</item>
     </style>
+
     <style name="ImageButton">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/_30sdp</item>

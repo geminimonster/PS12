@@ -9,7 +9,7 @@ import com.iqonic.store.AppBaseActivity
 import com.iqonic.store.R
 import com.iqonic.store.utils.extensions.color
 
-abstract class BaseFragment : Fragment(),  View.OnFocusChangeListener {
+abstract class BaseFragment : Fragment(), View.OnFocusChangeListener {
 
     override fun onFocusChange(v: View?, hasFocus: Boolean) {
         if (hasFocus) {
@@ -25,6 +25,7 @@ abstract class BaseFragment : Fragment(),  View.OnFocusChangeListener {
         if (activity != null)
             (activity!! as AppBaseActivity).showProgress(false)
     }
+
     fun showProgress() {
         if (activity != null)
             (activity!! as AppBaseActivity).showProgress(true)

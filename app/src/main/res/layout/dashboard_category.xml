@@ -4,8 +4,8 @@
     android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="@dimen/spacing_standard_new"
         android:id="@+id/rvCategory"
-        style="@style/RecycleView" />
+        style="@style/RecycleView"
+        android:layout_marginTop="@dimen/spacing_standard_new" />
 
 </LinearLayout>

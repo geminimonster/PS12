@@ -55,19 +55,19 @@ class ViewAllProductFragment : BaseFragment() {
     private var specialProduct = ""
     private var totalPages = 0
     private val data: MutableMap<String, Int> =
-            HashMap()
+        HashMap()
     private val subCategoryData: MutableMap<String, Int> =
-            HashMap()
+        HashMap()
     private var isLastPage: Boolean? = false
     private var mIsLastPage: Boolean? = false
     private var image: String = ""
 
     companion object {
         fun getNewInstance(
-                id: Int,
-                mCategoryId: Int,
-                showPagination: Boolean = true,
-                specialProduct: String = ""
+            id: Int,
+            mCategoryId: Int,
+            showPagination: Boolean = true,
+            specialProduct: String = ""
         ): ViewAllProductFragment {
 
             val fragment = ViewAllProductFragment()
@@ -85,128 +85,128 @@ class ViewAllProductFragment : BaseFragment() {
     }
 
     private val mSubCategoryAdapter =
-            BaseAdapter<Category>(R.layout.item_subcategory, onBind = { view, model, position ->
-                view.tvSubCategory.text = model.name
-                if (model.image != null) {
-                    if (model.image.src.isNotEmpty()) {
-                        view.ivProducts.loadImageFromUrl(model.image.src)
-                        view.ivProducts.show()
-                    }
-                } else {
-                    view.ivProducts.hide()
+        BaseAdapter<Category>(R.layout.item_subcategory, onBind = { view, model, position ->
+            view.tvSubCategory.text = model.name
+            if (model.image != null) {
+                if (model.image.src.isNotEmpty()) {
+                    view.ivProducts.loadImageFromUrl(model.image.src)
+                    view.ivProducts.show()
                 }
-                view.llMain.setStrokedBackground(
-                        (activity as AppBaseActivity).color(R.color.transparent),
-                        (activity as AppBaseActivity).color(mColorArray[position % mColorArray.size])
-                )
-                view.tvSubCategory.setTextColor((activity as AppBaseActivity).color(mColorArray[position % mColorArray.size]))
-                view.onClick {
-                    (activity as AppBaseActivity).launchActivity<SubCategoryActivity> {
-                        putExtra(Constants.KeyIntent.TITLE, model.name)
-                        putExtra(Constants.KeyIntent.KEYID, model.id)
-                    }
+            } else {
+                view.ivProducts.hide()
+            }
+            view.llMain.setStrokedBackground(
+                (activity as AppBaseActivity).color(R.color.transparent),
+                (activity as AppBaseActivity).color(mColorArray[position % mColorArray.size])
+            )
+            view.tvSubCategory.setTextColor((activity as AppBaseActivity).color(mColorArray[position % mColorArray.size]))
+            view.onClick {
+                (activity as AppBaseActivity).launchActivity<SubCategoryActivity> {
+                    putExtra(Constants.KeyIntent.TITLE, model.name)
+                    putExtra(Constants.KeyIntent.KEYID, model.id)
                 }
-                view.tvSubCategory.changeTextPrimaryColor()
-                view.llMain.setStrokedBackground(
-                        Color.parseColor(getTextPrimaryColor()),
-                        Color.parseColor(getTextPrimaryColor()),
-                        0.4f
-                )
-            })
+            }
+            view.tvSubCategory.changeTextPrimaryColor()
+            view.llMain.setStrokedBackground(
+                Color.parseColor(getTextPrimaryColor()),
+                Color.parseColor(getTextPrimaryColor()),
+                0.4f
+            )
+        })
 
     private val mProductAdapter =
-            BaseAdapter<StoreProductModel>(R.layout.item_viewproductgrid, onBind = { view, model, _ ->
+        BaseAdapter<StoreProductModel>(R.layout.item_viewproductgrid, onBind = { view, model, _ ->
 
-                if (model.images!![0].src!!.isNotEmpty()) {
-                    view.ivProduct.loadImageFromUrl(model.images!![0].src!!)
-                    image = model.images!![0].src!!
-                }
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    view.ivProduct.outlineProvider = object : ViewOutlineProvider() {
-                        @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-                        override fun getOutline(view: View?, outline: Outline?) {
-                            outline!!.setRoundRect(0, 0, view!!.width, (view.height + 20F).toInt(), 20F)
-                        }
+            if (model.images!![0].src!!.isNotEmpty()) {
+                view.ivProduct.loadImageFromUrl(model.images!![0].src!!)
+                image = model.images!![0].src!!
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                view.ivProduct.outlineProvider = object : ViewOutlineProvider() {
+                    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+                    override fun getOutline(view: View?, outline: Outline?) {
+                        outline!!.setRoundRect(0, 0, view!!.width, (view.height + 20F).toInt(), 20F)
                     }
-                    view.ivProduct.clipToOutline = true
                 }
-                val mName = model.name!!.split(",")
-                view.tvProductName.text = mName[0]
-                view.tvProductName.changeTextPrimaryColor()
+                view.ivProduct.clipToOutline = true
+            }
+            val mName = model.name!!.split(",")
+            view.tvProductName.text = mName[0]
+            view.tvProductName.changeTextPrimaryColor()
 
-                if (model.onSale) {
-                    view.tvSaleLabel.show()
+            if (model.onSale) {
+                view.tvSaleLabel.show()
+            } else {
+                view.tvSaleLabel.hide()
+            }
+            if (model.type!!.contains("grouped")) {
+                view.tvDiscountPrice.hide()
+                view.tvOriginalPrice.hide()
+                view.tvAdd.hide()
+            } else {
+                if (!model.onSale) {
+                    view.tvDiscountPrice.text = model.regularPrice!!.currencyFormat()
+                    view.tvOriginalPrice.show()
+                    if (model.regularPrice!!.isEmpty()) {
+                        view.tvOriginalPrice.text = ""
+                        view.tvDiscountPrice.text = model.price!!.currencyFormat()
+                    } else {
+                        view.tvOriginalPrice.text = ""
+                        view.tvDiscountPrice.text = model.regularPrice!!.currencyFormat()
+                    }
                 } else {
-                    view.tvSaleLabel.hide()
+                    if (model.salePrice!!.isNotEmpty()) {
+                        view.tvDiscountPrice.text = model.salePrice!!.currencyFormat()
+                    } else {
+                        view.tvOriginalPrice.show()
+                        view.tvDiscountPrice.text = model.price!!.currencyFormat()
+                    }
+                    view.tvOriginalPrice.applyStrike()
+                    view.tvOriginalPrice.text = model.regularPrice!!.currencyFormat()
+                    view.tvOriginalPrice.show()
                 }
-                if (model.type!!.contains("grouped")) {
-                    view.tvDiscountPrice.hide()
-                    view.tvOriginalPrice.hide()
+                view.tvOriginalPrice.changeTextSecondaryColor()
+                view.tvDiscountPrice.changeTextPrimaryColor()
+
+                view.tvAdd.background.setTint(Color.parseColor(getAccentColor()))
+                if (model.attributes!!.isNotEmpty()) {
+                    view.tvProductWeight.text = model.attributes!![0].options!![0]
+                    view.tvProductWeight.changeTextSecondaryColor()
+                }
+                if (model.in_stock) {
+                    view.tvAdd.show()
+                } else {
+                    view.tvAdd.hide()
+                }
+                if (!model.purchasable) {
                     view.tvAdd.hide()
                 } else {
-                    if (!model.onSale) {
-                        view.tvDiscountPrice.text = model.regularPrice!!.currencyFormat()
-                        view.tvOriginalPrice.show()
-                        if (model.regularPrice!!.isEmpty()) {
-                            view.tvOriginalPrice.text = ""
-                            view.tvDiscountPrice.text = model.price!!.currencyFormat()
-                        } else {
-                            view.tvOriginalPrice.text = ""
-                            view.tvDiscountPrice.text = model.regularPrice!!.currencyFormat()
-                        }
-                    } else {
-                        if (model.salePrice!!.isNotEmpty()) {
-                            view.tvDiscountPrice.text = model.salePrice!!.currencyFormat()
-                        } else {
-                            view.tvOriginalPrice.show()
-                            view.tvDiscountPrice.text = model.price!!.currencyFormat()
-                        }
-                        view.tvOriginalPrice.applyStrike()
-                        view.tvOriginalPrice.text = model.regularPrice!!.currencyFormat()
-                        view.tvOriginalPrice.show()
-                    }
-                    view.tvOriginalPrice.changeTextSecondaryColor()
-                    view.tvDiscountPrice.changeTextPrimaryColor()
+                    view.tvAdd.show()
+                }
+            }
 
-                    view.tvAdd.background.setTint(Color.parseColor(getAccentColor()))
-                    if (model.attributes!!.isNotEmpty()) {
-                        view.tvProductWeight.text = model.attributes!![0].options!![0]
-                        view.tvProductWeight.changeTextSecondaryColor()
+            view.onClick {
+                if (getProductDetailConstant() == 0) {
+                    activity?.launchActivity<ProductDetailActivity1> {
+                        putExtra(Constants.KeyIntent.PRODUCT_ID, model.id)
+                        putExtra(Constants.KeyIntent.DATA, model)
                     }
-                    if (model.in_stock) {
-                        view.tvAdd.show()
-                    } else {
-                        view.tvAdd.hide()
-                    }
-                    if (!model.purchasable) {
-                        view.tvAdd.hide()
-                    } else {
-                        view.tvAdd.show()
+                } else {
+                    activity?.launchActivity<ProductDetailActivity2> {
+                        putExtra(Constants.KeyIntent.PRODUCT_ID, model.id)
+                        putExtra(Constants.KeyIntent.DATA, model)
                     }
                 }
-
-                view.onClick {
-                    if (getProductDetailConstant() == 0) {
-                        activity?.launchActivity<ProductDetailActivity1> {
-                            putExtra(Constants.KeyIntent.PRODUCT_ID, model.id)
-                            putExtra(Constants.KeyIntent.DATA, model)
-                        }
-                    } else {
-                        activity?.launchActivity<ProductDetailActivity2> {
-                            putExtra(Constants.KeyIntent.PRODUCT_ID, model.id)
-                            putExtra(Constants.KeyIntent.DATA, model)
-                        }
-                    }
-                }
-                view.tvAdd.onClick {
-                    addCart(model)
-                }
-            })
+            }
+            view.tvAdd.onClick {
+                addCart(model)
+            }
+        })
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_newest_product, container, false)
     }
@@ -268,10 +268,10 @@ class ViewAllProductFragment : BaseFragment() {
                         var lastVisiblePosition = 0
                         if (recyclerView.layoutManager is LinearLayoutManager) {
                             lastVisiblePosition =
-                                    (recyclerView.layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition()
+                                (recyclerView.layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition()
                         } else if (recyclerView.layoutManager is GridLayoutManager) {
                             lastVisiblePosition =
-                                    (recyclerView.layoutManager as GridLayoutManager).findLastCompletelyVisibleItemPosition()
+                                (recyclerView.layoutManager as GridLayoutManager).findLastCompletelyVisibleItemPosition()
                         }
                         if (mId == CATEGORY) {
                             if (isLastPage == false) {

@@ -15,6 +15,7 @@ class ShippingModel {
     var methods: ArrayList<Method>? = null
 
 }
+
 class InstanceSettings {
     @SerializedName("title")
     @Expose
@@ -66,7 +67,7 @@ class Settings {
 
 }
 
-class Method :Serializable{
+class Method : Serializable {
     @SerializedName("min_amount")
     @Expose
     var minAmount: String = ""
@@ -81,23 +82,23 @@ class Method :Serializable{
 
     @SerializedName("id")
     @Expose
-    var id: String =""
+    var id: String = ""
 
     @SerializedName("method_title")
     @Expose
-    var methodTitle: String =""
+    var methodTitle: String = ""
 
     @SerializedName("method_description")
     @Expose
-    var methodDescription: String =""
+    var methodDescription: String = ""
 
     @SerializedName("enabled")
     @Expose
-    var enabled: String =""
+    var enabled: String = ""
 
     @SerializedName("title")
     @Expose
-    var title: String =""
+    var title: String = ""
 
     @SerializedName("rates")
     @Expose
@@ -105,7 +106,7 @@ class Method :Serializable{
 
     @SerializedName("tax_status")
     @Expose
-    var taxStatus: String =""
+    var taxStatus: String = ""
 
     @SerializedName("fee")
     @Expose
@@ -129,7 +130,7 @@ class Method :Serializable{
 
     @SerializedName("plugin_id")
     @Expose
-    var pluginId: String =""
+    var pluginId: String = ""
 
     @SerializedName("errors")
     @Expose
@@ -149,7 +150,7 @@ class Method :Serializable{
 
     @SerializedName("ignore_discounts")
     @Expose
-    var ignoreDiscounts: String =""
+    var ignoreDiscounts: String = ""
 
     @SerializedName("method_order")
     @Expose
@@ -161,14 +162,13 @@ class Method :Serializable{
 
     @SerializedName("settings_html")
     @Expose
-    var settingsHtml: String =""
+    var settingsHtml: String = ""
 
     @SerializedName("cost")
     @Expose
-    var cost: String =""
+    var cost: String = ""
 
     var isSelected: Boolean = false
-
 
 
 }

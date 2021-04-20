@@ -43,8 +43,10 @@ class ParameterList {
 
     fun addQuerystring(queryString: String) {
         if (queryString.isNotEmpty()) {
-            for (param in queryString.split((PARAM_SEPARATOR).toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()) {
-                val pair = param.split((PAIR_SEPARATOR).toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
+            for (param in queryString.split((PARAM_SEPARATOR).toRegex())
+                .dropLastWhile({ it.isEmpty() }).toTypedArray()) {
+                val pair = param.split((PAIR_SEPARATOR).toRegex()).dropLastWhile({ it.isEmpty() })
+                    .toTypedArray()
                 val key = OAuthEncoder.decode(pair[0])
                 val value = if (pair.size > 1) OAuthEncoder.decode(pair[1]) else EMPTY_STRING
                 params.add(Parameter(key, value))

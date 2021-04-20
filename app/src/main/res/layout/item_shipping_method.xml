@@ -27,14 +27,14 @@
             android:textColor="@color/textColorSecondary"
             android:textSize="@dimen/font_size_medium" />
 
-      <TextView
-          android:id="@+id/shippingCost"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="150"
-          android:textAppearance="@style/FontSemiBold"
-          android:textColor="@color/textColorSecondary"
-          android:textSize="@dimen/font_size_medium" />
+        <TextView
+            android:id="@+id/shippingCost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="150"
+            android:textAppearance="@style/FontSemiBold"
+            android:textColor="@color/textColorSecondary"
+            android:textSize="@dimen/font_size_medium" />
     </LinearLayout>
 
 </LinearLayout>

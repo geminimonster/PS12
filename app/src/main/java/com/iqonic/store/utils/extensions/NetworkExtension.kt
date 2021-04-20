@@ -216,7 +216,7 @@ fun getRestApiImpl(url: String = getSharedPrefInstance().getStringValue(APPURL))
     }
 }
 
-fun AppBaseActivity.listReview(id:Int, onApiSuccess: (ArrayList<ProductReviewData>) -> Unit) {
+fun AppBaseActivity.listReview(id: Int, onApiSuccess: (ArrayList<ProductReviewData>) -> Unit) {
     if (isNetworkAvailable()) {
         showProgress(true)
         getRestApiImpl().listReview(id, onApiSuccess = {
@@ -318,9 +318,7 @@ fun AppBaseActivity.signIn(
             showProgress(false)
             onError(it)
         })
-    }
-    else
-    {
+    } else {
         showProgress(false)
         snackBarError(getString(R.string.error_no_internet))
     }

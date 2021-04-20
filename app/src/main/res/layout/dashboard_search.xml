@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingStart="@dimen/spacing_standard_new"
-    android:paddingEnd="@dimen/spacing_standard_new"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rlMain"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dashboard_search"
+    android:paddingStart="@dimen/spacing_standard_new"
     android:paddingTop="@dimen/_20sdp"
-    android:paddingBottom="@dimen/_20sdp"
-    android:background="@drawable/bg_dashboard_search">
+    android:paddingEnd="@dimen/spacing_standard_new"
+    android:paddingBottom="@dimen/_20sdp">
 
     <EditText
         android:id="@+id/edtSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/spacing_standard_new"
-        android:paddingEnd="@dimen/spacing_standard_new"
-        android:textColor="@color/textColorPrimary"
         android:background="@drawable/bg_search_edittext"
         android:backgroundTint="@color/editText_background"
-        android:paddingTop="@dimen/_14sdp"
-        android:drawablePadding="@dimen/spacing_standard_new"
         android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="@dimen/spacing_standard_new"
         android:drawableTint="@color/textColorPrimary"
+        android:hint="@string/action_search"
+        android:paddingStart="@dimen/spacing_standard_new"
+        android:paddingTop="@dimen/_14sdp"
+        android:paddingEnd="@dimen/spacing_standard_new"
         android:paddingBottom="@dimen/_14sdp"
-        android:hint="@string/action_search" />
+        android:textColor="@color/textColorPrimary" />
 
 </RelativeLayout>

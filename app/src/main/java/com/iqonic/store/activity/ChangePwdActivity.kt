@@ -41,8 +41,8 @@ class ChangePwdActivity : AppBaseActivity() {
                     edtConfirmPwd.showError(getString(R.string.error_pwd_digit_required))
                 }
                 !edtConfirmPwd.text.toString().equals(
-                        edtNewPwd.text.toString(),
-                        false
+                    edtNewPwd.text.toString(),
+                    false
                 ) -> {
                     edtConfirmPwd.showError(getString(R.string.error_password_not_matches))
                 }

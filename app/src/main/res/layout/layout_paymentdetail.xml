@@ -3,30 +3,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/spacing_middle"
-    android:layout_marginBottom="@dimen/spacing_middle"
     android:layout_marginStart="@dimen/spacing_standard_new"
+    android:layout_marginTop="@dimen/spacing_middle"
     android:layout_marginEnd="@dimen/spacing_standard_new"
+    android:layout_marginBottom="@dimen/spacing_middle"
 
     android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/font_size_normal"
-        android:textAppearance="@style/FontSemiBold"
         android:text="@string/lbl_payment_details"
-        android:textColor="@color/textColorPrimary" />
+        android:textAppearance="@style/FontSemiBold"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="@dimen/font_size_normal" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginTop="@dimen/spacing_middle"
         android:background="@drawable/bg_ractangal_stroked"
-        android:padding="@dimen/spacing_standard"
-        >
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_standard">
 
 
         <RelativeLayout
@@ -42,8 +41,8 @@
                 android:id="@+id/tvOffer"
                 style="@style/OrderTextView"
                 android:layout_alignParentEnd="true"
-                android:textAppearance="@style/FontSemiBold"
                 android:layout_marginStart="@dimen/spacing_control"
+                android:textAppearance="@style/FontSemiBold"
                 android:textColor="@color/textColorPrimary" />
 
         </RelativeLayout>
@@ -62,8 +61,8 @@
                 android:id="@+id/tvShippingCharge"
                 style="@style/OrderTextView"
                 android:layout_alignParentEnd="true"
-                android:textAppearance="@style/FontSemiBold"
                 android:layout_marginStart="@dimen/spacing_control"
+                android:textAppearance="@style/FontSemiBold"
                 android:textColor="@color/green" />
 
         </RelativeLayout>
@@ -81,14 +80,14 @@
 
             <TextView
                 android:id="@+id/tvTotalAmount"
-                android:layout_alignParentEnd="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_control"
-                android:textSize="@dimen/font_size_medium"
-                android:textAppearance="@style/FontSemiBold"
+                android:layout_alignParentEnd="true"
                 android:layout_marginStart="@dimen/spacing_control"
-                android:textColor="@color/colorPrimary" />
+                android:layout_marginTop="@dimen/spacing_control"
+                android:textAppearance="@style/FontSemiBold"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/font_size_medium" />
 
         </RelativeLayout>
     </LinearLayout>

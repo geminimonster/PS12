@@ -5,4 +5,4 @@
     android:layout_height="match_parent"
     android:contentDescription="@string/desc_slider"
     android:orientation="vertical"
-    android:scaleType="centerCrop"/>
+    android:scaleType="centerCrop" />

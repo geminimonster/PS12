@@ -43,22 +43,22 @@ class WalkThroughActivity : AppBaseActivity() {
     internal inner class WalkAdapter : PagerAdapter() {
 
         private var mHeading =
-                arrayOf(
-                        getString(R.string.lbl_signin_up),
-                        getString(R.string.lbl_product_quality),
-                        getString(R.string.lbl_make_delicious_dishes)
-                )
+            arrayOf(
+                getString(R.string.lbl_signin_up),
+                getString(R.string.lbl_product_quality),
+                getString(R.string.lbl_make_delicious_dishes)
+            )
 
         private var mSubHeading = arrayOf(
-                getString(R.string.lbl_dummy_text1),
-                getString(R.string.lbl_dummy_text2),
-                getString(R.string.lbl_dummy_text3)
+            getString(R.string.lbl_dummy_text1),
+            getString(R.string.lbl_dummy_text2),
+            getString(R.string.lbl_dummy_text3)
         )
 
         private val mImg = intArrayOf(
-                R.drawable.ic_walk_1,
-                R.drawable.ic_trends,
-                R.drawable.ic_walk_3
+            R.drawable.ic_walk_1,
+            R.drawable.ic_trends,
+            R.drawable.ic_walk_3
         )
 
         override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
@@ -67,7 +67,7 @@ class WalkThroughActivity : AppBaseActivity() {
 
         override fun instantiateItem(container: ViewGroup, position: Int): Any {
             val view = LayoutInflater.from(container.context)
-                    .inflate(R.layout.theme3_walk, container, false)
+                .inflate(R.layout.theme3_walk, container, false)
             view.imgWalk.setImageResource(mImg[position])
             view.tvHeading.text = mHeading[position]
             view.tvHeading.changeTextPrimaryColor()

@@ -1,4 +1,3 @@
-
 package com.iqonic.store.utils.rangeBar;
 
 import android.content.Context;
@@ -8,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.util.TypedValue;
+
 import androidx.annotation.Nullable;
 
 import com.iqonic.store.R;
@@ -24,20 +24,13 @@ public class Bar {
     private final Paint mBarPaint;
 
     private final Paint mTickPaint;
-    private Paint mLabelPaint;
-
     private final float mLeftX;
-
     private final float mRightX;
-
     private final float mY;
-
-    private int mNumSegments;
-
-    private float mTickDistance;
-
     private final float mTickHeight;
-
+    private Paint mLabelPaint;
+    private int mNumSegments;
+    private float mTickDistance;
     private int mTickLabelColor;
 
     private int mTickLabelSelectedColor;
@@ -79,7 +72,7 @@ public class Bar {
                int barColor,
                boolean isBarRounded) {
         mRes = ctx.getResources();
-         plain = Typeface.createFromAsset(ctx.getAssets(), ctx.getString(R.string.font_Medium));
+        plain = Typeface.createFromAsset(ctx.getAssets(), ctx.getString(R.string.font_Medium));
 
         mLeftX = x;
         mRightX = x + length;

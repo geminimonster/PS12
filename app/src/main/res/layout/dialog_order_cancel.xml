@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llMainOrder"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/spacing_standard"
     android:background="@color/colorScreenBackground"
     android:orientation="vertical"
-    android:id="@+id/llMainOrder"
     android:padding="@dimen/spacing_standard_new">
 
     <TextView

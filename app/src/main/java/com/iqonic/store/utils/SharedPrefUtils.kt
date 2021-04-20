@@ -6,7 +6,8 @@ import com.iqonic.store.ProShopApp.Companion.getAppInstance
 import com.iqonic.store.utils.Constants.myPreferences
 
 class SharedPrefUtils {
-    private val mSharedPreferences: SharedPreferences = getAppInstance().getSharedPreferences(myPreferences, Context.MODE_PRIVATE)
+    private val mSharedPreferences: SharedPreferences =
+        getAppInstance().getSharedPreferences(myPreferences, Context.MODE_PRIVATE)
     private var mSharedPreferencesEditor: SharedPreferences.Editor
 
     init {

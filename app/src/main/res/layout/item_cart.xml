@@ -6,10 +6,10 @@
     android:id="@+id/swipeLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:layout_marginStart="@dimen/_8sdp"
-    android:layout_marginEnd="@dimen/_8sdp"
     android:layout_marginTop="@dimen/_16sdp"
+    android:layout_marginEnd="@dimen/_8sdp"
+    android:orientation="vertical"
     app:dragEdge="right"
     app:mode="same_level">
 
@@ -88,9 +88,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_control"
                 android:maxLines="2"
+                android:textAppearance="@style/FontMedium"
                 android:textColor="@color/textColorPrimary"
                 android:textSize="@dimen/font_size_medium"
-                android:textAppearance="@style/FontMedium"
                 tools:ignore="MissingPrefix"
                 tools:text="Red Dress" />
 

@@ -14,7 +14,11 @@ class LineView : View {
     private var mLineColor: Int = 0
 
 
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    ) {
         initLine(context, attrs)
     }
 
@@ -51,11 +55,11 @@ class LineView : View {
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         canvas.drawLine(
-                (width / 2).toFloat(),
-                0f, // startY
-                (width / 2).toFloat(), // stopX
-                (canvas.height - 0).toFloat(), // stopY
-                mLinePaint!! // Paint
+            (width / 2).toFloat(),
+            0f, // startY
+            (width / 2).toFloat(), // stopX
+            (canvas.height - 0).toFloat(), // stopY
+            mLinePaint!! // Paint
         )
     }
 

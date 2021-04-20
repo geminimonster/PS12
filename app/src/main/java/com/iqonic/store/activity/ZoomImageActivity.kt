@@ -43,10 +43,10 @@ class ImageAdapter(private var mImg: ArrayList<String>) : PagerAdapter() {
 
     override fun instantiateItem(parent: ViewGroup, position: Int): Any {
         val view =
-                LayoutInflater.from(parent.context).inflate(R.layout.layout_itemzoom, parent, false)
-                        .apply {
-                            imgSlider.loadImageFromUrl(mImg[position])
-                        }
+            LayoutInflater.from(parent.context).inflate(R.layout.layout_itemzoom, parent, false)
+                .apply {
+                    imgSlider.loadImageFromUrl(mImg[position])
+                }
         parent.addView(view)
         return view
     }
@@ -56,6 +56,6 @@ class ImageAdapter(private var mImg: ArrayList<String>) : PagerAdapter() {
     override fun getCount(): Int = mImg.size
 
     override fun destroyItem(parent: ViewGroup, position: Int, `object`: Any) =
-            parent.removeView(`object` as View)
+        parent.removeView(`object` as View)
 
 }

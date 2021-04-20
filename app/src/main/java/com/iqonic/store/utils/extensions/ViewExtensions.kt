@@ -17,7 +17,12 @@ import kotlin.math.roundToInt
 fun View.snackBarError(msg: String) {
     val snackBar = Snackbar.make(this, msg, Snackbar.LENGTH_LONG)
     val sbView = snackBar.view
-    sbView.setBackgroundColor(ContextCompat.getColor(getAppInstance(),R.color.tomato));snackBar.setTextColor(Color.WHITE);snackBar.show()
+    sbView.setBackgroundColor(
+        ContextCompat.getColor(
+            getAppInstance(),
+            R.color.tomato
+        )
+    );snackBar.setTextColor(Color.WHITE);snackBar.show()
 }
 
 fun View.showSoftKeyboard() {
@@ -58,11 +63,17 @@ fun View.changeBackgroundTint(color: Int) {
     background.colorFilter = PorterDuffColorFilter(color, PorterDuff.Mode.MULTIPLY)
 }
 
-fun View.setStrokedBackground(backgroundColor: Int, strokeColor: Int = 0, alpha: Float = 1.0f, strokeWidth: Int = 3) {
+fun View.setStrokedBackground(
+    backgroundColor: Int,
+    strokeColor: Int = 0,
+    alpha: Float = 1.0f,
+    strokeWidth: Int = 3
+) {
     val drawable = background as GradientDrawable
     drawable.setStroke(strokeWidth, strokeColor)
     drawable.setColor(adjustAlpha(backgroundColor, alpha))
 }
+
 fun Context.color(color: Int): Int = ContextCompat.getColor(this, color)
 
 fun adjustAlpha(color: Int, factor: Float): Int {

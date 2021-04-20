@@ -16,7 +16,11 @@ class CircleView : View {
     private var mCircleColor: Int = 0
     private var mGravity = 0
 
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    ) {
         initCircle(context, attrs)
     }
 
@@ -73,9 +77,19 @@ class CircleView : View {
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         if (mGravity == 0) {
-            canvas.drawCircle((width / 2).toFloat(), height / 2 - (height / 2 - mRadius), mRadius, paint!!)
+            canvas.drawCircle(
+                (width / 2).toFloat(),
+                height / 2 - (height / 2 - mRadius),
+                mRadius,
+                paint!!
+            )
         } else {
-            canvas.drawCircle((width / 2).toFloat(), height / 2 + (height / 2 - mRadius), mRadius, paint!!)
+            canvas.drawCircle(
+                (width / 2).toFloat(),
+                height / 2 + (height / 2 - mRadius),
+                mRadius,
+                paint!!
+            )
 
         }
 

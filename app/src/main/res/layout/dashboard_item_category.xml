@@ -25,15 +25,15 @@
             android:backgroundTint="@color/green" />
 
         <TextView
-            android:paddingStart="@dimen/spacing_control"
-            android:paddingEnd="@dimen/spacing_control"
             android:id="@+id/tvCategories"
             style="@style/Heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="@string/lbl_Shipping"
             android:maxLines="2"
+            android:paddingStart="@dimen/spacing_control"
+            android:paddingEnd="@dimen/spacing_control"
+            android:text="@string/lbl_Shipping"
             android:textColor="@color/white" />
     </RelativeLayout>
 

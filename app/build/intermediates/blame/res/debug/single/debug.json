@@ -8,6 +8,10 @@
         "source": "D:\\PS12\\app\\src\\main\\res\\drawable\\rotate.xml"
     },
     {
+        "merged": "D:\\PS12\\app\\build\\intermediates\\res\\merged\\debug\\layout-v17_activity_product_detail1.xml.flat",
+        "source": "D:\\PS12\\app\\src\\main\\res\\layout-v17\\activity_product_detail1.xml"
+    },
+    {
         "merged": "D:\\PS12\\app\\build\\intermediates\\res\\merged\\debug\\layout_expandable_text_view_layout.xml.flat",
         "source": "D:\\PS12\\app\\src\\main\\res\\layout\\expandable_text_view_layout.xml"
     },
@@ -104,6 +108,10 @@
         "source": "D:\\PS12\\app\\src\\main\\res\\layout\\toolbar.xml"
     },
     {
+        "merged": "D:\\PS12\\app\\build\\intermediates\\res\\merged\\debug\\layout-v17_activity_product_detail2.xml.flat",
+        "source": "D:\\PS12\\app\\src\\main\\res\\layout-v17\\activity_product_detail2.xml"
+    },
+    {
         "merged": "D:\\PS12\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_arrow_up.xml.flat",
         "source": "D:\\PS12\\app\\src\\main\\res\\drawable\\ic_arrow_up.xml"
     },
@@ -172,10 +180,6 @@
         "source": "D:\\PS12\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "D:\\PS12\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_product_detail2.xml.flat",
-        "source": "D:\\PS12\\app\\src\\main\\res\\layout\\activity_product_detail2.xml"
-    },
-    {
         "merged": "D:\\PS12\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_contrast_2_line.xml.flat",
         "source": "D:\\PS12\\app\\src\\main\\res\\drawable\\ic_contrast_2_line.xml"
     },
@@ -230,10 +234,6 @@
     {
         "merged": "D:\\PS12\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_stat_onesignal_default.png.flat",
         "source": "D:\\PS12\\app\\src\\main\\res\\drawable-xxhdpi\\ic_stat_onesignal_default.png"
-    },
-    {
-        "merged": "D:\\PS12\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_sign_up.xml.flat",
-        "source": "D:\\PS12\\app\\src\\main\\res\\layout\\activity_sign_up.xml"
     },
     {
         "merged": "D:\\PS12\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
@@ -560,6 +560,10 @@
         "source": "D:\\PS12\\app\\src\\main\\res\\layout\\app_bar_dash_board.xml"
     },
     {
+        "merged": "D:\\PS12\\app\\build\\intermediates\\res\\merged\\debug\\layout-v17_activity_sign_up.xml.flat",
+        "source": "D:\\PS12\\app\\src\\main\\res\\layout-v17\\activity_sign_up.xml"
+    },
+    {
         "merged": "D:\\PS12\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
         "source": "D:\\PS12\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
     },
@@ -676,14 +680,6 @@
         "source": "D:\\PS12\\app\\src\\main\\res\\layout\\layout_sidebar.xml"
     },
     {
-        "merged": "D:\\PS12\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_product_detail1.xml.flat",
-        "source": "D:\\PS12\\app\\src\\main\\res\\layout\\activity_product_detail1.xml"
-    },
-    {
-        "merged": "D:\\PS12\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_attributes.xml.flat",
-        "source": "D:\\PS12\\app\\src\\main\\res\\layout\\item_attributes.xml"
-    },
-    {
         "merged": "D:\\PS12\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_product2.jpg.flat",
         "source": "D:\\PS12\\app\\src\\main\\res\\drawable\\ic_product2.jpg"
     },
@@ -724,6 +720,10 @@
         "source": "D:\\PS12\\app\\src\\main\\res\\drawable\\ic_profiledetail.xml"
     },
     {
+        "merged": "D:\\PS12\\app\\build\\intermediates\\res\\merged\\debug\\layout-v17_dashboard_dealofferview.xml.flat",
+        "source": "D:\\PS12\\app\\src\\main\\res\\layout-v17\\dashboard_dealofferview.xml"
+    },
+    {
         "merged": "D:\\PS12\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_top_shadow.xml.flat",
         "source": "D:\\PS12\\app\\src\\main\\res\\drawable\\bg_top_shadow.xml"
     },
@@ -736,10 +736,6 @@
         "source": "D:\\PS12\\app\\src\\main\\res\\layout\\payment_razorpay_main.xml"
     },
     {
-        "merged": "D:\\PS12\\app\\build\\intermediates\\res\\merged\\debug\\layout_dashboard_dealofferview.xml.flat",
-        "source": "D:\\PS12\\app\\src\\main\\res\\layout\\dashboard_dealofferview.xml"
-    },
-    {
         "merged": "D:\\PS12\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_shipping_method.xml.flat",
         "source": "D:\\PS12\\app\\src\\main\\res\\layout\\item_shipping_method.xml"
     },
@@ -750,6 +746,10 @@
     {
         "merged": "D:\\PS12\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_dashboard.xml.flat",
         "source": "D:\\PS12\\app\\src\\main\\res\\layout\\activity_dashboard.xml"
+    },
+    {
+        "merged": "D:\\PS12\\app\\build\\intermediates\\res\\merged\\debug\\layout-v17_item_attributes.xml.flat",
+        "source": "D:\\PS12\\app\\src\\main\\res\\layout-v17\\item_attributes.xml"
     },
     {
         "merged": "D:\\PS12\\app\\build\\intermediates\\res\\merged\\debug\\layout_dashboard_productlist.xml.flat",

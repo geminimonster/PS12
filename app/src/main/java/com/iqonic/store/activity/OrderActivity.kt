@@ -27,53 +27,53 @@ class OrderActivity : AppBaseActivity() {
 
     @SuppressLint("SetTextI18n", "SimpleDateFormat")
     private val mOrderAdapter =
-            BaseAdapter<Order>(R.layout.item_orderlist, onBind = { view, model, _ ->
+        BaseAdapter<Order>(R.layout.item_orderlist, onBind = { view, model, _ ->
 
-                if (model.line_items.isNotEmpty()) {
-                    if (model.line_items[0].product_images[0].src.isNotEmpty()) {
-                        view.ivProduct.loadImageFromUrl(model.line_items[0].product_images[0].src)
-                    }
-                    if (model.line_items.size > 1) {
-                        view.tvProductName.text =
-                                model.line_items[0].name + " + " + (model.line_items.size - 1) + " " + getString(
-                                        R.string.lbl_more_item
-                                )
-                    } else {
-                        view.tvProductName.text = model.line_items[0].name
-                    }
-                } else {
-                    view.tvProductName.text = getString(R.string.lbl_order_title) + model.id
+            if (model.line_items.isNotEmpty()) {
+                if (model.line_items[0].product_images[0].src.isNotEmpty()) {
+                    view.ivProduct.loadImageFromUrl(model.line_items[0].product_images[0].src)
                 }
+                if (model.line_items.size > 1) {
+                    view.tvProductName.text =
+                        model.line_items[0].name + " + " + (model.line_items.size - 1) + " " + getString(
+                            R.string.lbl_more_item
+                        )
+                } else {
+                    view.tvProductName.text = model.line_items[0].name
+                }
+            } else {
+                view.tvProductName.text = getString(R.string.lbl_order_title) + model.id
+            }
 
-                try {
-                    if (model.date_paid != null) {
-                        if (model.transaction_id.isNullOrBlank()) {
-                            view.tvInfo.text =
-                                    getString(R.string.lbl_transaction_via) + " " + model.payment_method
-                        } else {
-                            view.tvInfo.text =
-                                    getString(R.string.lbl_transaction_via) + " " + model.payment_method
-                        }
+            try {
+                if (model.date_paid != null) {
+                    if (model.transaction_id.isNullOrBlank()) {
+                        view.tvInfo.text =
+                            getString(R.string.lbl_transaction_via) + " " + model.payment_method
                     } else {
                         view.tvInfo.text =
-                                getString(R.string.lbl_transaction_via) + " " + model.payment_method
+                            getString(R.string.lbl_transaction_via) + " " + model.payment_method
                     }
-                } catch (e: ParseException) {
-                    e.printStackTrace()
+                } else {
+                    view.tvInfo.text =
+                        getString(R.string.lbl_transaction_via) + " " + model.payment_method
                 }
+            } catch (e: ParseException) {
+                e.printStackTrace()
+            }
 
-                view.tvStatus.text = model.status
-                view.rlMainOrder.onClick {
-                    launchActivity<OrderDescriptionActivity>(Constants.RequestCode.ORDER_CANCEL) {
-                        putExtra(DATA, model)
-                    }
+            view.tvStatus.text = model.status
+            view.rlMainOrder.onClick {
+                launchActivity<OrderDescriptionActivity>(Constants.RequestCode.ORDER_CANCEL) {
+                    putExtra(DATA, model)
                 }
+            }
 
-                view.tvProductName.changeTextPrimaryColor()
-                view.tvInfo.changeTextSecondaryColor()
-                view.tvStatus.changeTextPrimaryColor()
-                view.tvStatus.changeTextPrimaryColor()
-            })
+            view.tvProductName.changeTextPrimaryColor()
+            view.tvInfo.changeTextSecondaryColor()
+            view.tvStatus.changeTextPrimaryColor()
+            view.tvStatus.changeTextPrimaryColor()
+        })
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

@@ -4,13 +4,13 @@
             "outputFile": "D:\\PS12\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v20\\values-watch-v20.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\HOME\\.gradle\\caches\\transforms-2\\files-2.1\\559b63252e0539b5cfabaf9571cd0e38\\jetified-play-services-auth-19.0.0\\res\\values-watch-v20\\values.xml",
+                    "source": "C:\\Users\\HOME\\.gradle\\caches\\transforms-2\\files-2.1\\41ebb54dfe5b9b6d91fa3887c3e1c47b\\jetified-play-services-auth-17.0.0\\res\\values-watch-v20\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11",
                         "startColumns": "0,0,0,0,0,0,0,0",
-                        "startOffsets": "173,248,324,399,474,561,638,725",
+                        "startOffsets": "171,246,322,397,472,559,636,723",
                         "endColumns": "74,75,74,74,86,76,86,75",
-                        "endOffsets": "247,323,398,473,560,637,724,800"
+                        "endOffsets": "245,321,396,471,558,635,722,798"
                     },
                     "to": {
                         "startLines": "2,3,4,5,6,7,8,9",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\HOME\\.gradle\\caches\\transforms-2\\files-2.1\\c8e415f562ba0a9a85c605aa960cc3d5\\appcompat-1.2.0\\res\\values-watch-v20\\values-watch-v20.xml",
+                    "source": "C:\\Users\\HOME\\.gradle\\caches\\transforms-2\\files-2.1\\ecfc951786e5a52cff89264c4e6e89b6\\appcompat-1.1.0\\res\\values-watch-v20\\values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",

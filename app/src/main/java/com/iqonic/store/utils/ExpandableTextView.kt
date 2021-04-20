@@ -33,6 +33,7 @@ class ExpandableTextView : FrameLayout {
     private var collapsedHeight: Int = 0
     private var expandInterpolator: TimeInterpolator? = null
     private var collapseInterpolator: TimeInterpolator? = null
+
     /**
      * Sets the duration of the expand / collapse animation.
      *
@@ -44,10 +45,14 @@ class ExpandableTextView : FrameLayout {
         set(moreLessGravity) {
             var i = Gravity.LEFT
             field = moreLessGravity
-            val params = FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+            val params = FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
             params.gravity = Gravity.END or Gravity.BOTTOM
             moreLess!!.layoutParams = params
         }
+
     /**
      * Options
      */
@@ -83,13 +88,22 @@ class ExpandableTextView : FrameLayout {
         init(attrs)
     }
 
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    ) {
         this.mContext = context
         init(attrs)
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes) {
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int, defStyleRes: Int) : super(
+        context,
+        attrs,
+        defStyleAttr,
+        defStyleRes
+    ) {
         this.mContext = context
         init(attrs)
     }
@@ -124,10 +138,14 @@ class ExpandableTextView : FrameLayout {
                 }
                 moreLess!!.isAllCaps = false
                 isMoreLessShow = true
-                moreLessGravity = a.getInt(R.styleable.ExpandableTextView_hnc_moreLessGravity, Gravity.LEFT)
-                moreLessTextStyle = a.getInt(R.styleable.ExpandableTextView_hnc_moreLessTextStyle, Typeface.NORMAL)
-                contentTextStyle = a.getInt(R.styleable.ExpandableTextView_hnc_TextStyle, Typeface.NORMAL)
-                animationDuration = a.getInt(R.styleable.ExpandableTextView_hnc_animationDuration, 300).toLong()
+                moreLessGravity =
+                    a.getInt(R.styleable.ExpandableTextView_hnc_moreLessGravity, Gravity.LEFT)
+                moreLessTextStyle =
+                    a.getInt(R.styleable.ExpandableTextView_hnc_moreLessTextStyle, Typeface.NORMAL)
+                contentTextStyle =
+                    a.getInt(R.styleable.ExpandableTextView_hnc_TextStyle, Typeface.NORMAL)
+                animationDuration =
+                    a.getInt(R.styleable.ExpandableTextView_hnc_animationDuration, 300).toLong()
             } finally {
                 a.recycle()
             }
@@ -146,12 +164,12 @@ class ExpandableTextView : FrameLayout {
         if (expand) {
             expand()
             moreLess!!.text = resources.getString(R.string.less)
-            moreLess!!.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_arrow_up,0)
+            moreLess!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_up, 0)
             return
         }
         collapse()
         moreLess!!.text = resources.getString(R.string.more)
-        moreLess!!.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_arrow_down,0)
+        moreLess!!.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_down, 0)
 
     }
 
@@ -183,8 +201,8 @@ class ExpandableTextView : FrameLayout {
 
         // get collapsed height
         content!!.measure(
-                View.MeasureSpec.makeMeasureSpec(content!!.measuredWidth, View.MeasureSpec.EXACTLY),
-                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+            View.MeasureSpec.makeMeasureSpec(content!!.measuredWidth, View.MeasureSpec.EXACTLY),
+            View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
         )
 
         collapsedHeight = content!!.measuredHeight
@@ -194,8 +212,8 @@ class ExpandableTextView : FrameLayout {
 
         // get expanded height
         content!!.measure(
-                View.MeasureSpec.makeMeasureSpec(content!!.measuredWidth, View.MeasureSpec.EXACTLY),
-                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+            View.MeasureSpec.makeMeasureSpec(content!!.measuredWidth, View.MeasureSpec.EXACTLY),
+            View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
         )
 
         val expandedHeight = content!!.measuredHeight
@@ -204,7 +222,7 @@ class ExpandableTextView : FrameLayout {
         val valueAnimator = ValueAnimator.ofInt(collapsedHeight, expandedHeight)
         valueAnimator.addUpdateListener { animation ->
             val layoutParams = content!!.layoutParams
-            layoutParams.height = animation.animatedValue as Int+70
+            layoutParams.height = animation.animatedValue as Int + 70
 
             content!!.layoutParams = layoutParams
         }
@@ -215,7 +233,7 @@ class ExpandableTextView : FrameLayout {
                 // the height calculated with this ValueAnimator isn't correct anymore
                 val layoutParams = content!!.layoutParams
                 layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
-                (layoutParams as FrameLayout.LayoutParams).bottomMargin=70
+                (layoutParams as FrameLayout.LayoutParams).bottomMargin = 70
                 content!!.layoutParams = layoutParams
             }
         })
@@ -225,8 +243,8 @@ class ExpandableTextView : FrameLayout {
 
         // start the animation
         valueAnimator
-                .setDuration(animationDuration)
-                .start()
+            .setDuration(animationDuration)
+            .start()
 
     }
 
@@ -243,7 +261,7 @@ class ExpandableTextView : FrameLayout {
         val valueAnimator = ValueAnimator.ofInt(expandedHeight, collapsedHeight)
         valueAnimator.addUpdateListener { animation ->
             val layoutParams = content!!.layoutParams
-            layoutParams.height = animation.animatedValue as Int-70
+            layoutParams.height = animation.animatedValue as Int - 70
             content!!.layoutParams = layoutParams
         }
 
@@ -256,7 +274,7 @@ class ExpandableTextView : FrameLayout {
                 // the height calculated with this ValueAnimator isn't correct anymore
                 val layoutParams = content!!.layoutParams
                 layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
-                (layoutParams as FrameLayout.LayoutParams).bottomMargin=0
+                (layoutParams as FrameLayout.LayoutParams).bottomMargin = 0
                 content!!.layoutParams = layoutParams
             }
         })
@@ -266,12 +284,10 @@ class ExpandableTextView : FrameLayout {
 
         // start the animation
         valueAnimator
-                .setDuration(animationDuration)
-                .start()
+            .setDuration(animationDuration)
+            .start()
 
     }
-
-
 
 
 }

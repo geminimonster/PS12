@@ -6,15 +6,16 @@ import java.io.Serializable
 
 class DashBoardResponse {
     @SerializedName("dashboard")
-     val dashboard: BuilderDashboard? = null
+    val dashboard: BuilderDashboard? = null
 
     @SerializedName("productdetailview")
-     val Productdetailview: BuilderDetail? = null
+    val Productdetailview: BuilderDetail? = null
 
     @SerializedName("appsetup")
-     val appSetup: AppSetup? = null
+    val appSetup: AppSetup? = null
 
 }
+
 open class AppSetup {
     @SerializedName("appName")
     var appName: String? = null
@@ -44,24 +45,25 @@ open class AppSetup {
     var appUrl: String? = null
 
 }
+
 class AppBar {
     @SerializedName("title")
-    var title: String=""
+    var title: String = ""
 
     @SerializedName("appBarIcon")
-    var appBarIcon: String=""
+    var appBarIcon: String = ""
 
     @SerializedName("backgroundColor")
-    var backgroundColor: String=""
+    var backgroundColor: String = ""
 
     @SerializedName("appBarLayout")
-    var appBarLayout: String=""
+    var appBarLayout: String = ""
 
 }
 
 open class BuilderDashboard : Serializable {
     @SerializedName("layout")
-    var layout: String=""
+    var layout: String = ""
 
     @SerializedName("sorting")
     var sorting: List<String>? = null
@@ -94,13 +96,14 @@ open class BuilderDashboard : Serializable {
     var offerProduct: Product? = null
 
     @SerializedName("suggestionProduct")
-     var suggestionProduct: Product? = null
+    var suggestionProduct: Product? = null
 
     @SerializedName("youMayLikeProduct")
     var youMayLikeProduct: Product? = null
 
 
 }
+
 open class Product : Serializable {
     @SerializedName("enable")
     var enable: Boolean? = null
@@ -112,7 +115,7 @@ open class Product : Serializable {
     var viewAll: String? = null
 }
 
-open class SliderView : Serializable  {
+open class SliderView : Serializable {
     @SerializedName("enable")
     var enable: Boolean? = null
 

@@ -13,10 +13,10 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@android:color/transparent"
         android:theme="@style/NewAppTheme"
-        app:title=""
         app:contentInsetStartWithNavigation="0dp"
         app:layout_scrollFlags="scroll|enterAlways"
-        app:popupTheme="@style/AppTheme.PopupOverlay" />
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:title="" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
@@ -132,11 +132,11 @@
                             android:rating="4" />
 
                         <TextView
-                            android:layout_marginStart="@dimen/spacing_control_half"
                             android:id="@+id/tvTotalReview"
                             style="@style/Heading"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/spacing_control_half"
                             android:layout_marginEnd="@dimen/spacing_standard" />
 
                     </LinearLayout>
@@ -287,8 +287,8 @@
                     android:layout_marginBottom="@dimen/spacing_control"
                     android:background="@drawable/bg_shadow"
                     android:orientation="vertical"
-                    android:visibility="gone"
-                    android:padding="@dimen/spacing_standard_new">
+                    android:padding="@dimen/spacing_standard_new"
+                    android:visibility="gone">
 
                     <TextView
                         android:id="@+id/lblAdditionInformation"
@@ -296,10 +296,10 @@
                         android:text="@string/lbl_additional_information" />
 
                     <LinearLayout
-                        android:layout_marginTop="@dimen/spacing_standard"
                         android:id="@+id/llAttributeView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_standard"
                         android:orientation="vertical">
 
                     </LinearLayout>
@@ -332,12 +332,12 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/llDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/spacing_control"
                     android:background="@drawable/bg_shadow"
                     android:orientation="vertical"
-                    android:id="@+id/llDescription"
                     android:padding="@dimen/spacing_standard_new">
 
                     <TextView
@@ -346,10 +346,10 @@
                         android:text="@string/hint_description" />
 
                     <TextView
-                        android:layout_marginTop="@dimen/spacing_standard"
                         android:id="@+id/tvTags"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_standard"
                         android:textColor="@color/textColorSecondary"
                         android:textSize="@dimen/font_size_medium"
                         hnc:hnc_moreLessTextColor="@color/textColorSecondary" />

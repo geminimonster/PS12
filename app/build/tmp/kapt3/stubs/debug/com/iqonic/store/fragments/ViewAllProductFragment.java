@@ -12,7 +12,7 @@ public final class ViewAllProductFragment extends com.iqonic.store.fragments.Bas
     private java.lang.String mProductAttributeResponseMsg;
     private android.view.View menuCart;
     private int mId = 0;
-    private int[] mColorArray = {2131099701};
+    private int[] mColorArray = {2131099698};
     private com.iqonic.store.models.SearchRequest searchRequest;
     private java.lang.String specialProduct = "";
     private int totalPages = 0;

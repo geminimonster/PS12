@@ -100,10 +100,10 @@ object Constants {
         const val PRICE = "price"
         const val PRODUCTDATA = "productdata"
         const val SHIPPINGDATA = "shippingdata"
-        const val SUBTOTAL="SUBTOTAL"
-        const val DISCOUNT="DISCOUNT"
-        const val SHIPPING="SHIPPING"
-        const val DISCOUNT_MRP="DISCOUNT_MRP"
+        const val SUBTOTAL = "SUBTOTAL"
+        const val DISCOUNT = "DISCOUNT"
+        const val SHIPPING = "SHIPPING"
+        const val DISCOUNT_MRP = "DISCOUNT_MRP"
         const val ORDER_DATA = "orderData"
         const val VIEWALLID = "viewallid"
         const val SPECIAL_PRODUCT_KEY = "special_product_key"
@@ -153,11 +153,10 @@ object Constants {
         const val LIGHT = 2
     }
 
-    object TotalItem
-    {
-        const val TOTAL_ITEM_PER_PAGE=20
-        const val TOTAL_CATEGORY_PER_PAGE=20
-        const val TOTAL_SUB_CATEGORY_PER_PAGE=50
+    object TotalItem {
+        const val TOTAL_ITEM_PER_PAGE = 20
+        const val TOTAL_CATEGORY_PER_PAGE = 20
+        const val TOTAL_SUB_CATEGORY_PER_PAGE = 50
     }
 
     object viewName {

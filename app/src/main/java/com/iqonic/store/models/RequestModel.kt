@@ -23,6 +23,7 @@ class RequestModel {
     @SerializedName("new_password")
     @Expose
     var new_password: String? = null
+
     /**
      * Request for post product review
      */
@@ -159,18 +160,19 @@ class RequestModel {
     var postcode: String? = null
 
 }
- class SearchRequest {
-     var attribute: ArrayList<Map<String, Any?>>?=null;
-     var category: List<Int> ?=null;
-     var price: List<Int> ?=null;
-     var text: String ?=null
-     var Optional_selling: String?=null
-     var on_sale: String ?=null
-     var newest: String ?=null
-     var featured: String ?=null
-     var page: Int = 0
-     var product_per_page: Int = 0
-     var special_product:String?=null
+
+class SearchRequest {
+    var attribute: ArrayList<Map<String, Any?>>? = null;
+    var category: List<Int>? = null;
+    var price: List<Int>? = null;
+    var text: String? = null
+    var Optional_selling: String? = null
+    var on_sale: String? = null
+    var newest: String? = null
+    var featured: String? = null
+    var page: Int = 0
+    var product_per_page: Int = 0
+    var special_product: String? = null
 }
 
 class CategoryRequest {

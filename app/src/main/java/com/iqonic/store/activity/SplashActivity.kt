@@ -27,6 +27,6 @@ class SplashActivity : AppBaseActivity() {
         }
         rlMain.changeBackgroundColor()
         getSharedPrefInstance().removeKey(MODE)
-        getSharedPrefInstance().setValue(MODE,2)
+        getSharedPrefInstance().setValue(MODE, 2)
     }
 }

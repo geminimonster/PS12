@@ -10,7 +10,8 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.OnLifecycleEvent
 
-class BroadcastReceiverExt<T>(context: T, constructor: Builder.() -> Unit) : LifecycleObserver where T : Context, T : LifecycleOwner {
+class BroadcastReceiverExt<T>(context: T, constructor: Builder.() -> Unit) :
+    LifecycleObserver where T : Context, T : LifecycleOwner {
 
     private val appContext = context.applicationContext
     private val filter: IntentFilter

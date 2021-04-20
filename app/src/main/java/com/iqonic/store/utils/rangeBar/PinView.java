@@ -1,4 +1,3 @@
-
 package com.iqonic.store.utils.rangeBar;
 
 import android.content.Context;
@@ -10,7 +9,9 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.TypedValue;
 import android.view.View;
+
 import androidx.core.content.ContextCompat;
+
 import com.iqonic.store.R;
 
 
@@ -123,11 +124,11 @@ class PinView extends View {
         mCirclePaint.setColor(circleColor);
         mCirclePaint.setAntiAlias(true);
 
-            mCircleBoundaryPaint = new Paint();
-            mCircleBoundaryPaint.setStyle(Paint.Style.STROKE);
-            mCircleBoundaryPaint.setColor(Color.WHITE);
-            mCircleBoundaryPaint.setStrokeWidth(5);
-            mCircleBoundaryPaint.setAntiAlias(true);
+        mCircleBoundaryPaint = new Paint();
+        mCircleBoundaryPaint.setStyle(Paint.Style.STROKE);
+        mCircleBoundaryPaint.setColor(Color.WHITE);
+        mCircleBoundaryPaint.setStrokeWidth(5);
+        mCircleBoundaryPaint.setAntiAlias(true);
 
 
         this.pinColor = pinColor;
@@ -140,17 +141,6 @@ class PinView extends View {
     }
 
     /**
-     * Set the x value of the pin
-     *
-     * @param x set x value of the pin
-     */
-    @Override
-    public void setX(float x) {
-        mX = x;
-    }
-
-
-    /**
      * Get the x value of the pin
      *
      * @return x float value of the pin
@@ -160,6 +150,15 @@ class PinView extends View {
         return mX;
     }
 
+    /**
+     * Set the x value of the pin
+     *
+     * @param x set x value of the pin
+     */
+    @Override
+    public void setX(float x) {
+        mX = x;
+    }
 
     /**
      * Set the value of the pin

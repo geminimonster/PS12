@@ -6,11 +6,14 @@ import android.widget.EditText
 
 fun EditText.textToString(): String = this.text.toString()
 
-fun EditText.checkIsEmpty(): Boolean = text == null || "" == textToString() || text.toString().equals("null", ignoreCase = true)
+fun EditText.checkIsEmpty(): Boolean =
+    text == null || "" == textToString() || text.toString().equals("null", ignoreCase = true)
 
-fun EditText.isValidEmail(): Boolean = !TextUtils.isEmpty(text) && Patterns.EMAIL_ADDRESS.matcher(text).matches()
+fun EditText.isValidEmail(): Boolean =
+    !TextUtils.isEmpty(text) && Patterns.EMAIL_ADDRESS.matcher(text).matches()
 
-fun EditText.isValidPhoneNumber(): Boolean = text.matches("^(((\\+?\\(91\\))|0|((00|\\+)?91))-?)?[7-9]\\d{9}$".toRegex())
+fun EditText.isValidPhoneNumber(): Boolean =
+    text.matches("^(((\\+?\\(91\\))|0|((00|\\+)?91))-?)?[7-9]\\d{9}$".toRegex())
 
 fun EditText.showError(error: String) {
     this.error = error

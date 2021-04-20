@@ -133,8 +133,8 @@ class SignUpFragment : BaseFragment() {
             else -> true
         }
     }
-    private fun changeColor()
-    {
+
+    private fun changeColor() {
         ivBackground.changeBackgroundImageTint(getPrimaryColor())
         btnSignUp.changeBackgroundTint(getButtonColor())
         lblAlreadyAccount.changeTextPrimaryColor()

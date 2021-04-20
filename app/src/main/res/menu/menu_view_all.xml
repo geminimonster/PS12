@@ -2,16 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<!--
-    <item
-        android:id="@+id/action_search"
-        android:icon="@drawable/ic_search"
-        android:orderInCategory="100"
-        android:title="@string/action_search"
-        android:visible="true"
-        app:iconTint="@color/menuIconColor"
-        app:showAsAction="always" />
--->
+    <!--
+        <item
+            android:id="@+id/action_search"
+            android:icon="@drawable/ic_search"
+            android:orderInCategory="100"
+            android:title="@string/action_search"
+            android:visible="true"
+            app:iconTint="@color/menuIconColor"
+            app:showAsAction="always" />
+    -->
     <item
         android:id="@+id/action_cart"
         android:orderInCategory="100"
@@ -21,17 +21,16 @@
         app:iconTint="@color/menuIconColor"
         app:showAsAction="always" />
 
-<!--
-    <item
-        android:id="@+id/action_filter"
-        android:icon="@drawable/ic_filter"
-        android:orderInCategory="100"
-        android:title="@string/action_filter"
-        android:visible="true"
-        app:iconTint="@color/menuIconColor"
-        app:showAsAction="always" />
--->
-
+    <!--
+        <item
+            android:id="@+id/action_filter"
+            android:icon="@drawable/ic_filter"
+            android:orderInCategory="100"
+            android:title="@string/action_filter"
+            android:visible="true"
+            app:iconTint="@color/menuIconColor"
+            app:showAsAction="always" />
+    -->
 
 
 </menu>

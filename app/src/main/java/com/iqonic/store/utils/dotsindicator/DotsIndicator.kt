@@ -59,16 +59,26 @@ class DotsIndicator(context: Context, attrs: AttributeSet? = null) : LinearLayou
             intrinsicOrientation = ta.getInt(R.styleable.DotsIndicator_dots_orientation, -1)
             intrinsicGravity = ta.getInt(R.styleable.DotsIndicator_dots_gravity, -1)
 
-            this.animatorResId = ta.getResourceId(R.styleable.DotsIndicator_dots_animator, R.anim.scale_with_alpha)
-            this.animatorReverseResId = ta.getResourceId(R.styleable.DotsIndicator_dots_animator_reverse, 0)
-            this.backgroundResId = ta.getResourceId(R.styleable.DotsIndicator_dot_drawable, R.drawable.black_dot)
-            this.unselectedBackgroundId = ta.getResourceId(R.styleable.DotsIndicator_dot_drawable_unselected, this.backgroundResId)
+            this.animatorResId =
+                ta.getResourceId(R.styleable.DotsIndicator_dots_animator, R.anim.scale_with_alpha)
+            this.animatorReverseResId =
+                ta.getResourceId(R.styleable.DotsIndicator_dots_animator_reverse, 0)
+            this.backgroundResId =
+                ta.getResourceId(R.styleable.DotsIndicator_dot_drawable, R.drawable.black_dot)
+            this.unselectedBackgroundId = ta.getResourceId(
+                R.styleable.DotsIndicator_dot_drawable_unselected,
+                this.backgroundResId
+            )
             this.dotTint = ta.getColor(R.styleable.DotsIndicator_dot_tint, 0)
         } finally {
             ta.recycle()
         }
 
-        val miniSize = (TypedValue.applyDimension(COMPLEX_UNIT_DIP, DEFAULT_INDICATOR_WIDTH.toFloat(), resources.displayMetrics) + 0.5f).toInt()
+        val miniSize = (TypedValue.applyDimension(
+            COMPLEX_UNIT_DIP,
+            DEFAULT_INDICATOR_WIDTH.toFloat(),
+            resources.displayMetrics
+        ) + 0.5f).toInt()
         indicatorWidth = if (intrinsicWidth < 0) miniSize else intrinsicWidth
         indicatorHeight = if (intrinsicHeight < 0) miniSize else intrinsicHeight
         indicatorMargin = if (intrinsicMargin < 0) miniSize else intrinsicMargin
@@ -81,18 +91,25 @@ class DotsIndicator(context: Context, attrs: AttributeSet? = null) : LinearLayou
         immediateAnimatorIn = createAnimatorIn()
         immediateAnimatorIn.duration = 0
 
-        indicatorBackgroundResId = if (this.backgroundResId == 0) R.drawable.black_dot else this.backgroundResId
-        indicatorUnselectedBackgroundResId = if (this.unselectedBackgroundId == 0) this.backgroundResId else this.unselectedBackgroundId
+        indicatorBackgroundResId =
+            if (this.backgroundResId == 0) R.drawable.black_dot else this.backgroundResId
+        indicatorUnselectedBackgroundResId =
+            if (this.unselectedBackgroundId == 0) this.backgroundResId else this.unselectedBackgroundId
 
         orientation = if (intrinsicOrientation == VERTICAL) VERTICAL else HORIZONTAL
         gravity = if (intrinsicGravity >= 0) intrinsicGravity else CENTER
     }
 
-    fun setDotDrawable(@DrawableRes indicatorRes: Int, @DrawableRes unselectedIndicatorRes: Int = indicatorRes) {
+    fun setDotDrawable(
+        @DrawableRes indicatorRes: Int,
+        @DrawableRes unselectedIndicatorRes: Int = indicatorRes
+    ) {
         this.backgroundResId = indicatorRes
         this.unselectedBackgroundId = unselectedIndicatorRes
-        indicatorBackgroundResId = if (this.backgroundResId == 0) R.drawable.black_dot else this.backgroundResId
-        indicatorUnselectedBackgroundResId = if (this.unselectedBackgroundId == 0) this.backgroundResId else this.unselectedBackgroundId
+        indicatorBackgroundResId =
+            if (this.backgroundResId == 0) R.drawable.black_dot else this.backgroundResId
+        indicatorUnselectedBackgroundResId =
+            if (this.unselectedBackgroundId == 0) this.backgroundResId else this.unselectedBackgroundId
         invalidateDots()
     }
 
@@ -119,7 +136,8 @@ class DotsIndicator(context: Context, attrs: AttributeSet? = null) : LinearLayou
     private fun invalidateDots() {
         for (i in 0 until childCount) {
             val indicator = getChildAt(i)
-            val bgDrawableRes = if (currentItem() == i) indicatorBackgroundResId else indicatorUnselectedBackgroundResId
+            val bgDrawableRes =
+                if (currentItem() == i) indicatorBackgroundResId else indicatorUnselectedBackgroundResId
             var bgDrawable = getDrawable(context, bgDrawableRes)
             if (this.dotTint != 0) {
                 bgDrawable = bgDrawable?.tint(this.dotTint)
@@ -130,7 +148,8 @@ class DotsIndicator(context: Context, attrs: AttributeSet? = null) : LinearLayou
 
     private fun createIndicators(count: Int) {
         for (i in 0 until count) {
-            val bgDrawable = if (currentItem() == i) indicatorBackgroundResId else indicatorUnselectedBackgroundResId
+            val bgDrawable =
+                if (currentItem() == i) indicatorBackgroundResId else indicatorUnselectedBackgroundResId
             val animator = if (currentItem() == i) immediateAnimatorOut else immediateAnimatorIn
             addIndicator(orientation = orientation, drawableRes = bgDrawable, animator = animator)
         }
@@ -218,7 +237,11 @@ class DotsIndicator(context: Context, attrs: AttributeSet? = null) : LinearLayou
             lastPosition = position
         }
 
-        override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) = Unit
+        override fun onPageScrolled(
+            position: Int,
+            positionOffset: Float,
+            positionOffsetPixels: Int
+        ) = Unit
 
         override fun onPageScrollStateChanged(state: Int) = Unit
     }

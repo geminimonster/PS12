@@ -94,15 +94,15 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerInParent="true"
-                    app:cornerRadius="@dimen/spacing_control"
                     android:layout_centerVertical="true"
-                    android:backgroundTint="@color/colorAccent"
                     android:background="@drawable/bg_button_add"
+                    android:backgroundTint="@color/colorAccent"
                     android:gravity="center_horizontal|center"
                     android:padding="@dimen/spacing_xmedium"
                     android:text="@string/lbl_add"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/font_size_small" />
+                    android:textSize="@dimen/font_size_small"
+                    app:cornerRadius="@dimen/spacing_control" />
 
             </RelativeLayout>
         </LinearLayout>
