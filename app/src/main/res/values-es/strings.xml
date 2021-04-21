@@ -335,4 +335,5 @@
     <string name="lbl_discount_on_mrp">Descuento en MRP</string>
     <string name="lbl_coupon_discount">cupón de Descuento</string>
     <string name="lbl_cancel_msg">Motivo de la cancelación de la orden</string>
+    <string name="lbl_g_sign_up">Sign up With Google</string>
 </resources>

@@ -9,7 +9,7 @@
     <string name="lbl_enter_the_code_nto_verify_email">برای تیئید ایمیل کد را وارد کنید</string>
     <string name="lbl_we_have_sent_you_mail_with_verification_code_to">یک ایمیل حاوی کد تائید ارسال شد به-</string>
     <string name="lbl_tep_email">jonndeo@gmail.com</string>
-    <string name="lbl_did_not_receive">دریافت نکردید</string>
+    <string name="lbl_did_not_receive">دریافت نکردید؟</string>
     <string name="lbl_resend_code">ارسال دوباره کد</string>
     <string name="lbl_verify">تائید</string>
     <string name="invalid_product">نوع کالا پشتیبانی نمیشود</string>
@@ -18,7 +18,7 @@
     <string name="lbl_wish_list">علاقه مندی</string>
     <string name="lbl_account">حساب کاربری</string>
     <string name="lbl_settings">تنظیمات</string>
-    <string name="lbl_newest_product">جدیدترنی محصولات</string>
+    <string name="lbl_newest_product">جدیدترین محصولات</string>
     <string name="lbl_rec_product">پیشنهاد برای شما</string>
     <string name="lbl_Featured">محصولات ویژه</string>
     <string name="lbl_selling">پرفروش ترین محصولات</string>
@@ -41,7 +41,7 @@
     <string name="lbl_discount">تخفیف</string>
     <string name="lbl_ratings">امتیاز ها</string>
     <string name="lbl_reset">بازنشانی</string>
-    <string name="lbl_apply">درخواست</string>
+    <string name="lbl_apply">استفاده</string>
     <string name="lbl_rated">امتیاز داده شده</string>
     <string name="lbl_payment_details">جزئیات پرداخت</string>
     <string name="lbl_offer">پیشنهادها</string>
@@ -173,7 +173,7 @@
     <string name="contact_phone">+989188111113</string>
     <string name="msg_success_card">کارت با موفقیت افزوده شد</string>
     <string name="desc_slider">اسلادیر</string>
-    <string name="hint_no_products">هیچ دادهای یافت نشد</string>
+    <string name="hint_no_products">هیچ داده ای یافت نشد</string>
     <string name="reference_email">info@khoorshid.om</string>
     <string name="lbl_loading">در حال بارگذاری</string>
     <string name="hint_review">دیدگاه</string>
@@ -317,17 +317,17 @@
     </string-array>
 
     <string-array name="language">
-        <item>English</item>
-        <item>Hindi</item>
-        <item>French</item>
-        <item>Spanish</item>
-        <item>German</item>
-        <item>Indonesian</item>
-        <item>Afrikaans</item>
-        <item>Portuguese</item>
-        <item>Turkish</item>
-        <item>Arabic</item>
-        <item>Vietnamese</item>
+        <item>انگلیسی</item>
+        <item>هندی</item>
+        <item>فرانسوی</item>
+        <item>اسپانیایی</item>
+        <item>آلمانی</item>
+        <item>اندونزیایی</item>
+        <item>آفریقایی</item>
+        <item>پرتغالی</item>
+        <item>ترکی</item>
+        <item>عربی</item>
+        <item>ویتنامی</item>
     </string-array>
 
     <string name="order_cancel_1">آدرس ارسال اشتباه است.</string>
@@ -350,7 +350,7 @@
     <string name="lbl_phone_number">شماره تلفن:</string>
     <string name="error_validText">فقط حروف مجاز است</string>
     <string name="lbl_payment">پرداخت</string>
-    <string name="lbl_ex_product">External Product</string>
+    <string name="lbl_ex_product">دیگر محصولات</string>
     <string name="lbl_no_internet">ارتباط اینترنت متصل نیست</string>
     <string name="msg_internet">سرور مشکلی دارد یا آدرش اشتباه است.</string>
     <string name="facebook_app_id" translatable="false"> 519323575384019</string>
@@ -359,4 +359,5 @@
     <string name="lbl_discount_on_mrp">تخفیف روی MRP</string>
     <string name="lbl_coupon_discount">کوپن تخفیف</string>
     <string name="lbl_cancel_msg">علت لغو سفارش</string>
+    <string name="lbl_g_sign_up">Sign up With Google</string>
 </resources>

@@ -179,7 +179,7 @@ class MyCartFragment : BaseFragment() {
                     putExtra(DISCOUNT_MRP, mTotalDiscountMRP)
                 }
             } else {
-                Toast.makeText(context, "You do not provided shipping address.", Toast.LENGTH_SHORT)
+                Toast.makeText(context, "آدرسی برای ارسال تعیین نکرده اید.", Toast.LENGTH_SHORT)
                     .show()
             }
         }
@@ -456,7 +456,7 @@ class MyCartFragment : BaseFragment() {
             })
         } else {
             hideProgress()
-            tvAddress.text = "You do not provided shipping address."
+            tvAddress.text = "آدرسی برای ارسال تعیین نکرده اید."
             llShippingAmount.hide()
             // tvFreeShipping.show()
         }

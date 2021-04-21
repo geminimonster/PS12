@@ -3568,6 +3568,7 @@ string lbl_filter
 string lbl_flat
 string lbl_forgot_password
 string lbl_from
+string lbl_g_sign_up
 string lbl_ge_amazing_discounts_on_the_products
 string lbl_get
 string lbl_get_flat

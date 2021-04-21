@@ -1,15 +1,15 @@
 <resources>
-    <string name="app_name">ProShop</string>
-    <string name="app_description">Universal Woocommerce Android App </string>
+    <string name="app_name">خورشید</string>
+    <string name="app_description">فروشگاه همه کاره</string>
     <!--Splash Image text-->
-    <string name="lbl_grocery">Pro</string>
-    <string name="lbl_store">Shop</string>
+    <string name="lbl_grocery">فروشگاه</string>
+    <string name="lbl_store">خورشید</string>
 
     <!--App Font-->
-    <string name="font_Bold" translatable="false">fonts/Jost-Bold.ttf</string>
-    <string name="font_SemiBold" translatable="false">fonts/Jost-SemiBold.ttf</string>
-    <string name="font_regular" translatable="false">fonts/Jost-Regular.ttf</string>
-    <string name="font_Medium" translatable="false">fonts/Jost-Medium.ttf</string>
+    <string name="font_Bold" translatable="false">fonts/Vazir-Bold-FD.ttf</string>
+    <string name="font_SemiBold" translatable="false">fonts/Vazir-Light-FD.ttf</string>
+    <string name="font_regular" translatable="false">fonts/Vazir-Regular-FD.ttf</string>
+    <string name="font_Medium" translatable="false">fonts/Vazir-Medium-FD.ttf</string>
 
     <string name="lbl_sign_in">Sign In</string>
     <string name="lbl_sign_up">Sign Up</string>
@@ -273,7 +273,7 @@
     <string name="lbl_no_minimum_order_value_needed">No Minimum order value needed.</string>
     <string name="lbl_valid_till">Valid till</string>
     <string name="lbl_mail_to">mailto</string>
-    <string name="lbl_send_email">Send email...</string>
+    <string name="lbl_send_email">Send email…</string>
     <string name="lbl_paid_on">paid on</string>
     <string name="lbl_order_title">Order #</string>
     <string name="lbl_images">Images</string>
@@ -366,4 +366,5 @@
     <string name="lbl_discount_on_mrp">Discount on MRP</string>
     <string name="lbl_coupon_discount">Coupon Discount</string>
     <string name="lbl_cancel_msg">Reason for cancellation of order</string>
+    <string name="lbl_g_sign_up">Sign up With Google</string>
 </resources>
