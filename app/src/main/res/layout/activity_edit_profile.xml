@@ -189,7 +189,9 @@
                                 <EditText
                                     android:id="@+id/edtFirstName"
                                     style="@style/EditTextStyle_profile"
-                                    android:hint="@string/hint_first_name" />
+                                    android:hint="@string/hint_first_name"
+                                    android:inputType="none" />
+
 
                                 <View
                                     android:layout_width="match_parent"
@@ -210,7 +212,8 @@
                                 <EditText
                                     android:id="@+id/edtLastName"
                                     style="@style/EditTextStyle_profile"
-                                    android:hint="@string/hint_last_name" />
+                                    android:hint="@string/hint_last_name"
+                                    android:inputType="none" />
 
                                 <View
                                     android:layout_width="match_parent"
@@ -227,7 +230,8 @@
                             android:id="@+id/edtEmail"
                             style="@style/EditTextStyle_profile"
                             android:layout_marginBottom="@dimen/spacing_standard"
-                            android:hint="@string/hint_email" />
+                            android:hint="@string/hint_email"
+                            android:inputType="textEmailAddress" />
 
                     </LinearLayout>
 
@@ -266,7 +270,8 @@
                                 <EditText
                                     android:id="@+id/edtBillingFName"
                                     style="@style/EditTextStyle_profile"
-                                    android:hint="@string/hint_first_name" />
+                                    android:hint="@string/hint_first_name"
+                                    android:inputType="none" />
 
                                 <View
                                     android:layout_width="match_parent"
@@ -287,7 +292,8 @@
                                 <EditText
                                     android:id="@+id/edtBillingLName"
                                     style="@style/EditTextStyle_profile"
-                                    android:hint="@string/hint_last_name" />
+                                    android:hint="@string/hint_last_name"
+                                    android:inputType="none" />
 
                                 <View
                                     android:layout_width="match_parent"
@@ -303,7 +309,8 @@
                         <EditText
                             android:id="@+id/edtBillingCompany"
                             style="@style/EditTextStyle_profile"
-                            android:hint="@string/hint_company" />
+                            android:hint="@string/hint_company"
+                            android:inputType="none" />
 
                         <View
                             android:layout_width="match_parent"
@@ -317,7 +324,8 @@
                             android:id="@+id/edtBillingAdd1"
                             style="@style/EditTextStyle_profile"
                             android:layout_marginBottom="@dimen/spacing_standard"
-                            android:hint="@string/hint_add1" />
+                            android:hint="@string/hint_add1"
+                            android:inputType="none" />
 
                         <View
                             android:layout_width="match_parent"
@@ -331,7 +339,8 @@
                             android:id="@+id/edtBillingAdd2"
                             style="@style/EditTextStyle_profile"
                             android:layout_marginBottom="@dimen/spacing_standard"
-                            android:hint="@string/hint_add2" />
+                            android:hint="@string/hint_add2"
+                            android:inputType="none" />
 
                         <View
                             android:layout_width="match_parent"
@@ -355,6 +364,7 @@
                                     android:id="@+id/edtBillingCity"
                                     style="@style/EditTextStyle_profile"
                                     android:hint="@string/hint_city"
+                                    android:inputType="none"
                                     android:nextFocusDown="@id/edtBillingPinCode" />
 
                                 <View
@@ -437,7 +447,8 @@
                             android:id="@+id/edtBillingEmail"
                             style="@style/EditTextStyle_profile"
                             android:layout_marginBottom="@dimen/spacing_standard"
-                            android:hint="@string/hint_email" />
+                            android:hint="@string/hint_email"
+                            android:inputType="textEmailAddress" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -493,7 +504,8 @@
                                 <EditText
                                     android:id="@+id/edtShippingFName"
                                     style="@style/EditTextStyle_profile"
-                                    android:hint="@string/hint_first_name" />
+                                    android:hint="@string/hint_first_name"
+                                    android:inputType="none" />
 
                                 <View
                                     android:layout_width="match_parent"
@@ -514,7 +526,8 @@
                                 <EditText
                                     android:id="@+id/edtShippingLName"
                                     style="@style/EditTextStyle_profile"
-                                    android:hint="@string/hint_last_name" />
+                                    android:hint="@string/hint_last_name"
+                                    android:inputType="none" />
 
                                 <View
                                     android:layout_width="match_parent"
@@ -530,7 +543,8 @@
                         <EditText
                             android:id="@+id/edtShippingCompany"
                             style="@style/EditTextStyle_profile"
-                            android:hint="@string/hint_company" />
+                            android:hint="@string/hint_company"
+                            android:inputType="none" />
 
                         <View
                             android:layout_width="match_parent"
@@ -544,7 +558,8 @@
                             android:id="@+id/edtShippingAdd1"
                             style="@style/EditTextStyle_profile"
                             android:layout_marginBottom="@dimen/spacing_standard"
-                            android:hint="@string/hint_add1" />
+                            android:hint="@string/hint_add1"
+                            android:inputType="none" />
 
                         <View
                             android:layout_width="match_parent"
@@ -558,7 +573,8 @@
                             android:id="@+id/edtShippingAdd2"
                             style="@style/EditTextStyle_profile"
                             android:layout_marginBottom="@dimen/spacing_standard"
-                            android:hint="@string/hint_add2" />
+                            android:hint="@string/hint_add2"
+                            android:inputType="none" />
 
                         <View
                             android:layout_width="match_parent"
@@ -582,6 +598,7 @@
                                     android:id="@+id/edtShippingCity"
                                     style="@style/EditTextStyle_profile"
                                     android:hint="@string/hint_city"
+                                    android:inputType="none"
                                     android:nextFocusDown="@id/edtShippingPinCode" />
 
                                 <View

@@ -76,6 +76,9 @@
     <color name="google_red">#CB3634</color>
 
     <color name="colorFilter">#654062</color>
+    <color name="commonColorWhite">#FFFFFF</color>
+    <color name="background_color">#FFFFFF</color>
+
 
     <array name="categoryColor">
         <item>@color/cat_1</item>
