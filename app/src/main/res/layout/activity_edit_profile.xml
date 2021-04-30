@@ -86,6 +86,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:baselineAligned="false"
                             android:orientation="horizontal"
                             android:paddingTop="@dimen/spacing_standard_new"
                             android:paddingBottom="@dimen/spacing_standard_new"
@@ -178,7 +179,8 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/spacing_standard_new">
+                            android:layout_marginTop="@dimen/spacing_standard_new"
+                            android:baselineAligned="false">
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -189,7 +191,9 @@
                                 <EditText
                                     android:id="@+id/edtFirstName"
                                     style="@style/EditTextStyle_profile"
-                                    android:hint="@string/hint_first_name" />
+                                    android:hint="@string/hint_first_name"
+                                    android:importantForAutofill="no"
+                                    android:inputType="textAutoComplete" />
 
                                 <View
                                     android:layout_width="match_parent"
@@ -210,7 +214,9 @@
                                 <EditText
                                     android:id="@+id/edtLastName"
                                     style="@style/EditTextStyle_profile"
-                                    android:hint="@string/hint_last_name" />
+                                    android:autofillHints=""
+                                    android:hint="@string/hint_last_name"
+                                    android:inputType="textAutoComplete" />
 
                                 <View
                                     android:layout_width="match_parent"
@@ -227,7 +233,9 @@
                             android:id="@+id/edtEmail"
                             style="@style/EditTextStyle_profile"
                             android:layout_marginBottom="@dimen/spacing_standard"
-                            android:hint="@string/hint_email" />
+                            android:autofillHints=""
+                            android:hint="@string/hint_email"
+                            android:inputType="textEmailAddress" />
 
                     </LinearLayout>
 
@@ -255,7 +263,8 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/spacing_standard_new">
+                            android:layout_marginTop="@dimen/spacing_standard_new"
+                            android:baselineAligned="false">
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -266,7 +275,9 @@
                                 <EditText
                                     android:id="@+id/edtBillingFName"
                                     style="@style/EditTextStyle_profile"
-                                    android:hint="@string/hint_first_name" />
+                                    android:autofillHints=""
+                                    android:hint="@string/hint_first_name"
+                                    android:inputType="textAutoComplete" />
 
                                 <View
                                     android:layout_width="match_parent"
@@ -287,7 +298,9 @@
                                 <EditText
                                     android:id="@+id/edtBillingLName"
                                     style="@style/EditTextStyle_profile"
-                                    android:hint="@string/hint_last_name" />
+                                    android:autofillHints=""
+                                    android:hint="@string/hint_last_name"
+                                    android:inputType="textAutoComplete" />
 
                                 <View
                                     android:layout_width="match_parent"
@@ -303,7 +316,9 @@
                         <EditText
                             android:id="@+id/edtBillingCompany"
                             style="@style/EditTextStyle_profile"
-                            android:hint="@string/hint_company" />
+                            android:autofillHints="نام محل کار"
+                            android:hint="@string/hint_company"
+                            android:inputType="text" />
 
                         <View
                             android:layout_width="match_parent"
@@ -317,7 +332,9 @@
                             android:id="@+id/edtBillingAdd1"
                             style="@style/EditTextStyle_profile"
                             android:layout_marginBottom="@dimen/spacing_standard"
-                            android:hint="@string/hint_add1" />
+                            android:autofillHints=""
+                            android:hint="@string/hint_add1"
+                            android:inputType="textPostalAddress" />
 
                         <View
                             android:layout_width="match_parent"
@@ -331,7 +348,9 @@
                             android:id="@+id/edtBillingAdd2"
                             style="@style/EditTextStyle_profile"
                             android:layout_marginBottom="@dimen/spacing_standard"
-                            android:hint="@string/hint_add2" />
+                            android:autofillHints=""
+                            android:hint="@string/hint_add2"
+                            android:inputType="textPostalAddress" />
 
                         <View
                             android:layout_width="match_parent"
@@ -343,7 +362,8 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:baselineAligned="false">
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -354,7 +374,9 @@
                                 <EditText
                                     android:id="@+id/edtBillingCity"
                                     style="@style/EditTextStyle_profile"
+                                    android:autofillHints=""
                                     android:hint="@string/hint_city"
+                                    android:inputType="number"
                                     android:nextFocusDown="@id/edtBillingPinCode" />
 
                                 <View
@@ -376,6 +398,7 @@
                                 <EditText
                                     android:id="@+id/edtBillingPinCode"
                                     style="@style/EditTextStyle_profile"
+                                    android:autofillHints=""
                                     android:hint="@string/hint_pin_code"
                                     android:inputType="number" />
 
@@ -422,8 +445,9 @@
                             android:id="@+id/edtBillingPhone"
                             style="@style/EditTextStyle_profile"
                             android:layout_marginBottom="@dimen/spacing_standard"
+                            android:autofillHints=""
                             android:hint="@string/hint_contact"
-                            android:inputType="number" />
+                            android:inputType="phone" />
 
                         <View
                             android:layout_width="match_parent"
@@ -437,7 +461,9 @@
                             android:id="@+id/edtBillingEmail"
                             style="@style/EditTextStyle_profile"
                             android:layout_marginBottom="@dimen/spacing_standard"
-                            android:hint="@string/hint_email" />
+                            android:autofillHints=""
+                            android:hint="@string/hint_email"
+                            android:inputType="textEmailAddress" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -482,7 +508,8 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/spacing_standard_new">
+                            android:layout_marginTop="@dimen/spacing_standard_new"
+                            android:baselineAligned="false">
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -493,7 +520,9 @@
                                 <EditText
                                     android:id="@+id/edtShippingFName"
                                     style="@style/EditTextStyle_profile"
-                                    android:hint="@string/hint_first_name" />
+                                    android:autofillHints=""
+                                    android:hint="@string/hint_first_name"
+                                    android:inputType="textAutoComplete" />
 
                                 <View
                                     android:layout_width="match_parent"
@@ -514,7 +543,9 @@
                                 <EditText
                                     android:id="@+id/edtShippingLName"
                                     style="@style/EditTextStyle_profile"
-                                    android:hint="@string/hint_last_name" />
+                                    android:autofillHints=""
+                                    android:hint="@string/hint_last_name"
+                                    android:inputType="textAutoComplete" />
 
                                 <View
                                     android:layout_width="match_parent"
@@ -530,7 +561,9 @@
                         <EditText
                             android:id="@+id/edtShippingCompany"
                             style="@style/EditTextStyle_profile"
-                            android:hint="@string/hint_company" />
+                            android:autofillHints=""
+                            android:hint="@string/hint_company"
+                            android:inputType="text" />
 
                         <View
                             android:layout_width="match_parent"
@@ -544,7 +577,9 @@
                             android:id="@+id/edtShippingAdd1"
                             style="@style/EditTextStyle_profile"
                             android:layout_marginBottom="@dimen/spacing_standard"
-                            android:hint="@string/hint_add1" />
+                            android:hint="@string/hint_add1"
+                            android:importantForAutofill="no"
+                            android:inputType="textPostalAddress" />
 
                         <View
                             android:layout_width="match_parent"
@@ -558,7 +593,9 @@
                             android:id="@+id/edtShippingAdd2"
                             style="@style/EditTextStyle_profile"
                             android:layout_marginBottom="@dimen/spacing_standard"
-                            android:hint="@string/hint_add2" />
+                            android:autofillHints=""
+                            android:hint="@string/hint_add2"
+                            android:inputType="textPostalAddress" />
 
                         <View
                             android:layout_width="match_parent"
@@ -570,7 +607,8 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:baselineAligned="false">
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -581,7 +619,9 @@
                                 <EditText
                                     android:id="@+id/edtShippingCity"
                                     style="@style/EditTextStyle_profile"
+                                    android:autofillHints=""
                                     android:hint="@string/hint_city"
+                                    android:inputType="textAutoComplete"
                                     android:nextFocusDown="@id/edtShippingPinCode" />
 
                                 <View
@@ -604,11 +644,11 @@
                                     android:id="@+id/edtShippingPinCode"
                                     style="@style/EditTextStyle_profile"
                                     android:hint="@string/hint_pin_code"
-                                    android:inputType="number" />
+                                    android:inputType="numberDecimal" />
 
                                 <View
                                     android:layout_width="match_parent"
-                                    android:layout_height="@dimen/_1sdp"
+                                    android:layout_height="0dp"
                                     android:layout_margin="@dimen/spacing_standard"
                                     android:background="@color/view_color"
                                     android:paddingStart="@dimen/spacing_standard"
@@ -619,7 +659,10 @@
 
                         <Spinner
                             android:id="@+id/spCountry"
-                            style="@style/spinner_new" />
+                            style="@style/spinner_new"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:spinnerMode="dropdown" />
 
                         <View
                             android:layout_width="match_parent"
