@@ -212,7 +212,7 @@
     <string name="lbl_help_regarding_your_recent_purchases">Help regarding your recent purchases</string>
     <string name="lbl_profile_detail">جزئیات حساب کاربری</string>
     <string name="lbl_orders">سفارش ها</string>
-    <string name="lbl_personal">شخصی</string>
+    <string name="lbl_personal">مشخصات فردی</string>
     <string name="hint_contact">شماره تماس</string>
     <string name="hint_expiry_date">"انقضا "</string>
     <string name="hint_card_number">شماره کارت</string>
@@ -230,8 +230,8 @@
     <string name="lbl_coupon_code">کد کوپن</string>
     <string name="lbl_please_wait">لطفا صبر کنید</string>
     <string name="lbl_Available">موجود در:</string>
-    <string name="lbl_Billing">فاکتور</string>
-    <string name="lbl_Shipping">ارسال</string>
+    <string name="lbl_Billing">آدرس فاکتور</string>
+    <string name="lbl_Shipping">آدرس تحویل</string>
     <string name="lbl_same">مانند فاکتور</string>
     <string name="lbl_total">جمع کل</string>
     <string name="lbl_other_item_in_cart">موارد این سفارش</string>
@@ -353,8 +353,8 @@
     <string name="lbl_ex_product">دیگر محصولات</string>
     <string name="lbl_no_internet">ارتباط اینترنت متصل نیست</string>
     <string name="msg_internet">سرور مشکلی دارد یا آدرش اشتباه است.</string>
-    <string name="facebook_app_id" translatable="false"> 519323575384019</string>
-    <string name="fb_login_protocol_scheme" translatable="false">fb519323575384019</string>
+    <string name="facebook_app_id"> 519323575384019</string>
+    <string name="fb_login_protocol_scheme">fb519323575384019</string>
     <string name="lbl_total_mrp">جمع MRP</string>
     <string name="lbl_discount_on_mrp">تخفیف روی MRP</string>
     <string name="lbl_coupon_discount">کوپن تخفیف</string>

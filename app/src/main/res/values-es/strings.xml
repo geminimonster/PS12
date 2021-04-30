@@ -145,7 +145,7 @@
     <string name="lbl_account_deactivate">Desactivar cuenta</string>
     <string name="lbl_return_items">Devolver los artículos</string>
     <string name="lbl_replace_items">sustituir los puntos</string>
-    <string name="lbl_quick_pay">Pago rapido</string>
+    <string name="lbl_quick_pay">Pago rápido</string>
     <string name="lbl_call_request">solicitud de llamada</string>
     <string name="lbl_email">Correo electrónico</string>
     <string name="lbl_send_mail">Enviar correo</string>
@@ -158,7 +158,7 @@
     <string name="title_contact_us">Contáctenos</string>
     <string name="lbl_card_number">Número de tarjeta</string>
     <string name="text_iqonicdesign_gmail_com">iqonicdesign@gmail.com</string>
-    <string name="days">Dias</string>
+    <string name="days">Días</string>
     <string name="hours">hora</string>
     <string name="minutes">min</string>
     <string name="seconds">segundo</string>
@@ -258,7 +258,7 @@
     <string name="lbl_category">Categoría</string>
     <string name="lbl_get">Obtener</string>
     <string name="lbl_get_flat">Achatarse</string>
-    <string name="lbl_off">% Apagado</string>
+    <string name="lbl_off">Percent Apagado</string>
     <string name="lbl_off1">Apagado</string>
     <string name="lbl_valid_only_orders_of">solamente órdenes válidas de</string>
     <string name="lbl_valid_only_for_first">Sólo es válido para el primer</string>
@@ -267,7 +267,7 @@
     <string name="lbl_no_minimum_order_value_needed">valor de orden mínima necesaria.</string>
     <string name="lbl_valid_till">Válida hasta</string>
     <string name="lbl_mail_to">mailto</string>
-    <string name="lbl_send_email">Enviar correo electrónico...</string>
+    <string name="lbl_send_email">Enviar correo electrónico…</string>
     <string name="lbl_paid_on">pagados en</string>
     <string name="lbl_order_title">Orden #</string>
     <string name="lbl_images">imágenes</string>

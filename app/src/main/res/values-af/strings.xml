@@ -266,7 +266,7 @@
     <string name="lbl_no_minimum_order_value_needed">Geen minimum bestel waarde wat nodig is.</string>
     <string name="lbl_valid_till">Geldig tot</string>
     <string name="lbl_mail_to">mailto</string>
-    <string name="lbl_send_email">Stuur e-pos...</string>
+    <string name="lbl_send_email">Stuur e-pos…</string>
     <string name="lbl_paid_on">betaal op</string>
     <string name="lbl_order_title">Orde #</string>
     <string name="lbl_images">beelde</string>

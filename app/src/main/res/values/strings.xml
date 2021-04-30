@@ -360,11 +360,19 @@
     <string name="lbl_ex_product">External Product</string>
     <string name="lbl_no_internet">No Internet Connection</string>
     <string name="msg_internet">There is something wrong with a proxy server or the address is incorrect</string>
-    <string name="facebook_app_id" translatable="false"> 519323575384019</string>
-    <string name="fb_login_protocol_scheme" translatable="false">fb519323575384019</string>
+    <string name="facebook_app_id"> 519323575384019</string>
+    <string name="fb_login_protocol_scheme">fb519323575384019</string>
     <string name="lbl_total_mrp">Total MRP</string>
     <string name="lbl_discount_on_mrp">Discount on MRP</string>
     <string name="lbl_coupon_discount">Coupon Discount</string>
     <string name="lbl_cancel_msg">Reason for cancellation of order</string>
     <string name="lbl_g_sign_up">Sign up With Google</string>
+
+    <string-array name="States">
+        <item>Tehran</item>
+    </string-array>
+
+    <string-array name="Cities">
+        <item>Tehran</item>
+    </string-array>
 </resources>

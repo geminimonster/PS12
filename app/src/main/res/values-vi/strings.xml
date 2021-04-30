@@ -257,7 +257,7 @@
     <string name="lbl_category">thể loại</string>
     <string name="lbl_get">Được</string>
     <string name="lbl_get_flat">Nhận Flat</string>
-    <string name="lbl_off">% Tắt</string>
+    <string name="lbl_off">Percent Tắt</string>
     <string name="lbl_off1">Tắt</string>
     <string name="lbl_valid_only_orders_of">chỉ đơn đặt hàng hợp lệ</string>
     <string name="lbl_valid_only_for_first">Chỉ có giá trị cho lần đầu tiên</string>

@@ -257,7 +257,7 @@
     <string name="lbl_category">Kategorie</string>
     <string name="lbl_get">Erhalten</string>
     <string name="lbl_get_flat">Holen Wohnung</string>
-    <string name="lbl_off">% Aus</string>
+    <string name="lbl_off">Percent Aus</string>
     <string name="lbl_off1">aus</string>
     <string name="lbl_valid_only_orders_of">Gültig nur Aufträge von</string>
     <string name="lbl_valid_only_for_first">Gilt nur für die erste</string>
