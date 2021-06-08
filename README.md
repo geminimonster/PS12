@@ -1,4 +1,5 @@
-# PS12 Is a Online shopping android Application designed For Woocommerce
-Just Change Server Url, Define API Tokens and Run
-
-
+# نرم افزار فروشگاهی اندروید طراحی شده برای ووکامرس و ورد پرس
+دوستانی که تمایل به مشارکت در پروژه دارن توی تلگرام به آی دی
+https://t.me/geminimonster 
+پیام بدن
+سورس پروژه خریداری شده است و برای بهینه سازی و ایرانیزه کردنش نیاز به کمک داریم.
