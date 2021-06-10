@@ -1,15 +1,15 @@
 <resources>
-    <string name="app_name">خورشید</string>
+    <string name="app_name">KHORSHID</string>
     <string name="app_description">فروشگاه همه کاره</string>
     <!--Splash Image text-->
     <string name="lbl_grocery">فروشگاه</string>
     <string name="lbl_store">خورشید</string>
 
     <!--App Font-->
-    <string name="font_Bold" translatable="false">fonts/Vazir-Bold-FD.ttf</string>
-    <string name="font_SemiBold" translatable="false">fonts/Vazir-Light-FD.ttf</string>
-    <string name="font_regular" translatable="false">fonts/Vazir-Regular-FD.ttf</string>
-    <string name="font_Medium" translatable="false">fonts/Vazir-Medium-FD.ttf</string>
+    <string name="font_Bold" translatable="false">fonts/YekanBold-FN.ttf</string>
+    <string name="font_SemiBold" translatable="false">fonts/SansMedium-FN-FN.ttf</string>
+    <string name="font_regular" translatable="false">fonts/YekanNormal-FN.ttf</string>
+    <string name="font_Medium" translatable="false">fonts/SansMedium-FN.ttf</string>
 
     <string name="lbl_sign_in">Sign In</string>
     <string name="lbl_sign_up">Sign Up</string>
@@ -360,8 +360,8 @@
     <string name="lbl_ex_product">External Product</string>
     <string name="lbl_no_internet">No Internet Connection</string>
     <string name="msg_internet">There is something wrong with a proxy server or the address is incorrect</string>
-    <string name="facebook_app_id"> 519323575384019</string>
-    <string name="fb_login_protocol_scheme">fb519323575384019</string>
+    <string name="facebook_app_id" translatable="false"> 519323575384019</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb519323575384019</string>
     <string name="lbl_total_mrp">Total MRP</string>
     <string name="lbl_discount_on_mrp">Discount on MRP</string>
     <string name="lbl_coupon_discount">Coupon Discount</string>
