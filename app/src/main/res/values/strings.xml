@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">KHORSHID</string>
     <string name="app_description">فروشگاه همه کاره</string>
+
     <!--Splash Image text-->
     <string name="lbl_grocery">فروشگاه</string>
     <string name="lbl_store">خورشید</string>
